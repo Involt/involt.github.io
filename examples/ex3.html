@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Involt</title>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700' rel='stylesheet' type='text/css'>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<link rel="stylesheet/less" type="text/css" href="../less/style.less">
+	<script src="../less/less.js" type="text/javascript"></script>
+	<script src="../jq.js" type="text/javascript"></script>
+</head>
+<body>
+
+	<div id="nav">
+		<div id="nav-elements">
+			<a href="../index.html" class="logo"><img src="../img/logoinv.svg" alt=""></a>
+			
+			<div class="menu">
+				<a href="../index.html" class="hyp">Home</a>
+				<a href="../gettingstarted.html" class="hyp">Getting started</a>
+				<a href="../examples.html" class="hyp">Examples</a>
+				<a href="../reference.html" class="hyp">Reference</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="getheadbg">
+		<div class="gethead">RGB slider</div>
+	</div>
+
+	<div id="wrapper">
+		<div class="text">
+			<h2>Circuit</h2>
+			<ol>
+				<li>
+					This example shows how to control RGB LED using three sliders.
+					<p>Connect LED with 220 ohm resistor to pins 3, 5 & 6.</p>
+					<img src="fritzing3.png" alt="">
+					<br>
+				</li>
+				<li>
+					Now add pinMode to your void setup inside Arduino sketch. To control the values we will use directMode.
+					<div class="ref">
+						<div class="code">
+							<code>
+								 boolean directMode = true;<br><br>
+
+								void setup() {  <br />
+
+								<p>Serial.begin(115200);</p>
+								<p>pinMode(3,OUTPUT);</p>
+								<p>pinMode(5,OUTPUT);</p>
+								<p>pinMode(6,OUTPUT);</p>
+
+							} <br>
+						</code>
+					</div>
+				</div>
+			</li>
+		</ol>
+		<h2>Three lines of code to control your RGB LED.</h2>
+		<ol>
+				<div class="ref">
+					<div class="code">
+						<code>
+							&lt;body&gt;<br />
+							<p>&lt;div class="ard slider P3 255"&gt;&lt;/div&gt;</p>
+							<p>&lt;div class="ard slider P5 255"&gt;&lt;/div&gt;</p>
+							<p>&lt;div class="ard slider P6 255"&gt;&lt;/div&gt;</p>
+							&lt;/body&gt;
+						</code>
+					</div>
+				</div>
+							
+		</ol>
+	</div>
+</div>
+
+
+
+
+<div id="footer">
+	<div>
+		<a href="#" class="logosm"><img src="../img/logosmall.svg" alt=""></a>
+		<a href="https://github.com/Involt/Involt" class="logogh"><img src="../img/githubicon.svg" alt=""></a>
+		<div class="footermenu">
+			<a href="about.html" >About</a>
+			<a href="contact.html" >Contact</a>			
+		</div>
+	</div>
+
+</div>
+</body>
+</html>

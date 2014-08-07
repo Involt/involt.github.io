@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Involt</title>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700' rel='stylesheet' type='text/css'>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<link rel="stylesheet/less" type="text/css" href="less/style.less">
+	<script src="less/less.js" type="text/javascript"></script>
+	<script src="jq.js" type="text/javascript"></script>
+</head>
+<body>
+
+	<div id="nav">
+		<div id="nav-elements">
+			<a href="index.html" class="logo"><img src="img/logoinv.svg" alt=""></a>
+			
+			<div class="menu">
+				<a href="index.html" class="hyp">Home</a>
+				<a href="gettingstarted.html" class="hyp">Getting started</a>
+				<a href="examples.html" class="hyp">Examples</a>
+				<a href="reference.html" class="hyp current">Reference</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="getheadbg">
+		<div class="gethead">Reference</div>
+	</div>
+	<div class="syntaxhint"><div>Syntax: [ard] [function] [pin] [value] [yourclass]</div></div>
+
+	<div id="wrapper">
+		<div class="referencemenu">
+			<div class="tread">
+				<h2>Read data</h2>
+				<p><a href="#show">show</a></p>
+				<p><a href="#bar">bar</a></p>
+				<p><a href="#knob">knob</a></p>
+				<p><a href="#value">value</a></p>
+			</div>
+			<div class="tsend">
+				<h2>Send data</h2>
+				<p><a href="#button">button</a></p>
+				<p><a href="#toggle">toggle</a></p>
+				<p><a href="#increase">increase</a></p>
+				<p><a href="#decrease">decrease</a></p>
+				<p><a href="#slider">slider</a></p>
+				<p><a href="#hover">hover</a></p>
+			</div>
+			<div class="tsendc">
+				<h2>Send-custom</h2>
+				<p><a href="#cbutton">custom-button</a></p>
+				<p><a href="#cwrite">custom-write</a></p>
+				<p><a href="#iwrite">input-write</a></p>
+			</div>
+		</div>
+		<div id="show" class="ref">
+
+			<div><h2>Show<a href="#">Return to top</a></h2></div>
+			<p>Display the analog pin value as number.</p>
+			<div class="code">
+				<span>ard</span>
+				<span>show</span>
+				<span>[pin]</span>
+			</div>
+			<div>
+				<div class="code chtml">
+					<div>HTML</div>
+					<code>
+						&lt;body&gt;<br />
+						<p>&lt;div class="ard show A0"&gt;&lt;/div&gt;</p>
+						&lt;/body&gt;
+					</code>
+				</div>
+				<div class="code card">
+					<div>Arduino</div>
+					<code>
+						void loop() {  <br />
+						<p>...</p><br>
+						<p>chromeAnalog[0]=analogRead(A0);</p>
+						<br>
+						<p>...</p>
+					}
+					</code>
+				</div>
+			</div>
+		</div>
+
+		<div id="bar" class="ref">
+			<div><h2>Bar<a href="#">Return to top</a></h2></div>
+			<p>Generates horizontal bar that display value.</p>
+			<div class="code">
+				<span>ard</span>
+				<span>bar</span>
+				<span>[pin]</span>
+			</div>
+			<div>
+				<div class="code chtml">
+					<div>HTML</div>
+					<code>
+						&lt;body&gt;<br />
+						<p>&lt;div class="ard bar A0"&gt;&lt;/div&gt;</p>
+						&lt;/body&gt;
+					</code>
+				</div>
+				<div class="code card">
+					<div>Arduino</div>
+					<code>
+						void loop() {  <br />
+						<p>...</p><br>
+						<p>chromeAnalog[0]=analogRead(A0);</p>
+						<br>
+						<p>...</p>
+					}
+					</code>
+				</div>
+			</div>
+		</div>
+
+		<div id="knob" class="ref">
+			<div><h2>Knob<a href="#">Return to top</a></h2></div>
+			<p>Generates knob that show analog value. Based on JQuery knob plugin by Anthony Terrien.</p>
+			<div class="code">
+				<span>ard</span>
+				<span>knob</span>
+				<span>[pin]</span>
+				<span>[maxvalue]</span>
+			</div>
+			<div>
+				<div class="code chtml">
+					<div>HTML</div>
+					<code>
+						&lt;body&gt;<br />
+						<p>&lt;div class="ard knob A0"&gt;&lt;/div&gt;</p>
+						&lt;/body&gt;
+					</code>
+				</div>
+				<div class="code card">
+					<div>Arduino</div>
+					<code>
+						void loop() {  <br />
+						<p>...</p><br>
+						<p>chromeAnalog[0]=analogRead(A0);</p>
+						<br>
+						<p>...</p>
+					}
+					</code>
+				</div>
+			</div>
+		</div>
+
+		<div id="value" class="ref">
+			<div><h2>Value<a href="#">Return to top</a></h2></div>
+			<p>Set html object value attribute to received data.</p>
+			<div class="code">
+				<span>ard</span>
+				<span>value</span>
+				<span>[pin]</span>
+			</div>
+			<div>
+				<div class="code chtml">
+					<div>HTML</div>
+					<code>
+						&lt;body&gt;<br />
+						<p>&lt;div class="ard value A0"&gt;&lt;/div&gt;</p>
+						&lt;/body&gt;
+					</code>
+				</div>
+				<div class="code card">
+					<div>Arduino</div>
+					<code>
+						void loop() {  <br />
+						<p>...</p><br>
+						<p>chromeAnalog[0]=analogRead(A0);</p>
+						<br>
+						<p>...</p>
+					}
+					</code>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="button" class="ref">
+			<div><h2>Button<a href="#">Return to top</a></h2></div>
+			<p>Button which sends value to chosen pin</p>
+			<div class="code">
+				<span>ard</span>
+				<span>button</span>
+				<span>[pin]</span>
+				<span>[value]</span>
+			</div>
+			<div>
+				<div class="code chtml">
+					<div>HTML</div>
+					<code>
+						&lt;body&gt;<br />
+						<p>&lt;div class="ard button P5 100"&gt;&lt;/div&gt;</p>
+						&lt;/body&gt;
+					</code>
+				</div>
+				<div class="code card">
+					<div>Arduino</div>
+					<code>
+						void setup() {  <br />
+						
+						<p>Serial.begin(115200);</p>
+						<p>pinMode(5,OUTPUT);</p>
+						
+					}
+					<p>/*You need to add analog write if </p>
+					<p>directMode = false*/</p>
+					void loop() {  <br />
+						<p>...</p>
+						<p>analogWrite(5,chromeDigital[5]);</p>
+						<p>...</p>
+					}
+					</code>
+				</div>
+			</div>
+		</div>
+
+		<div id="toggle" class="ref">
+			<div><h2>Toggle<a href="#">Return to top</a></h2></div>
+			<p>Toggle digital pin ON and OFF. [startvalue] is pin state on Arduino startup (need to be declared in void setup( ) ). </p>
+			<div class="code">
+				<span>ard</span>
+				<span>toggle</span>
+				<span>[pin]</span>
+				<span>[startvalue]</span>
+			</div>
+			<div>
+				<div class="code chtml">
+					<div>HTML</div>
+					<code>
+						&lt;body&gt;<br />
+						<p>&lt;div class="ard toggle D5 1"&gt;&lt;/div&gt;</p>
+						&lt;/body&gt;
+					</code>
+				</div>
+				<div class="code card">
+					<div>Arduino</div>
+					<code>
+						void setup() {  <br />
+						
+						<p>Serial.begin(115200);</p>
+						<p>pinMode(5,OUTPUT);</p>
+						<p>digitalWrite(5,1);</p>
+					}
+					</code>
+				</div>
+			</div>
+		</div>
+
+		<div id="increase" class="ref">
+			<div><h2>Increase<a href="#">Return to top</a></h2></div>
+			<p>Increase pin value by [increment]. [maxvalue] is maximum limit of value. Works with decrease but both need to have same [startvalue].</p>
+			<div class="code">
+				<span>ard</span>
+				<span>increase</span>
+				<span>[pin]</span>
+				<span>[startvalue]</span>
+				<span>[maxvalue]</span>
+				<span>[increment]</span>
+			</div>
+			<div>
+				<div class="code chtml">
+					<div>HTML</div>
+					<code>
+						&lt;body&gt;<br />
+						<p>&lt;div class="ard increase P5 100 255 10"&gt;&lt;/div&gt;</p>
+						&lt;/body&gt;
+					</code>
+				</div>
+				<div class="code card">
+					<div>Arduino</div>
+					<code>
+					void setup() {  <br />
+						
+						<p>Serial.begin(115200);</p>
+						<p>pinMode(5,OUTPUT);</p>
+						<p>analogWrite(5,100);</p>
+					}
+					</code>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="decrease" class="ref">
+			<div><h2>Decrease<a href="#">Return to top</a></h2></div>
+			<p>Decrease pin value by [decrement]. [maxvalue] is maximum limit of value. Works with increase but both need to have same [startvalue].</p>
+			<div class="code">
+				<span>ard</span>
+				<span>decrease</span>
+				<span>[pin]</span>
+				<span>[startvalue]</span>
+				<span>[maxvalue]</span>
+				<span>[decrement]</span>
+			</div>
+			<div>
+				<div class="code chtml">
+					<div>HTML</div>
+					<code>
+						&lt;body&gt;<br />
+						<p>&lt;div class="ard decrease P5 100 255 10"&gt;&lt;/div&gt;</p>
+						&lt;/body&gt;
+					</code>
+				</div>
+				<div class="code card">
+					<div>Arduino</div>
+					<code>
+					void setup() {  <br />
+						
+						<p>Serial.begin(115200);</p>
+						<p>pinMode(5,OUTPUT);</p>
+						<p>analogWrite(5,100);</p>
+					}
+					</code>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="slider" class="ref">
+			<div><h2>Slider<a href="#">Return to top</a></h2></div>
+			<p>Generates JQuery based slider.</p>
+			<div class="code">
+				<span>ard</span>
+				<span>slider</span>
+				<span>[pin]</span>
+				<span>[maxValue]</span>
+			</div>
+			<div>
+				<div class="code chtml">
+					<div>HTML</div>
+					<code>
+						&lt;body&gt;<br />
+						<p>&lt;div class="ard slider P5 255"&gt;&lt;/div&gt;</p>
+						&lt;/body&gt;
+					</code>
+				</div>
+				<div class="code card">
+					<div>Arduino</div>
+					<code>
+						nothing if directMode=true :)
+					</code>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="hover" class="ref">
+			<div><h2>Hover<a href="#">Return to top</a></h2></div>
+			<p>Create object that send value on hover and mouse leave.</p>
+			<div class="code">
+				<span>ard</span>
+				<span>hover</span>
+				<span>[pin]</span>
+				<span>[hover]</span>
+				<span>[leave]</span>
+			</div>
+			<div>
+				<div class="code chtml">
+					<div>HTML</div>
+					<code>
+						&lt;body&gt;<br />
+						<p>&lt;div class="ard hover P5 255 0"&gt;&lt;/div&gt;</p>
+						&lt;/body&gt;
+					</code>
+				</div>
+				<div class="code card">
+					<div>Arduino</div>
+					<code>
+						nothing if directMode=true :)
+					</code>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="cbutton" class="ref">
+			<div><h2>Custom-button<a href="#">Return to top</a></h2></div>
+			<p>Create button that send string data to arduino. Example code show how to send PWM value 100 to pin 5</p>
+			<div class="code">
+				<span>ard</span>
+				<span>custom-button</span>
+				<span>[data]</span>
+			</div>
+			<div>
+				<div class="code chtml">
+					<div>HTML</div>
+					<code>
+						&lt;body&gt;<br />
+						<p>&lt;div class="ard custom-button P5V100"&gt;&lt;/div&gt;</p>
+						&lt;/body&gt;
+					</code>
+				</div>
+				<div class="code card">
+					<div>Arduino</div>
+					<code>
+						n/a
+					</code>
+				</div>
+			</div>
+		</div>
+	
+
+		<div id="cwrite" class="ref">
+			<div><h2>Custom-write<a href="#">Return to top</a></h2></div>
+			<p>Input which sends written text to Arduino as string.</p>
+			<div class="code">
+				<span>ard</span>
+				<span>custom-write</span>
+			</div>
+			<div>
+				<div class="code chtml">
+					<div>HTML</div>
+					<code>
+						&lt;body&gt;<br />
+						<p>&lt;input class="ard custom-write"&gt;</p>
+						&lt;/body&gt;
+					</code>
+				</div>
+				<div class="code card">
+					<div>Arduino</div>
+					<code>
+						n/a
+					</code>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="iwrite" class="ref">
+			<div><h2>Input-write<a href="#">Return to top</a></h2></div>
+			<p>Input which sends written value to chosen pin.</p>
+			<div class="code">
+				<span>ard</span>
+				<span>input-write</span>
+				<span>[pin]</span>
+			</div>
+			<div>
+				<div class="code chtml">
+					<div>HTML</div>
+					<code>
+						&lt;body&gt;<br />
+						<p>&lt;input class="ard input-write P5"&gt;</p>
+						&lt;/body&gt;
+					</code>
+				</div>
+				<div class="code card">
+					<div>Arduino</div>
+					<code>
+						nothing if directMode=true :)
+					</code>
+				</div>
+			</div>
+		</div>
+
+</div>
+
+
+
+
+<div id="footer">
+	<div>
+		<a href="#" class="logosm"><img src="img/logosmall.svg" alt=""></a>
+		<a href="https://github.com/Involt/Involt" class="logogh"><img src="img/githubicon.svg" alt=""></a>
+		<div class="footermenu">
+			<a href="about.html" >About</a>
+			<a href="contact.html" >Contact</a>			
+		</div>
+	</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Involt</title>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700' rel='stylesheet' type='text/css'>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<link rel="stylesheet/less" type="text/css" href="../less/style.less">
+	<script src="../less/less.js" type="text/javascript"></script>
+	<script src="../jq.js" type="text/javascript"></script>
+</head>
+<body>
+
+	<div id="nav">
+		<div id="nav-elements">
+			<a href="../index.html" class="logo"><img src="../img/logoinv.svg" alt=""></a>
+			
+			<div class="menu">
+				<a href="../index.html" class="hyp">Home</a>
+				<a href="../gettingstarted.html" class="hyp">Getting started</a>
+				<a href="../examples.html" class="hyp">Examples</a>
+				<a href="../reference.html" class="hyp">Reference</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="getheadbg">
+		<div class="gethead">LED blink</div>
+	</div>
+
+	<div id="wrapper">
+		<div class="text">
+			<h2>Circuit</h2>
+			<ol>
+				<li>
+					This example shows how to connect single LED and how control it with buttons inside app. 
+					<p>First of all connect LED with 220 ohm resistor to pin 5.</p>
+					<img src="fritzing2.png" alt="">
+					<br>
+				</li>
+				<li>
+					Now add pinMode to your void setup inside Arduino sketch.
+					<div class="ref">
+						<div class="code">
+							<code>
+								void setup() {  <br />
+
+								<p>Serial.begin(115200);</p>
+								<p>pinMode(5,OUTPUT);</p>
+
+							} <br>
+						</code>
+					</div>
+				</div>
+			</li>
+		</ol>
+		<h2>Controling LED with button</h2>
+		<ol>
+			<li>Make sure that your Involt project is installed. If you dont know how to do this go to <a href="../gettingstarted.html">getting started</a> page.</li>
+			<li>Open index.html. To control your Arduino just add interface elements with classes that Involt can understand.</li>
+			<li>Add code to body section that generate switch between HIGH and LOW states of pin. The last class is 0 because we want to start with inactive LED.
+				<div class="ref">
+					<div class="code">
+						<code>
+							&lt;body&gt;<br />
+							<p>&lt;div class="ard toggle D5 0"&gt;&lt;/div&gt;</p>
+							&lt;/body&gt;
+						</code>
+					</div>
+				</div>
+				<li>
+					Another example of LED blinking is two separate buttons. This time we want to set it to PWM value so change the pin number from D5 to P5.
+				</li>
+				<div class="ref">
+					<div class="code">
+						<code>
+							&lt;body&gt;<br />
+							<p>&lt;div class="ard button P5 40"&gt;Turn me ON&lt;/div&gt;</p>
+							<p>&lt;div class="ard button P5 0"&gt;Turn me OFF&lt;/div&gt;</p>
+							&lt;/body&gt;
+						</code>
+					</div>
+				</div>
+			</ol>
+			<h2>How to blink every second?</h2>
+			<ol>
+				<li>This example show how to use non-direct mode to control Arduino sketch.</li>
+				<li>To start use the first example with toggle button. ( ard toggle D5 0 )</li>
+				<li>To your Arduino sketch (with pinMode) you need to set " directMode " to false. Now your pin data is sent to  "chromeDigital"  array.</li>
+				<li>Toggle value with this code inside void loop:</li>
+				<div class="ref">
+					<div class="code">
+						<code>
+							boolean directMode = false;<br>
+							<br>... <br><br>
+
+							void setup() {  <br />
+
+							<p>Serial.begin(115200);</p>
+							<p>pinMode(5,OUTPUT);</p>
+
+						} <br>
+						void loop() {  <br />
+						<p>chromeReceive(); </p><br>
+						<p>digitalWrite(5, chromeDigital[5]);</p><br>
+						<p>chromeSend();</p>
+
+					} <br>
+					... <br>
+					
+				</code>
+			</div>
+		</div>
+		<li>Now add delay in void loop to blink every second:</li>
+		<div class="ref">
+			<div class="code">
+				<code>
+					void loop() {  <br />
+					<p>chromeReceive(); </p><br>
+					<p>digitalWrite(5, chromeDigital[5]);</p>
+					<p>delay(1000);</p>
+					<p>digitalWrite(5, 0);</p>
+					<p>delay(1000);</p><br>
+					<p>chromeSend();</p>
+
+				} <br>
+			</code>
+		</div>
+	</div>	
+	<li>Remember that delay is not recomended if you want to read data from arduino. Instead use <a href="http://arduino.cc/en/Tutorial/BlinkWithoutDelay">Blink without delay tutorial</a> 
+	</li>				
+</ol>
+</div>
+</div>
+
+
+
+
+<div id="footer">
+	<div>
+		<a href="#" class="logosm"><img src="../img/logosmall.svg" alt=""></a>
+		<a href="https://github.com/Involt/Involt" class="logogh"><img src="../img/githubicon.svg" alt=""></a>
+		<div class="footermenu">
+			<a href="about.html" >About</a>
+			<a href="contact.html" >Contact</a>			
+		</div>
+	</div>
+
+</div>
+</body>
+</html>
