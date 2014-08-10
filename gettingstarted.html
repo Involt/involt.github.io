@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Involt</title>
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700' rel='stylesheet' type='text/css'>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -87,128 +87,190 @@
 			</ol>
 		</div>
 
-		<h2>Example</h2>
-		<ol>
-			<li>
-				Create button that set value of pin 6 connected LED to 150:
-				<br>
-				<div class="ref">
-					<div class="code">
-						<span>&lt;div class="ard button P6 150"&gt;&lt;/div&gt;</span>
-					</div>
-				</div>
-
-			</li>
-			<li>
-				Show analog value of pin A0:
-				<br>
-				<div class="ref">
-					<div class="code">
-						<span>&lt;div class="ard show A0"&gt;&lt;/div&gt;</span>
-					</div>
-				</div>
-			</li>
-			Remember that you need to edit Arduino sketch.
+		<div class="text">
+			<h2>3. Read data from Arduino.</h2>
 			<div class="ref">
 				<div class="code">
 					<code>
-
+						<p>//inside Involt Arduino sketch</p>
+						... <br><br>
 						void loop() {  <br />
-						<p>...</p><br>
+						<p>chromeReceive(); </p><br>
 						<p>chromeAnalog[0]=analogRead(A0);</p>
 						<br>
-						<p>...</p>
-					}
+						<p>chromeSend();</p>
+					} <br>
+					<br>... 
 				</code>
 			</div>
 		</div>
-	</ol>
 
-	<div class="text setup">
-		<h2>3. Involt setup</h2>
-		<ol>
-			<li>
-				<h2>Where to start?</h2>
-				<p>
-					To add content to your project edit index.html. When you make changes you need to reopen your app.
-				</p>
-			</li>
-			<li>
-				<h2>Loader</h2>
-				<p>
-					Every time you open your project Involt ask you for your Arduino port. You can customize loader screen in core/framework.css
-					<br>
-					<h2>How to remove loader</h2>
-					<ol>
-						<li>Open core/involt.js.</li>
-						<li>Change "loaderOnLaunch" variable to false.</li>
-						<li>Set "defaultSerialPort" to your connected Arduino port.</li>
-					</ol>
-				</p>
-			</li>
-			<li>
-				<h2>User interface</h2>
-				<p>
-					If you want to change Involt styleguide you need to edit core/framework.css. You can also create your own file to add custom CSS.
-				</p>
-			</li>
-			<li>
-				<h2>How to change window dimensions</h2>
-				<p>
-					Open core/background.js and change width/height.
-				</p>
-			</li>
-			<li>
-				<h2>Name and description of project</h2>
-				<p>
-					Open manifest.json. Do not change other elements inside manifest because your project will disappear from launcher.
-				</p>
-			</li>
-
-		</div>
-
-		<div class="text">
-			<h2>4. Arduino communcation</h2>
-			<ol>
-				<li>
-					<h2>Arduino sketch setup</h2>
-					<ol>
-						<li>
-							<h2>Direct mode</h2><p>
-							Direct mode send data from app to digital pins without storing them in chromeDigital array inside Arduino sketch. For more complex project with specified libraries and multiplexers you should set directMode to false and use chromeDigital array to distribute data. 
-						</p>
-
-					</li>
-					<div class="ref">
-						<div class="code">
-							<code>
-								//if directMode=false <br>
-								void setup() {  <br />
-
-								<p>Serial.begin(115200);</p>
-								<p>pinMode(6,OUTPUT);</p>
-
-							} <br>
-							void loop() {  <br />
-							<p>...</p>
-							<p>analogWrite(6,chromeDigital[6]);</p>
-							<p>...</p>
-						}
-
-					</code>
-				</div>
+		<div class="ref">
+			<div class="code">
+				<code>
+					<p>//inside index.html</p>
+					&lt;body&gt;<br />
+					<p>&lt;div class="ard show A0"&gt;&lt;/div&gt;</p>
+					&lt;/body&gt;
+				</code>
 			</div>
+		</div>
+	</div>
 
-			<li>
-				<h2>Sending analog data</h2><p>
-				chromeAnalog array contains each analog pin value. You can change their total number but remember to edit the "analogNumber" value and Involt.js.
+	<div class="text">
+		<h2>4. Send data directly to Arduino.</h2>
+		<div class="ref">
+			<div class="code">
+				<code>
+					<p>//inside Involt Arduino sketch</p>
+					...  <br><br>
+					void setup() {  <br />
+
+					<p>Serial.begin(115200);</p>
+					<p>pinMode(5,OUTPUT);</p>
+				}
+				<br>
+				<br>...  
+			</code>
+		</div>
+	</div>
+	<div class="ref">
+		<div class="code">
+			<code>
+				<p>//inside index.html</p>
+				&lt;body&gt;<br />
+				<p>&lt;div class="ard button P5 255"&gt;Click Me&lt;/div&gt;</p>
+				&lt;/body&gt;
+			</code>
+		</div>
+	</div>
+</div>
+
+<div class="text">
+	<h2>5. Distribute data inside Arduino using array.</h2>
+	<div class="ref">
+		<div class="code">
+			<code>
+				<p>//inside Involt Arduino sketch</p>
+
+				boolean directMode = false;<br>
+				<br>... <br><br>
+
+				void setup() {  <br />
+
+				<p>Serial.begin(115200);</p>
+				<p>pinMode(5,OUTPUT);</p>
+
+			} <br>
+			void loop() {  <br />
+			<p>chromeReceive(); </p><br>
+			<p>analogWrite(5, chromeDigital[5]);</p>
+			<p>analogWrite(6, chromeDigital[5]);</p><br>
+			<p>chromeSend();</p>
+
+		} <br>
+		... <br>
+
+	</code>
+</div>
+</div>
+<div class="ref">
+	<div class="code">
+		<code>
+			<p>//inside index.html</p>
+			&lt;body&gt;<br />
+			<p>&lt;div class="ard button P5 123"&gt;Click Me&lt;/div&gt;</p>
+			&lt;/body&gt;
+		</code>
+	</div>
+</div>
+</div>
+
+<div class="text setup">
+	<h2>3. Involt setup</h2>
+	<ol>
+		<li>
+			<h2>Where to start?</h2>
+			<p>
+				To add content to your project edit index.html. When you make changes you need to reopen your app.
 			</p>
 		</li>
 		<li>
-			<h2>Send more variables to Arduino</h2><p>
-			Set directMode to false and extend your chromeDigital array to store more values. After that you can send them to Arduino as digital pin that do not exist and use it as variable inside sketch.
+			<h2>Loader</h2>
+			<p>
+				Every time you open your project Involt ask you for your Arduino port. You can customize loader screen in core/framework.css
+				<br>
+				<h2>How to remove loader</h2>
+				<ol>
+					<li>Open core/involt.js.</li>
+					<li>Change "loaderOnLaunch" variable to false.</li>
+					<li>Set "defaultSerialPort" to your connected Arduino port.</li>
+				</ol>
+			</p>
+		</li>
+		<li>
+			<h2>User interface</h2>
+			<p>
+				If you want to change Involt styleguide you need to edit core/framework.css. You can also create your own file to add custom CSS.
+			</p>
+		</li>
+		<li>
+			<h2>How to change window dimensions</h2>
+			<p>
+				Open core/background.js and change width/height.
+			</p>
+		</li>
+		<li>
+			<h2>Name and description of project</h2>
+			<p>
+				Open manifest.json. Do not change other elements inside manifest because your project will disappear from launcher.
+			</p>
+		</li>
+
+	</div>
+
+	<div class="text">
+		<h2>4. Arduino communcation</h2>
+		<ol>
+			<li>
+				<h2>Arduino sketch setup</h2>
+				<ol>
+					<li>
+						<h2>Direct mode</h2><p>
+						Direct mode send data from app to digital pins without storing them in chromeDigital array inside Arduino sketch. For more complex project with specified libraries and multiplexers you should set directMode to false and use chromeDigital array to distribute data. 
+					</p>
+
+				</li>
+				<div class="ref">
+					<div class="code">
+						<code>
+							//if directMode=false <br>
+							void setup() {  <br />
+
+							<p>Serial.begin(115200);</p>
+							<p>pinMode(6,OUTPUT);</p>
+
+						} <br>
+						void loop() {  <br />
+						<p>...</p>
+						<p>analogWrite(6,chromeDigital[6]);</p>
+						<p>...</p>
+					}
+
+				</code>
+			</div>
+		</div>
+
+		<li>
+			<h2>Sending analog data</h2><p>
+			chromeAnalog array contains each analog pin value. You can change their total number but remember to edit the "analogNumber" value and Involt.js.
 		</p>
 	</li>
+	<li>
+		<h2>Send more variables to Arduino</h2><p>
+		Set directMode to false and extend your chromeDigital array to store more values. After that you can send them to Arduino as digital pin that do not exist and use it as variable inside sketch.
+	</p>
+</li>
 
 </ol>
 <li>
@@ -280,12 +342,12 @@
 			<h2>digitalPins[pinNumber]</h2> Array that store digital pins. pinNumber is number without the first letter (D5 = 5, P5 = 5).
 			<div class="ref">
 				<div class="code">
-				<code>
-					//Display value of pin 5 when clicked.
-					<br>
-					  $(".yourbutton").click(function() {
-					    <p>$(this).html(digitalPins[5]);</p>
-					  });
+					<code>
+						//Display value of pin 5 when clicked.
+						<br>
+						$(".yourbutton").click(function() {
+						<p>$(this).html(digitalPins[5]);</p>
+					});
 				</code>
 			</div>
 		</p>
@@ -300,8 +362,8 @@
 						<code>
 							//Button that send to PWM pin 5 value 123<br>
 							$(".yourbutton").click(function() {
-								<p>arduinoSend("P5", 123);</p>
-							});
+							<p>arduinoSend("P5", 123);</p>
+						});
 					</code>
 				</div>
 			</div>
