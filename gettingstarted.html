@@ -147,7 +147,7 @@
 </div>
 
 <div class="text">
-	<h2>5. Distribute data inside Arduino using array.</h2>
+	<h2>5. Distribute data inside Arduino by using array.</h2>
 	<div class="ref">
 		<div class="code">
 			<code>
@@ -212,88 +212,63 @@
 		<li>
 			<h2>User interface</h2>
 			<p>
-				If you want to change Involt styleguide you need to edit core/framework.css. You can also create your own file to add custom CSS.
-			</p>
-		</li>
-		<li>
-			<h2>How to change window dimensions</h2>
-			<p>
-				Open core/background.js and change width/height.
-			</p>
-		</li>
-		<li>
-			<h2>Name and description of project</h2>
-			<p>
-				Open manifest.json. Do not change other elements inside manifest because your project will disappear from launcher.
-			</p>
-		</li>
-
-	</div>
-
-	<div class="text">
-		<h2>7. Arduino communcation</h2>
-		<ol>
+				If you want to change Involt styleguide you need to edit core/framework.css. You can also create your own file to add custom CSS. Do not use .ard class for objects that do not communicate with arduino.
+			</li>
 			<li>
-				<h2>Arduino sketch setup</h2>
-				<ol>
-					<li>
-						<h2>Direct mode</h2><p>
-						Direct mode send data from app to digital pins without storing them in chromeDigital array inside Arduino sketch. For more complex project with specified libraries and multiplexers you should set directMode to false and use chromeDigital array to distribute data. 
-					</p>
+				<h2>How to change window dimensions</h2>
+				<p>
+					Open core/background.js and change screenWidth or screenHeight.
+				</p>
+			</li>
+			<li>
+				<h2>Name and description of project</h2>
+				<p>
+					Open manifest.json. Do not change other elements inside manifest because your project will disappear from launcher.
+				</p>
+			</li>
 
-				</li>
-				<div class="ref">
-					<div class="code">
-						<code>
-							//if directMode=false <br>
-							void setup() {  <br />
-
-							<p>Serial.begin(115200);</p>
-							<p>pinMode(6,OUTPUT);</p>
-
-						} <br>
-						void loop() {  <br />
-						<p>...</p>
-						<p>analogWrite(6,chromeDigital[6]);</p>
-						<p>...</p>
-					}
-
-				</code>
-			</div>
 		</div>
 
-		<li>
-			<h2>Sending analog data</h2><p>
-			chromeAnalog array contains each analog pin value. You can change their total number but remember to edit the "analogNumber" value and Involt.js.
-		</p>
-	</li>
+		<div class="text">
+			<h2>7. Arduino sketch setup</h2>
+			<ol>
+				<li>
+					<h2>Direct mode</h2><p>
+					Direct mode send data from app to digital pins without storing them in chromeDigital array inside Arduino sketch. For more complex project with specified libraries and multiplexers you should set directMode to false and use chromeDigital array to distribute data. 
+				</p>
+
+			</li>
+			<div class="ref">
+				<div class="code">
+					<code>
+						//if directMode=false <br>
+						void setup() {  <br />
+
+						<p>Serial.begin(115200);</p>
+						<p>pinMode(6,OUTPUT);</p>
+
+					} <br>
+					void loop() {  <br />
+					<p>...</p>
+					<p>analogWrite(6,chromeDigital[6]);</p>
+					<p>...</p>
+				}
+
+			</code>
+		</div>
+	</div>
+
 	<li>
-		<h2>Send more variables to Arduino</h2><p>
-		Set directMode to false and extend your chromeDigital array to store more values. After that you can send them to Arduino as digital pin that do not exist and use it as variable inside sketch.
+		<h2>Sending analog data</h2><p>
+		"chromeAnalog" array inside sketch contains each analog pin value. You can send more variables. Check <a href="examples/ex5.html">Read more variables from Arduino</a> tutorial.
 	</p>
 </li>
-
-</ol>
 <li>
-	<h2>How to change total analog pin numbers or receive additional variables from Arduino</h2>
-	<p>
-		<ol>
-			<li><h2>Open core/involt.js</h2></li>
-			<li><h2>To edit amount of analog pins change "analogPinsNumber".</h2>
-
-				Remember to include them in "chromeAnalog" array inside Arduino sketch.
-
-			</li>
-			<li><h2>If your project need more data to send you can change "additionalVariables" number.</h2>
-
-				Example: You have all of your Arduino UNO 6 analog pins used but you need to send two more variables.
-				<br>
-				Change "additionalVariables" to 2. Now you can send from "chromeAnalog" array two more variables as pins A6,A7.
-			</li>
-		</ol>
-	</p>
+	<h2>Send more variables to Arduino</h2><p>
+	Inside Arduino sketch set directMode to false and extend your chromeDigital array to store more values. After that you can send them to Arduino as digital pins that do not exist and use them as variables inside sketch.
+</p>
 </li>
-</li>
+
 </ol>
 
 </div>
