@@ -9,221 +9,223 @@
 	color:@textblack;}
 
 
-h1,h2{
-	text-align: center;
-	margin: 0 0;
-}
-
-h1{
-	font-weight: 400;
-	font-size: 48px;
-	text-shadow: 0px 1px black;
-	color:white;
-}
-
-h2{
-	font-weight: 700;
-	font-size: 18px;
-}
-
-h3{
-	font-weight: 700;
-	font-size: 24px;
-	text-shadow: 0px 1px white;
-}
-
-.hyp{
-	height: 60px;
-	line-height: 60px;
-	color: white;
-	text-decoration: none;
-	font-size: 18px;
-	margin-left: 20px;
-	float:left;
-	&.current{
-		font-weight: 700;
-	}
-}
-
-a:active,a:focus {
-	outline: none;
-}
-
-.downloadbutton{
-	font-weight: 700;
-	font-size: 18px;
-	color: white;
-	text-decoration: none;
-	margin-top:21px;
-	line-height: 58px;
-	width: 144px;
-	height: 58px;
-	border-radius: 6px;
-	background-color: black;
-	&:hover{
-		color:@darkblue;
-		background: white;
-		border: 1px solid @darkblue;
-	}
-}
-
-
-
-body{
-	font-family: "Source Sans Pro";
-	padding:0px;
-	margin:0px;
-	background: @bgray;
-	min-width:960px;
-	
-	#nav{
-		background: @darkblue;
-		border-bottom: 1px @lightblue solid;
-		position: fixed;
-		top:0px;
-		left:0px;
-		right:0px;
-		#nav-elements{
-			margin:0 auto ;
-			width: 960px;
-			height: 100px;
-			padding:0 20px;
-			
-			.logo{
-				margin:20px 0;
-				float:left;
-				width: 200px;
-				height: 60px;
-			}
-			.menu{
-				margin:20px 0;
-				float:right;
-				.hyp:hover{
-					border-bottom: 2px @lightblue solid;
-				}
-			}
-		}	
+	h1,h2{
+		text-align: center;
+		margin: 0 0;
 	}
 
-	#headline{
-		background: @darkblue;
+	h1{
+		font-weight: 400;
+		font-size: 48px;
+		text-shadow: 0px 1px black;
 		color:white;
-		height: 550px;
-		margin-top:0px;
-		padding-top: 150px;
-		text-align: center;
-		img{
-			margin: 20px 0;
-		}
-		
 	}
-	.headsmall{
-		background: @lightblue;
-		height: 100px;
-		
-		text-align: center;
-		line-height: 100px;
-		div{
-			padding: 0 20px;
-			max-width: 960px;
-			margin:0 auto;
-			>h2{
-				font-size: 24px;
-				font-weight: 400;
-				color:white;
-				float: left;
-			}
 
-			.downloadbutton{
-				text-decoration: none;
-				margin-top:21px;
-				float:right;
-			}
+	h2{
+		font-weight: 700;
+		font-size: 18px;
+	}
 
+	h3{
+		font-weight: 700;
+		font-size: 24px;
+		text-shadow: 0px 1px white;
+	}
 
+	.hyp{
+		height: 60px;
+		line-height: 60px;
+		color: white;
+		text-decoration: none;
+		font-size: 18px;
+		margin-left: 20px;
+		float:left;
+		&.current{
+			font-weight: 700;
 		}
 	}
 
-	#content{
-		width: 960px;
-		margin: 0 auto;
-		padding:0 20px;		
-		.feature{
-			height: 250px;
-			margin: 60px 0;
+	a:active,a:focus {
+		outline: none;
+	}
+
+	.downloadbutton{
+		font-weight: 700;
+		font-size: 18px;
+		color: white;
+		text-decoration: none;
+		margin-top:21px;
+		line-height: 58px;
+		width: 144px;
+		height: 58px;
+		border-radius: 6px;
+		background-color: black;
+		&:hover{
+			color:@darkblue;
+			background: white;
+			border: 1px solid @darkblue;
+		}
+	}
+
+
+
+	body{
+		font-family: "Source Sans Pro";
+		padding:0px;
+		margin:0px;
+		background: @bgray;
+		min-width:960px;
+
+
+
+		#nav{
+			background: @darkblue;
+			border-bottom: 1px @lightblue solid;
+			position: fixed;
+			top:0px;
+			left:0px;
+			right:0px;
+			#nav-elements{
+				margin:0 auto ;
+				width: 960px;
+				height: 100px;
+				padding:0 20px;
+
+				.logo{
+					margin:20px 0;
+					float:left;
+					width: 200px;
+					height: 60px;
+				}
+				.menu{
+					margin:20px 0;
+					float:right;
+					.hyp:hover{
+						border-bottom: 2px @lightblue solid;
+					}
+				}
+			}	
+		}
+
+		#headline{
+			background: @darkblue;
+			color:white;
+			height: 550px;
+			margin-top:0px;
+			padding-top: 150px;
+			text-align: center;
+			img{
+				margin: 20px 0;
+			}
+
+		}
+		.headsmall{
+			background: @lightblue;
+			height: 100px;
+
+			text-align: center;
+			line-height: 100px;
 			div{
-				&:hover{
-					color: @darkblue;
-				}
-				float: left;
-				width: 440px;
-				h3{
-					margin-top: 60px;
+				padding: 0 20px;
+				max-width: 960px;
+				margin:0 auto;
+				>h2{
+					font-size: 24px;
+					font-weight: 400;
+					color:white;
+					float: left;
 				}
 
-				div{
-
-					font-size: 18px;
-					font-weight: 300;
-				}
-			}
-			.img{
-				margin-left: 40px;
-				width: 440px;
-				height:260px;
-			}
-			&:nth-child(2n){
-				div{
+				.downloadbutton{
+					text-decoration: none;
+					margin-top:21px;
 					float:right;
 				}
+
+
+			}
+		}
+
+		#content{
+			width: 960px;
+			margin: 0 auto;
+			padding:0 20px;		
+			.feature{
+				height: 250px;
+				margin: 60px 0;
+				div{
+					&:hover{
+						color: @darkblue;
+					}
+					float: left;
+					width: 440px;
+					h3{
+						margin-top: 60px;
+					}
+
+					div{
+
+						font-size: 18px;
+						font-weight: 300;
+					}
+				}
 				.img{
-					margin-left: 0;
-					margin-right: 40px;
+					margin-left: 40px;
+					width: 440px;
+					height:260px;
+				}
+				&:nth-child(2n){
+					div{
+						float:right;
+					}
+					.img{
+						margin-left: 0;
+						margin-right: 40px;
+					}
+				}
+				&:nth-child(1){
+					margin-top:20px;
+					margin-bottom: 60px;
 				}
 			}
-			&:nth-child(1){
-				margin-top:20px;
-				margin-bottom: 60px;
+		}
+
+		#bg-cta, #bg-how{
+			background: @lightblue;
+			height: 500px;
+			text-align: center;
+			color:white;
+			padding-top: 100px;
+			text-align: center;
+
+			h2{
+				color:white;
+				font-size: 32px;
+				font-weight: 300;
 			}
-		}
-	}
-
-	#bg-cta, #bg-how{
-		background: @lightblue;
-		height: 500px;
-		text-align: center;
-		color:white;
-		padding-top: 100px;
-		text-align: center;
-		
-		h2{
-			color:white;
-			font-size: 32px;
-			font-weight: 300;
-		}
 
 
-		.downloadbutton{
-			display: inline-block;
-			margin-bottom: 20px;
-		}
+			.downloadbutton{
+				display: inline-block;
+				margin-bottom: 20px;
+			}
 
-		.lptext{
-			margin: 30px auto;
-			width: 800px;
-			font-weight: 400;
-			font-size: 24px;
-			color:white;
-		}
+			.lptext{
+				margin: 30px auto;
+				width: 800px;
+				font-weight: 400;
+				font-size: 24px;
+				color:white;
+			}
 
-		p{
-			color: white;
-			a{
+			p{
 				color: white;
+				a{
+					color: white;
+				}
 			}
-		}
 
-	}
+		}
 
 		#bg-how{
 			background: @darkblue;
@@ -235,133 +237,132 @@ body{
 		}
 
 
-	#getheadbg{
-		background:@darkblue;
-		height: 250px;
-		padding-top: 150px;
-		.gethead{
-			text-shadow: 0px 1px black;
-			margin: 0 auto;
-			padding: 0 20px;
-			width: 960px;
-			font-weight: 400;
-			font-size: 40px;
-			color:white;
-		}
-
-	}
-
-	.syntaxhint{
-		background: @lightblue;
-		
-		text-align: left;
-		padding: 20px;
-		font-weight: 700;
-		font-size: 18px;
-		word-spacing: 10px;
-		div{
-			color: white;
-			width: 960px;
-			padding: 0 20px;
-			margin: 0 auto;
-		}
-	}
-
-	#wrapper{
-		width: 960px;
-		margin: 0 auto;
-		padding: 0 20px;
-
-
-
-		.text>h2{
-			font-size: 24px;
-			border-bottom:  1px solid @lightblue;
-			padding-bottom: 10px;
-		}
-		h2{
-			text-align: left;
-			margin:20px 0px;
-		}
-		img{
-			margin: 0 auto;
-			display: block;
-		}
-
-		.referencemenu{
-			width: 920px;
-			height: 300px;
-			margin: 20px 0;
-			border-bottom:  1px solid @lightblue;
-			border-top:  1px solid @lightblue;
-			.tread,.tsend,.tsendc{
-
-				float: left;
-				width:200px;
-				height: 250px;
-			}
-
-		}
-
-		.ref{
-			clear:both;
-			>p{
-				margin-left: 20px;
-			}
-			div>h2{
-				padding: 10px 20px;
-				background: @lightblue;
+		#getheadbg{
+			background:@darkblue;
+			height: 250px;
+			padding-top: 150px;
+			.gethead{
+				text-shadow: 0px 1px black;
+				margin: 0 auto;
+				padding: 0 20px;
+				width: 960px;
+				font-weight: 400;
+				font-size: 40px;
 				color:white;
-				border-radius: 6px;
-				height: 53px;
-				font-size: 24px;
-				>a{
-					display: inline-block;
-					line-height: 32px;
-					float: right;
-					font-weight: 300;
-					font-size: 18px;
-					color:white;
-				}	
 			}
-			.code{
-				border: 1px dotted @lightblue;
-				margin: 20px;
-				padding: 20px;
-				background: white;
-				span{
-					margin-right:20px;
-					font-weight: 700;
-					font-size: 24px;
-					color: @darkblue;
+		}
 
-				}
+		.syntaxhint{
+			background: @lightblue;
+
+			text-align: left;
+			padding: 20px;
+			font-weight: 700;
+			font-size: 18px;
+			word-spacing: 10px;
+			div{
+				color: white;
+				width: 960px;
+				padding: 0 20px;
+				margin: 0 auto;
 			}
-			>div{
-				.chtml, .card{
-					width: 420px;
-					height: 300px;
+		}
+
+		#wrapper{
+			width: 960px;
+			margin: 0 auto;
+			padding: 0 20px;
+
+
+
+			.text>h2{
+				font-size: 24px;
+				border-bottom:  1px solid @lightblue;
+				padding-bottom: 10px;
+			}
+			h2{
+				text-align: left;
+				margin:20px 0px;
+			}
+			img{
+				margin: 0 auto;
+				display: block;
+			}
+
+			.referencemenu{
+				width: 920px;
+				height: 300px;
+				margin: 20px 0;
+				border-bottom:  1px solid @lightblue;
+				border-top:  1px solid @lightblue;
+				.tread,.tsend,.tsendc{
+
 					float: left;
-					padding-top: 10px;
-					margin-bottom: 40px;
-					>div{
-						color: @lightblue;
+					width:200px;
+					height: 250px;
+				}
+
+			}
+
+			.ref{
+				clear:both;
+				>p{
+					margin-left: 20px;
+				}
+				div>h2{
+					padding: 10px 20px;
+					background: @lightblue;
+					color:white;
+					border-radius: 6px;
+					height: 53px;
+					font-size: 24px;
+					>a{
+						display: inline-block;
+						line-height: 32px;
+						float: right;
 						font-weight: 300;
-						border-bottom: 1px @lightblue solid;
-						padding: 10px;
-						padding-left: 0px;
-						margin-bottom: 10px;
+						font-size: 18px;
+						color:white;
+					}	
+				}
+				.code{
+					border: 1px dotted @lightblue;
+					margin: 20px;
+					padding: 20px;
+					background: white;
+					span{
+						margin-right:20px;
+						font-weight: 700;
+						font-size: 24px;
+						color: @darkblue;
+
+					}
+				}
+				>div{
+					.chtml, .card{
+						width: 420px;
+						height: 300px;
+						float: left;
+						padding-top: 10px;
+						margin-bottom: 40px;
+						>div{
+							color: @lightblue;
+							font-weight: 300;
+							border-bottom: 1px @lightblue solid;
+							padding: 10px;
+							padding-left: 0px;
+							margin-bottom: 10px;
+						}
 					}
 				}
 			}
-		}
 
 
-		code{
-			p{
-				margin: 0 0 0 20px;
-			}		
-		}
+			code{
+				p{
+					margin: 0 0 0 20px;
+				}		
+			}
 
 		//Examples
 		.example{
@@ -396,7 +397,33 @@ body{
 				padding: 20px;
 			}
 		}
+
 	}
+
+
+	.aboutimg{
+		background: @darkblue;
+		height: 450px;
+		padding-top: 125px;
+		div{
+
+			margin: 0 auto;
+			width: 400px;
+			margin-bottom: 10px;
+		}
+	}
+	.about{
+		font-weight: 300;
+		font-size: 32px;
+		text-align: center;
+		margin: 100px 0px;
+		p{
+			font-weight: 700;
+			font-size: 21px;
+		}
+	}
+
+
 
 	#footer{
 		clear: both;
