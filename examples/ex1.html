@@ -1,98 +1,89 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Involt</title>
-	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700' rel='stylesheet' type='text/css'>
-
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<link rel="stylesheet/less" type="text/css" href="../less/style.less">
-	<script src="../less/less.js" type="text/javascript"></script>
-	<script src="../jq.js" type="text/javascript"></script>
+	<title>Examples | Involt - Arduino to html framework for designers</title>
+	<meta content="Tutorials and examples for Involt framework. Every tutorial explains basic features for creating app and communication with arduino.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/png" href="../favicon.png"/>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">	
+	<!--<script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.min.js"></script>-->
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
-
-	<div id="nav">
-		<div id="nav-elements">
-			<a href="../index.html" class="logo"><img src="../img/logoinv.svg" alt=""></a>
-			
-			<div class="menu">
-				<a href="../index.html" class="hyp">Home</a>
-				<a href="../gettingstarted.html" class="hyp">Getting started</a>
-				<a href="../examples.html" class="hyp">Examples</a>
-				<a href="../reference.html" class="hyp">Reference</a>
+	<header class="nav-bg">
+		<div class="navbar">
+			<div class="logo"><a href="../index.html"><img src="../img/logo.svg" ></a></div>
+			<div class="ham-btn">
+				<div>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+			<div class="menu-screen">
+				<a href="../index.html">Home</a>
+				<a href="../gettingstarted.html">Getting started</a>
+				<a href="../examples.html">Examples</a>
+				<a href="../reference.html">Reference</a>
+				<a href="https://github.com/Involt/Involt">Github</a>
 			</div>
 		</div>
-	</div>
-
-	<div id="getheadbg">
-		<div class="gethead">LED blink</div>
-	</div>
-
-	<div id="wrapper">
-		<div class="text">
-			<h2>Circuit</h2>
-			<ol>
-				<li>
-					This example shows how to connect single LED and how control it with buttons inside app. 
-					<p>First of all connect LED with 220 ohm resistor to pin 5.</p>
-					<img src="fritzing2.png" alt="">
-					<br>
-				</li>
-				<li>
-					Now add pinMode to void setup inside Involt Arduino sketch (in Arduino folder).
-					<div class="ref">
-						<div class="code">
-							<code>
-								void setup() {  <br />
-
-								<p>Serial.begin(115200);</p>
-								<p>pinMode(5,OUTPUT);</p>
-
-							} <br>
-						</code>
-					</div>
-				</div>
-			</li>
-		</ol>
-		<h2>Controling LED with button</h2>
+		<div class="menu-mobile">
+				<a href="../index.html">Home</a>
+				<a href="../gettingstarted.html">Getting started</a>
+				<a href="../examples.html">Examples</a>
+				<a href="../reference.html">Reference</a>
+				<a href="https://github.com/Involt/Involt">Github</a>
+		</div>
+	</header>
+	
+<div class="container textmain">
+	<div class="content">
+		<div class="subtitle">Basic blink tutorial</div>
 		<ol>
-			<li>Make sure that your Involt project is installed. If you dont know how to do this go to <a href="../gettingstarted.html">getting started</a> page.</li>
-			<li>Open index.html. To control your Arduino just add interface elements with classes that Involt can understand.</li>
-			<li>Add code to body section that generate switch between HIGH and LOW states of pin. The last class is 0 because we want to start with inactive LED.
-				<div class="ref">
-					<div class="code">
-						<code>
-							&lt;body&gt;<br />
+
+			<li>Circuit
+				<p>1. This example explains how to connect single LED and how control it with buttons inside app. First of all connect LED with 220 ohm resistor to pin 5.</p>
+			</li>
+			<img src="../img/fritzing2.png" alt="fritzing sketch - led blink" style="border:0;">
+			<p>2. Now add pinMode to void setup inside Involt Arduino sketch (in Arduino folder). </p>
+			<div class="codearea" style="font-weight:300;"><div class="helper">ARDUINO</div><br>
+				void setup() {  <br />
+					<p>Serial.begin(115200);</p>
+					<p>pinMode(5,OUTPUT);</p>
+				} <br>
+			</div>
+			<li>
+				Controling LED with button
+				<p>1. Make sure that Involt is installed. If you don't know how to do this go to <a href="../gettingstarted.html">getting started</a> page.</p>
+				<p>2. Open index.html. To control your Arduino just add interface elements with classes that Involt can understand.</p>
+				<p>3. Add code to body section to generate switch between HIGH and LOW states of pin. The last class is 0 because we want to start with inactive LED.</p>
+				<div class="codearea" style="font-weight:300;">
+					<div class="helper">HTML</div><br>
+						&lt;body&gt;<br />
 							<p>&lt;div class="ard toggle D5 0"&gt;&lt;/div&gt;</p>
-							&lt;/body&gt;
-						</code>
-					</div>
+						&lt;/body&gt;
 				</div>
-				<li>
-					Another example of LED blinking is two separate buttons. This time we want to set it to PWM value so change the pin number from D5 to P5.
-				</li>
-				<div class="ref">
-					<div class="code">
-						<code>
-							&lt;body&gt;<br />
-							<p>&lt;div class="ard button P5 40"&gt;Turn me ON&lt;/div&gt;</p>
-							<p>&lt;div class="ard button P5 0"&gt;Turn me OFF&lt;/div&gt;</p>
-							&lt;/body&gt;
-						</code>
-					</div>
+				<p>4. Another example of LED blinking is two separate buttons. This time we want to set it to PWM value. Change the pin number from D5 to P5. To toggle between two PWM values you can also use toggle-PWM button.</p>
+				<div class="codearea" style="font-weight:300;">
+					<div class="helper">HTML</div><br>
+					&lt;body&gt;<br />
+					<p>&lt;div class="ard button P5 40"&gt;Turn me ON&lt;/div&gt;</p>
+					<p>&lt;div class="ard button P5 0"&gt;Turn me OFF&lt;/div&gt;</p>
+					&lt;/body&gt;
 				</div>
-			</ol>
-			<h2>How to blink every second?</h2>
-			<ol>
-				<li>This example show how to use non-direct mode to control Arduino sketch.</li>
-				<li>To start use the first example with toggle button. ( ard toggle D5 0 )</li>
-				<li>To your Arduino sketch (with pinMode) you need to set " directMode " to false. Now your pin data is sent to  "chromeDigital"  array.</li>
-				<li>Toggle value with this code inside void loop:</li>
-				<div class="ref">
-					<div class="code">
-						<code>
-							boolean directMode = false;<br>
+				<img src="../img/ex1result.png" alt="" style="border:none;">
+			</li>
+			<li>How to blink every second?
+				<p>1. This example show how to use non-direct mode to control Arduino sketch.</p>
+				<p>2. To start use the first example with toggle button. ( ard toggle D5 0 )</p>
+				<p>3. In your Arduino sketch (with pinMode) you need to set " directMode " to false. Now your pin data is sent to  "chromeDigital"  array.</p>
+				<p>4. Toggle value with this code inside void loop:</p>
+				<div class="codearea" style="font-weight:300;">
+					<div class="helper">ARDUINO</div><br>
+						<div style="color:blue;">boolean directMode = false;</div>
 							<br>... <br><br>
 
 							void setup() {  <br />
@@ -100,53 +91,55 @@
 							<p>Serial.begin(115200);</p>
 							<p>pinMode(5,OUTPUT);</p>
 
-						} <br>
+						} <br><br>
 						void loop() {  <br />
 						<p>chromeReceive(); </p><br>
-						<p>digitalWrite(5, chromeDigital[5]);</p><br>
-						<p>chromeSend();</p>
-
-					} <br>
+						<p style="color:blue;">digitalWrite(5, chromeDigital[5]);</p><br>
+						} <br>
 					... <br>
 					
-				</code>
-			</div>
-		</div>
-		<li>Now add delay in void loop to blink every second:</li>
-		<div class="ref">
-			<div class="code">
-				<code>
+				</div>
+				<p>5. Add delay in void loop to blink every second:</p>
+				<div class="codearea" style="font-weight:300;">
+					<div class="helper">ARDUINO</div><br>
 					void loop() {  <br />
 					<p>chromeReceive(); </p><br>
 					<p>digitalWrite(5, chromeDigital[5]);</p>
 					<p>delay(1000);</p>
 					<p>digitalWrite(5, 0);</p>
 					<p>delay(1000);</p><br>
-					<p>chromeSend();</p>
-
-				} <br>
-			</code>
-		</div>
-	</div>	
-	<li>Remember that delay is not recomended if you want to read data from arduino. Instead use <a href="http://arduino.cc/en/Tutorial/BlinkWithoutDelay">Blink without delay tutorial</a> 
-	</li>				
-</ol>
-</div>
-</div>
-
-
-
-
-<div id="footer">
-	<div>
-		<a href="#" class="logosm"><img src="../img/logosmall.svg" alt=""></a>
-		<a href="https://github.com/Involt/Involt" class="logogh"><img src="../img/githubicon.svg" alt=""></a>
-		<div class="footermenu">
-			<a href="../about.html" >About</a>
-			<a href="../contact.html" >Contact</a>			
-		</div>
+					} <br>
+				</div>
+				<p>6. Remember that delay is not recomended if you want to read data from arduino in real-time. Instead use <a href="http://arduino.cc/en/Tutorial/BlinkWithoutDelay">Blink without delay tutorial</a> on Arduino website.</p>
+			</li>
+		</ol>
 	</div>
-
 </div>
+
+	<footer class="container">
+		<div class="content">
+			<div class="columns">
+				<img src="../img/ico1.svg" alt="involt" class="ico">
+				<p class="foot">Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. It is aimed for UX/product designers rather than professional coders.
+				</p>
+				<a href="#" class="bold">Return to top</a>
+			</div>
+			<div class="columns">
+				<img src="../img/ico2.svg" alt="git" class="ico">
+				<p class="foot">You can help develop this framework or  <a href="https://github.com/Involt/Involt" class="bold">fork project on Github</a>. To see the progress of developement you can check the changelog. <br>Involt is under MIT license.</p>
+
+				<a href="https://github.com/Involt/Involt/wiki/Changelog" class="bold">See the changelog</a>
+			</div>
+			<div class="columns">
+				<img src="../img/ico3.svg" alt="contact the author" class="ico">
+				<p class="foot">
+					Used Involt and enjoyed it? Do you have any questions or suggestions? You can help by sending feedback directly via mail.
+				</p>
+				<a href="mailto:ernestwarzocha@gmail.com" class="bold">ernestwarzocha@gmail.com</a>
+			</div>
+		</div>
+		<br style="clear:both">
+	</footer>
+	<script src="js/jq.js"></script>
 </body>
 </html>
