@@ -512,7 +512,7 @@ footer a {
 }
 @media only screen and (min-width: 1900px) {
   body {
-    font-size: 150%;
+    font-size: 125%;
   }
   .navbar,
   .content {
