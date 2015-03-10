@@ -305,8 +305,7 @@ p {
 }
 .textmain .return {
   font-weight: 300;
-  font-size: 1.5rem;
-  line-height: 1.8em;
+  line-height: 1.5em;
 }
 .textmain .reference > .subtitle {
   margin-top: 1em;
@@ -425,7 +424,7 @@ footer a {
     margin: 0em 0;
   }
   .codearea {
-    font-size: 16px!important;
+    font-size: 14px!important;
   }
   footer {
     position: absolute;
