@@ -45,11 +45,6 @@
 			<div class="subtitle">How to read/send more variables or custom string.</div>
 			<ol>
 				<li>Send more variables to Arduino.
-					<p>The direct mode on Arduino sketch works good only on variable-to-pin ratio 1:1. This mode does not store variables for further use. If you want to store the variables in Arduino you have to use non-direct mode. </p>
-					<div class="codearea" style="font-weight:300;">
-						<div class="helper">ARDUINO</div><br>
-						boolean directMode = false;
-					</div>
 					<p>To send additional variable declare it as non existing pin. For example try to send value to Arduino UNO (with highest pin number 13) as pin P14. </p>
 					<div class="codearea" style="font-weight:300;">
 						<div class="helper">HTML</div><br>
@@ -57,7 +52,7 @@
 						<p>&lt;div class="ard button P14 200"&gt;&lt;/div&gt;</p>
 						&lt;/body&gt;
 					</div>
-					<p>Now you can access this value in chromeDigital array as chromeDigital[14]. You can use this method to send values to shift register or expander.</p>
+					<p>Now you can access this value in chromeDigital array as <span class="sscode">chromeDigital[14]</span>. You can use this method to send values to shift register or expander.</p>
 				</li>
 				<li>How to send a custom string to Arduino.
 					<p>Involt communication is based on variable/integer exchange by using serial. Even if data is transfered with string data - it is not possible to send the custom string directly.</p>
@@ -67,19 +62,19 @@
 						P5V255\n <br><br>
 						//the "\n" is used for Serial.readStringUntil() inside sketch to stop the function from reading data.
 					</div>
-					<p>1. To store your string use non-direct mode. You also need to define your custom string. </p>
+					<p>1. To store your string you need to define your custom string. </p>
 					<div class="codearea" style="font-weight:300;">
 						<div class="helper">ARDUINO</div><br>
 						boolean directMode = false;<br><br>
 						String customstring;
 					</div>
-					<p>2. You need to change the chromeReceive function. Involt will save to customstring when the received string will start from parameter. For this example add "S" letter as the parameter (you can also use this letter to store multiple variables in array with additional "if" statement. Then you can access them as S0,S1 etc.). </p>
+					<p>2. You need to change the <span class="sscode">chromeReceive</span> function. Involt will save to <span class="sscode">customstring</span> when the received string will start from parameter. For this example add "S" letter as the parameter (you can also use this letter to store multiple variables in array with additional "if" statement. Then access them as S0,S1 etc.). </p>
 					<div class="codearea" style="font-weight:300;">
 						<div class="helper">ARDUINO</div><br>
 						if(Serial.available() > 0){<br>
 						<p> String chrome = Serial.readStringUntil('\n');<br>
 							int chromeLen = chrome.length();<br>
-							String pinRaw = chrome.substring(1,chrome.indexOf(V));<br>
+							pin = chrome.substring(1,chrome.indexOf(V)).toInt();<br>
 							String valRaw = chrome.substring(chrome.indexOf(V)+1,chromeLen);<br></p>
 							<br>
 							<div style="color:red;">if (chrome.indexOf("S") == 0){<br>
@@ -88,10 +83,9 @@
 						else{    <br> 
 						<p>
 							<div style="color:red;">
-								<p>pin = pinRaw.toInt(); </p>
-								<p>val = valRaw.toInt(); </p><br></div>
-								<p>chromeDigital[pin]=val;</p> <br>
-								</p> <br>
+								<p>val = valRaw.toInt(); </p></div>
+								<p>chromeDigital[pin]=val;</p>
+								</p>
 							} <br>
 							<br>
 						}
@@ -100,7 +94,7 @@
 					<div class="codearea" style="font-weight:300;">
 						S0Vinvolt
 					</div>
-					<p>3. Now you can test this function with connected led to pin 5: </p>
+					<p>3. Now test this function with connected led to pin 5: </p>
 					<div class="codearea" style="font-weight:300;">
 						<div class="helper">ARDUINO</div><br>
 						//Add this to void loop section <br><br>
@@ -112,7 +106,7 @@
 					<div class="codearea" style="font-weight:300;">
 						<div class="helper">HTML</div><br>
 						&lt;body&gt;<br />
-						<p>&lt;div class="ard custom-button S0Vinvolt"&gt;&lt;/div&gt;</p>
+						<p>&lt;div class="ard button S0 involt"&gt;&lt;/div&gt;</p>
 						&lt;/body&gt;
 					</div>
 					<p>... or create input and type "involt":</p>
@@ -136,7 +130,7 @@
 				//Analog pin 0 value 825: <br><br>
 				A0V825E
 			</div>
-			<p>1. Use the current chromeSend([pin], [value]) function to send values. The [pin] is analog pin index. Send the data as additional analog pin to use it inside your App. For example you can add 16 values of CD74HC4067 analog multiplexer as analog pins from A6 to A22 (for UNO) and access them in Involt. </p>
+			<p>1. Use the current <span class="sscode">chromeSend([pin], [value])</span> function to send values. The [pin] is analog pin index. Send the data as additional analog pin to use it inside your App. For example add 16 values of CD74HC4067 analog multiplexer as analog pins from A6 to A22 (for UNO) and access them in Involt. </p>
 			<p>2. Another way is to create custom Serial.println string: </p>
 			<div class="codearea" style="font-weight:300;">
 				Serial.println(A+[pin]+V+[value]+E);

@@ -520,3 +520,11 @@ footer a {
     padding-right: 8em!important;
   }
 }
+
+
+.sscode{
+  font-family: "Source Code Pro";
+  font-weight: 300;
+  font-size: 0.9em;
+  background: #F0F0F0;
+}

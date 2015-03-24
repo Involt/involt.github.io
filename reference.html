@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Reference | Involt</title>
-	<meta content="Full reference of Involt framework with examples. Each UI element automatically communicate with hardware via serial. ">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta content="Full reference of Involt framework with examples. Each UI element automatically communicate with hardware via serial." name="description"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 	<link rel="shortcut icon" type="image/png" href="favicon.png"/>
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/style.css">	
@@ -87,12 +87,6 @@
 					&lt;div class="ard show A0"&gt;&lt;/div&gt;
 					
 				</div>
-				<div class="codearea">
-					<div class="helper">ARDUINO</div><br>
-					chromeSend(0, analogRead(A0));
-			</div>
-			<a href="#" class="return">Return to top</a>
-		</div>
 		<div class="reference" id="bar">
 			<div class="subtitle">Bar</div>
 			<p class="ref">Generates horizontal bar that display value of analog pin. Width of bar value is automatically scaled to CSS width of element. For scaling the value use arduino map function.</p>
@@ -106,29 +100,23 @@
 				&lt;div class="ard bar A0 1024"&gt;&lt;/div&gt;
 				
 			</div>
-			<div class="codearea">
-				<div class="helper">ARDUINO</div><br>
-				chromeSend(0, analogRead(A0));
-		</div>
+
 		<a href="#" class="return">Return to top</a>
 	</div>
 	<div class="reference" id="knob">
 		<div class="subtitle">Knob</div>
-		<p class="ref">Generates knob that show analog value. Based on JQuery knob plugin by Anthony Terrien.</p>
+		<p class="ref">Generates knob that shows analog value. Based on JQuery knob plugin by Anthony Terrien. You can add the data- attributes as described in plugin to change parameters of this element.</p>
 		<div class="codearea">
 			<div class="helper">SYNTAX</div> 
-			<div class="refsyn">ard knob [pin] [maxvalue]</div>
+			<div class="refsyn">ard knob [pin] [range]</div>
 		</div>
 		<div class="codearea">
 			<div class="helper">HTML</div><br>
 			
-			&lt;div class="ard knob A0 1024"&gt;&lt;/div&gt;
+			&lt;div class="ard knob A0 range-0-1024"&gt;&lt;/div&gt;
 			
 		</div>
-		<div class="codearea">
-			<div class="helper">ARDUINO</div><br>
-			chromeSend(0, analogRead(A0));
-	</div>
+
 	<a href="#" class="return">Return to top</a>
 </div>
 <div class="reference" id="value">
@@ -144,10 +132,7 @@
 		&lt;div class="ard value A0"&gt;&lt;/div&gt;
 		
 	</div>
-	<div class="codearea">
-		<div class="helper">ARDUINO</div><br>
-		chromeSend(0, analogRead(A0));
-</div>
+
 <a href="#" class="return">Return to top</a>
 </div>
 <div class="reference" id="button">
@@ -163,34 +148,7 @@
 		&lt;div class="ard button P5 100"&gt;&lt;/div&gt;
 		
 	</div>
-	<div class="codearea">
-		<div class="helper">ARDUINO</div>
-		<br>
-		//for direct mode (remember about pinMode) <br>
-		... <br> <br>
-		void setup() {  <br />
 
-		<p>Serial.begin(115200);</p>
-		<p>pinMode(5,OUTPUT);</p>
-	}
-	<br>
-	<br>...  
-	<br><br>
-	//for non-direct mode - the same rule is for other elements<br><br>
-	boolean directMode = false;<br>
-	<br>... <br><br>
-
-	void setup() {  <br />
-
-	<p>Serial.begin(115200);</p>
-	<p>pinMode(5,OUTPUT);</p>
-} <br>
-void loop() {  <br />
-<p>chromeReceive(); </p><br>
-<p>analogWrite(5, chromeDigital[5]);</p>
-} <br>
-... <br>
-</div>
 <a href="#" class="return">Return to top</a>
 </div>
 <div class="reference" id="toggle">
@@ -203,23 +161,10 @@ void loop() {  <br />
 	<div class="codearea">
 		<div class="helper">HTML</div><br>
 		
-		&lt;div class="ard toggle D5 1"&gt;&lt;/div&gt;
+		&lt;div class="ard toggle D5 0"&gt;&lt;/div&gt;
 		
 	</div>
-	<div class="codearea">
-		<div class="helper">ARDUINO</div>
-		<br>
-		//remember about chromeDigital[] array in non-direct mode <br>
-		void setup() {  <br />
 
-		<p>Serial.begin(115200);</p>
-		<p>pinMode(5,OUTPUT);</p>
-		<p>digitalWrite(5,1);</p>
-	}
-	<br>
-	<br>...  
-	<br>
-</div>
 <a href="#" class="return">Return to top</a>
 </div>
 <div class="reference" id="toggle-pwm">
@@ -227,86 +172,47 @@ void loop() {  <br />
 	<p class="ref">Toggle PWM pin between [value1] and [value2]. [value1] is also pin state on Arduino startup (need to be declared in void setup( ) ).</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard toggle-pwm [pin] [value1] [value2]</div>
+		<div class="refsyn">ard toggle-pwm [pin] [value1-value2]</div>
 	</div>
 	<div class="codearea">
 		<div class="helper">HTML</div><br>
 		
-		&lt;div class="ard toggle-pwm P5 50 100"&gt;&lt;/div&gt;
+		&lt;div class="ard toggle-pwm P5 50-100"&gt;&lt;/div&gt;
 		
 	</div>
-	<div class="codearea">
-		<div class="helper">ARDUINO</div>
-		<br>
-		//remember about chromeDigital[] array in non-direct mode <br>
-		void setup() {  <br />
 
-		<p>Serial.begin(115200);</p>
-		<p>pinMode(5,OUTPUT);</p>
-		<p>analogWrite(5,50);</p>
-	}
-	<br>
-	<br>...  
-	<br>
-</div>
 <a href="#" class="return">Return to top</a>
 </div>
 <div class="reference" id="increase">
 	<div class="subtitle">Increase</div>
-	<p class="ref">Increase pin value by [step]. [maxvalue] is maximum limit of value. Works with decrease but both need to have same [startvalue]. You can add in void setup the [startvalue] (this is not required).</p>
+	<p class="ref">Increase pin value by [step]. [range] is limits of value. Works with decrease but both need to have same [startvalue]. You can add in void setup the [startvalue] (this is not required).</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard increase [pin] [startvalue] [maxvalue] [step]</div>
+		<div class="refsyn">ard increase [pin] [startvalue] [range] [step]</div>
 	</div>
 	<div class="codearea">
 		<div class="helper">HTML</div><br>
 		
-		&lt;div class="ard increase P5 100 255 10"&gt;&lt;/div&gt;
+		&lt;div class="ard increase P5 100 range-0-255 step-10"&gt;&lt;/div&gt;
 		
 	</div>
-	<div class="codearea">
-		<div class="helper">ARDUINO</div>
-		<br>
-		//remember about chromeDigital[] array in non-direct mode <br>
-		void setup() {  <br />
 
-		<p>Serial.begin(115200);</p>
-		<p>pinMode(5,OUTPUT);</p>
-		<p>analogWrite(5,100);</p>
-	}
-	<br>
-	<br>...  
-	<br>
-</div>
 <a href="#" class="return">Return to top</a>
 </div>
 <div class="reference" id="decrease">
 	<div class="subtitle">Decrease</div>
-	<p class="ref">Decrease pin value by [step]. [maxvalue] is maximum limit of value. Works with increase but both need to have same [startvalue]. You can add in void setup the [startvalue] (this is not required).</p>
+	<p class="ref">Decrease pin value by [step]. [range] is limits of value. Works with increase but both need to have same [startvalue]. You can add in void setup the [startvalue] (this is not required).</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard decrease [pin] [startvalue] [maxvalue] [step]</div>
+		<div class="refsyn">ard decrease [pin] [startvalue] [range] [step]</div>
 	</div>
 	<div class="codearea">
 		<div class="helper">HTML</div><br>
 		
-		&lt;div class="ard decrease P5 100 255 10"&gt;&lt;/div&gt;
+		&lt;div class="ard decrease P5 100 range-0-255 step-10"&gt;&lt;/div&gt;
 		
 	</div>
-	<div class="codearea">
-		<div class="helper">ARDUINO</div>
-		<br>
-		//remember about chromeDigital[] array in non-direct mode <br>
-		void setup() {  <br />
 
-		<p>Serial.begin(115200);</p>
-		<p>pinMode(5,OUTPUT);</p>
-		<p>analogWrite(5,100);</p>
-	}
-	<br>
-	<br>...  
-	<br>
-</div>
 <a href="#" class="return">Return to top</a>
 </div>
 <div class="reference" id="rangeslider">
@@ -314,26 +220,15 @@ void loop() {  <br />
 	<p class="ref">Generates JQuery based slider with use of the Simple-slider plugin. The value is displayed inside a tooltip over object. To display the value as label you can uncomment the css in framework.css.</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard rangeslider [pin] [maxvalue] [step]</div>
+		<div class="refsyn">ard rangeslider [pin] [range] [step]</div>
 	</div>
 	<div class="codearea">
 		<div class="helper">HTML</div><br>
 		
-		&lt;div class="ard rangeslider P5 255 1"&gt;&lt;/div&gt;
+		&lt;div class="ard rangeslider P5 range-0-255 step-5"&gt;&lt;/div&gt;
 		
 	</div>
-	<div class="codearea">
-		<div class="helper">ARDUINO</div>
-		<br>
-		//remember about chromeDigital[] array in non-direct mode <br>
-		void setup() {  <br />
-		<p>Serial.begin(115200);</p>
-		<p>pinMode(5,OUTPUT);</p>
-	}
-	<br>
-	<br>...  
-	<br>
-</div>
+
 <a href="#" class="return">Return to top</a>
 </div>
 <div class="reference" id="hover">
@@ -341,58 +236,36 @@ void loop() {  <br />
 	<p class="ref">Create element that send value on hover and mouse leave.</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard hover [pin] [onhover] [onleave]</div>
+		<div class="refsyn">ard hover [pin] [onhover-onleave]</div>
 	</div>
 	<div class="codearea">
 		<div class="helper">HTML</div><br>
 		
-		&lt;div class="ard hover P5 255 0"&gt;&lt;/div&gt;
+		&lt;div class="ard hover P5 255-0"&gt;&lt;/div&gt;
 		
 	</div>
-	<div class="codearea">
-		<div class="helper">ARDUINO</div>
-		<br>
-		//remember about chromeDigital[] array in non-direct mode <br>
-		void setup() {  <br />
-		<p>Serial.begin(115200);</p>
-		<p>pinMode(5,OUTPUT);</p>
-	}
-	<br>
-	<br>...  
-	<br>
-</div>
+
 <a href="#" class="return">Return to top</a>
 </div>
 <div class="reference" id="knob-send">
 	<div class="subtitle">Knob-send</div>
-	<p class="ref">Simple knob that send value</p>
+	<p class="ref">Simple knob that send value. This knob is also based on JQuery Knob plugin - you can add plugin data- attributes to this element and they will be transfred to generated object.</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard knob-send [pin] [startvalue] [maxvalue]</div>
+		<div class="refsyn">ard knob-send [pin] [startvalue] [range] [step]</div>
 	</div>
 	<div class="codearea">
 		<div class="helper">HTML</div><br>
 		
-		&lt;div class="ard knob-send P5 100 255"&gt;&lt;/div&gt;
+		&lt;div class="ard knob-send P5 100 range-0-255 step-1"&gt;&lt;/div&gt;
 		
 	</div>
-	<div class="codearea">
-		<div class="helper">ARDUINO</div>
-		<br>
-		//remember about chromeDigital[] array in non-direct mode <br>
-		void setup() {  <br />
-		<p>Serial.begin(115200);</p>
-		<p>pinMode(5,OUTPUT);</p>
-	}
-	<br>
-	<br>...  
-	<br>
-</div>
+
 <a href="#" class="return">Return to top</a>
 </div>
 <div class="reference" id="custom-button">
 	<div class="subtitle">Custom-button</div>
-	<p class="ref">Create button that send string data to arduino. Example code show how to send PWM value 100 to pin 5. You can use it to send custom text which can be used for displaying on lcd display.</p>
+	<p class="ref">Create button that send string data to arduino. Example code show how to send PWM value 100 to pin 5. You can use it to send custom text which can be used for displaying on lcd display. You can do the same with JQuery <span class="sscode">.sendString()</span>.</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
 		<div class="refsyn">ard custom-button [string]</div>
@@ -403,15 +276,11 @@ void loop() {  <br />
 		&lt;div class="ard custom-button P5V100"&gt;&lt;/div&gt;
 		
 	</div>
-	<div class="codearea">
-		<div class="helper">ARDUINO</div>
-		<p>n/a</p>
-	</div>
 	<a href="#" class="return">Return to top</a>
 </div>
 <div class="reference" id="input-write">
 	<div class="subtitle">Input-write</div>
-	<p class="ref">Input which send written value (or string when on non-direct mode) to chosen pin.</p>
+	<p class="ref">Input which send written value to chosen pin.</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
 		<div class="refsyn">ard input-write [pin]</div>
@@ -422,18 +291,7 @@ void loop() {  <br />
 		&lt;input class="ard input-write P5"&gt;
 		
 	</div>
-	<div class="codearea">
-		<div class="helper">ARDUINO</div>
-		<br>
-		//remember about chromeDigital[] array in non-direct mode <br>
-		void setup() {  <br />
-		<p>Serial.begin(115200);</p>
-		<p>pinMode(5,OUTPUT);</p>
-	}
-	<br>
-	<br>...  
-	<br>
-</div>
+
 <a href="#" class="return">Return to top</a>
 </div>
 <div class="reference" id="custom-write">
@@ -449,10 +307,7 @@ void loop() {  <br />
 		&lt;input class="ard custom-write"&gt;
 		
 	</div>
-	<div class="codearea">
-		<div class="helper">ARDUINO</div>
-		<p>n/a</p>
-	</div>
+
 	<a href="#" class="return">Return to top</a>
 </div>
 <div class="reference" id="checkbox">
@@ -460,26 +315,14 @@ void loop() {  <br />
 	<p class="ref">Create checkbox with different values on [checked] and [unchecked] input state.</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard checkbox [pin] [checked] [unchecked]</div>
+		<div class="refsyn">ard checkbox [pin] [checked-unchecked]</div>
 	</div>
 	<div class="codearea">
 		<div class="helper">HTML</div><br>
 		
-		&lt;input type="checkbox" class="ard checkbox P5 255 0"&gt;
+		&lt;input type="checkbox" class="ard checkbox P5 255-0"&gt;
 		
 	</div>
-	<div class="codearea">
-		<div class="helper">ARDUINO</div>
-		<br>
-		//remember about chromeDigital[] array in non-direct mode <br>
-		void setup() {  <br />
-		<p>Serial.begin(115200);</p>
-		<p>pinMode(5,OUTPUT);</p>
-	}
-	<br>
-	<br>...  
-	<br>
-</div>
 <a href="#" class="return">Return to top</a>
 </div>
 <div class="reference" id="radio">
@@ -498,18 +341,7 @@ void loop() {  <br />
 		&lt;input type="radio" class="ard radio P5 255" name="myname"&gt;
 		
 	</div>
-	<div class="codearea">
-		<div class="helper">ARDUINO</div>
-		<br>
-		//remember about chromeDigital[] array in non-direct mode <br>
-		void setup() {  <br />
-		<p>Serial.begin(115200);</p>
-		<p>pinMode(5,OUTPUT);</p>
-	}
-	<br>
-	<br>...  
-	<br>
-</div>
+
 <a href="#" class="return">Return to top</a>
 </div>
 </div>
