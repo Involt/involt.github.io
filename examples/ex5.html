@@ -46,6 +46,12 @@
 			<ol>
 				<li>Send more variables to Arduino.
 					<p>To send additional variable declare it as non existing pin. For example try to send value to Arduino UNO (with highest pin number 13) as pin P14. </p>
+					<p>Remember about declaring them in <span class="sscode">chromeDigital[] array</span></p>
+							<div class="codearea">
+			<div class="helper">ARDUINO</div><br>
+				//total number+1
+				chromeDigital[15] = {};
+			</div>
 					<div class="codearea" style="font-weight:300;">
 						<div class="helper">HTML</div><br>
 						&lt;body&gt;<br />
