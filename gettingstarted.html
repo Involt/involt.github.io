@@ -104,6 +104,7 @@
 			<div class="subtitle">3. Read data from Arduino</div>
 			<ol>
 				<p>Reading data from arduino and accessing it inside App is easy. Everything you need to add is the <span class="sscode">chromeSend(pinIndex, value)</span> function inside sketch (<span class="sscode">pinIndex</span> is required for Involt to understand which pin to update). Value is stored and updated automatically in Involt. You can use UI element to display it or get the JS variable from <span class="sscode">analogPins[pinIndex]</span> array. </p>
+				<p><span class="bold">Important:</span>When sending multiple values with <span class="sscode">analogRead</span> you should add <span class="sscode">delay(1)</span> (minimum) to not overload the serial port connection.</p>
 			</ol>
 			<div class="codearea">
 				<div class="helper">ARDUINO</div><br>

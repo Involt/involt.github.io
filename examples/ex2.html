@@ -49,13 +49,15 @@
 				<img src="../img/fritzing1.png" alt="fritzing sketch - two potentiometers" style="border:0;">
 			</li>
 			<li>Display knob value
-				<p>1. Add analogRead to your sketch inside chromeSend function.</p>
+				<p>1. Add analogRead to your sketch inside chromeSend function. The delay prevents the sketch from serial port overload.</p>
 				<div class="codearea" style="font-weight:300;">
 					<div class="helper">ARDUINO</div><br>
 							void loop() {  <br />
 							<p>chromeReceive(); </p><br>
 							<p>chromeSend(0, analogRead(A0));</p>
+							<p>delay(1);</p>
 							<p>chromeSend(1, analogRead(A1));</p>
+							<p>delay(1);</p>
 						} <br>
 				</div>
 				<p>2. To display values create HTML code for two different UI elements.
