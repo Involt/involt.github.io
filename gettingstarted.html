@@ -48,8 +48,7 @@
 				<li>Download and unpack Involt.</li>
 				<li>In Chrome go to tools > extensions.</li>
 				<li>Toggle Developer mode</li>
-				<li>Click “Load unpacked extension...” and choose unpacked folder.
-				</li>
+				<li>Click “Load unpacked extension...” and choose unpacked folder.</li>
 				<img src="img/install.jpg" alt="chrome settings install">
 				<p>Now open your project with launch button or Chrome App Launcher.</p>
 				<img src="img/launcher.png" alt="chrome packaged app launcher">
@@ -57,7 +56,7 @@
 			<div class="subtitle">2. UI Syntax</div>
 			
 			<ol>
-				<p>Involt converts CSS classes into specified user interface element, function and its parameters. The .ard class defines Involt object.</p>
+				<p>Involt converts CSS classes into specified user interface element, function and its parameters. The .ard class defines the Involt object.</p>
 				<div class="codearea" style="width:100%;">
 					<div class="refsyn" style="word-spacing: 0.5em;">
 						ard	[function] [pin] [value] parameters* [yourclass]
@@ -69,7 +68,7 @@
 				</li>
 				<li>
 					[pin]
-					<p>Analog or digital pin number. Type of pin defines what kind of data you want to send. Currently the limit is only one pin per function but you can distribute the data inside sketch. For multiple values use JQuery Methods.</p>
+					<p>Analog or digital pin number. Type of pin defines what kind of data you want to send. Currently the limit is only one pin per function but you can distribute the data inside sketch. For multiple values use JQuery Methods. Other letters will work as parameter for additional string sent to device. These strings need to be declared in sketch file.</p>
 					<p class="bold">P - PWM pin data (or any other number) - P5 , P6 ...</p>
 					<p class="bold">D - digital pin data (0/1) - D5 , D13 ...</p>
 					<p class="bold">A - analog pin (read) - A0 , A1 ...</p>
@@ -85,13 +84,13 @@
 				<li>
 					Parameters
 					<p>
-						Many elements requires parameters like maximum or minimum value. To check what parameters are required for element read the references. 
+						Many elements requires parameters like minimum or maximum value. To check what parameters are required for element read the references. For elements like knob or rangeslider there are default values - range: 0-255, step: 1 - you don't have to include them in css. Defining the values incorrectly will cause Involt to stop working.
 						<p class="bold">Range:</p>
 						<p><span class="sscode">range-[minimum]-[maximum]</span> example: <span class="sscode">range-0-255</span></p>
 						<p class="bold">Step:</p>
 						<p><span class="sscode">step-[step]</span> example: <span class="sscode">step-5</span></p>
 						<p class="bold">Beginning value:</p>
-						<p>Beginning value is defined as value for elements that require it. Sometimes it's a good idea to define the beginning value in <span class="sscode">void setup()</span>.</p>
+						<p>Beginning value is defined as [value] for elements that require it. Sometimes it's a good idea to define the beginning value in <span class="sscode">void setup()</span>.</p>
 					</p>
 				</li>
 				<li>
@@ -124,7 +123,7 @@
 
 		<div class="subtitle">4. Send data to Arduino</div>
 		<ol>
-			<p>One of framework features is the simplicity and minimum of code required. The minimum for Involt is declaring the pin states with <span class="sscode">chromeDigital[pinIndex]</span> array and <span class="sscode">digital/analog write</span>. The <span class="sscode">pinMode</span> is automatic with <span class="sscode">autoPinMode</span> which is default. Think about this array as container for values received from App - they can do more than exchanging raw pin values. You can also use the array to access the pins from shift registers or send the variables to library-specific function. Defining more pins can be used to store more variables than you device maximum number of pins. It's possible to send more than a pin value - check <a href="examples/ex5.html" class="bold">this</a> tutorial. The best way to understand the framework from the HTML side is to start playing with basic interactions like blinking LED with button and prototyping the user interface. At the beginning you can test Involt with <span class="sscode">directMode</span> and toggling the LED without writing code to your sketch (this mode is not recommended). Involt App also stores the pin states in <span class="sscode">digitalPins[pinIndex]</span> array.</p>
+			<p>One of framework features is the simplicity and minimum of code required. The minimum for Involt is declaring the pin states with <span class="sscode">chromeDigital[pinIndex]</span> array and <span class="sscode">digital/analog write</span>. The <span class="sscode">pinMode</span> is automatic with <span class="sscode">autoPinMode</span> which is default. Think about this array as container for values received from App - they can do more than exchanging raw pin values. You can also use the array to access the pins from shift registers or send the variables to library-specific function. Defining more pins can be used to store more variables than you device maximum number of pins. It's possible to send more than a pin value - check <a href="examples/ex5.html" class="bold">this</a> tutorial. The best way to understand the framework from the HTML side is to start playing with basic interactions like blinking LED with button and prototyping the user interface. At the beginning you can test Involt with <span class="sscode">directMode</span> and toggling the LED without writing code to your sketch (this mode is recommended only for testing). Involt App also stores the pin states in <span class="sscode">digitalPins[pinIndex]</span> array.</p>
 			<p><span class="bold">Important:</span> You need to declare the length of <span class="sscode">chromeDigital[]</span> array. Remember about adding +1 variable to prevent from unexpected results. The default value is total pin number for Arduino UNO. </p>
 		</ol>
 		<div class="codearea">
@@ -177,6 +176,12 @@
 </li>
 <li>Send or receive more variables. Send or receive custom string.
 	<p>You can use Involt to send more than pin values, for example string with letters - there are simple tricks to do that. Check <a href="examples/ex5.html" class="bold">this</a> tutorial.</p>
+</li>
+<li>Call function from UI to sketch.
+	<p>You can add the <span class="sscode">fn</span> html attribute to send function name and trigger it in sketch (you can't pass the whole function from JS). When the attribute is defined Involt automatically passes the name on UI element event. Check <a href="examples/ex6.html" class="bold">this</a> tutorial. </p>
+</li>
+<li>Direct mode and auto pin mode
+	<p>There are additional modes included to sketch. The default settings are optimal for working on project. Direct mode sends values directly to pin without storing them anywhere. The auto pin mode automatically sets the <span class="sscode">pinMode</span> to output for pin that receives data.</p>
 </li>
 <li>Hardware-specific libraries
 	<p>Involt is designed to be as simple as it's possible. The functions inside sketch are using only serial library, framework shouldn't collide with additional libraries.</p>
@@ -236,7 +241,7 @@
 	//Pin number only (1,2,3)
 	<p>$(this).data('pinNumber');</p>
 </div>
-	<p>The Involt parameters are: <span class="sscode">pin, pinNumber, value, value2, min, max, step</span></p>
+	<p>The Involt parameters are: <span class="sscode">pin, pinNumber, value, value2, min, max, step, fn</span></p>
 	<li>
 		JQuery methods
 		<p>Involt is based on JQuery methods and using them allows to create more advanced projects. Using JQuery methods doesn't require defining their parameters with CSS classes - to do this use JavaScript.</p>
@@ -269,6 +274,11 @@
 	</div>
 		<br>.sendString(string)
 	<p> Send raw string outside of Involt with <span class="sscode">chrome.serial.send</span> function. You don't need to define anything. This is not recommended way to communicate for beginners.</p>
+	<div class="codearea">
+		$(this).sendString("Involt");
+	</div>
+		<br>.sendFn(string)
+	<p> Send string that can be used to trigger functions in Arduino. Check <a href="examples/ex6.html" class="bold">this</a> tutorial.</p>
 	<div class="codearea">
 		$(this).sendString("Involt");
 	</div>

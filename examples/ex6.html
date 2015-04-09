@@ -39,41 +39,38 @@
 		</div>
 	</header>
 	
-<div class="container textmain">
-	<div class="content">
-		<h2>Examples and tutorials</h2>
-		<div class="example">
-			<img src="../img/exled.svg" alt="">
-			<div class="subtitle"><a href="">Basic blink tutorial</a></div>
-			<p>Involt basic tutorial. Send data from button inside app and toggle LED on your Arduino device.</p>
-		</div>
-		<div class="example">
-			<img src="../img/exknob.svg" alt="">
-			<div class="subtitle"><a href="">2 Knobs 1 App</a></div>
-			<p>Involt basic tutorial. Receive data from potentiometers connected to analog pins on Arduino</p>
-		</div>
-		<div class="example">
-			<img src="../img/exrgb.svg" alt="">
-			<div class="subtitle"><a href="">RGB slider</a></div>
-			<p>Involt basic tutorial. Send data from button inside app and toggle LED on your arduino device.</p>
-		</div>
-		<div class="example">
-			<img src="../img/exsquare.svg" alt="">
-			<div class="subtitle"><a href="">"Do a barrel roll"</a></div>
-			<p>JQuery basic tutorial. Connect two potentiometers and use them to rotate html element.</p>
-		</div>
-		<div class="example">
-			<img src="../img/exadd.svg" alt="">
-			<div class="subtitle"><a href="">How to read or send more variables</a></div>
-			<p>This tutorial explain how to use Involt with more variables than available pins. Useful with multiplexers or shift registers. </p>
-		</div>
-		<div class="example">
-			<img src="../img/ico1.svg" alt="">
-			<div class="subtitle"><a href="">My first Prototype</a></div>
-			<p>Mixed tutorial for creating your first app.</p>
+	<div class="container textmain">
+		<div class="content">
+			<div class="subtitle">Trigger function in Arduino with Involt element.</div>
+			<ol>
+				<li>Introduction
+					<p>This tutorial is for sending information to Arduino and call function defined in sketch. Involt is not passing the whole function from JavaScript. With custom script it's only possible to pass the results to <span class="sscode">chromeDigital[]</span> or defined string. There is special attribute that allows sending additional string that on send can trigger something inside sketch. With this function name you can add your own function inside sketch called when it's received from app.</p>	
+				</li>
+				<li>Define the function name
+					<p>The function name can be defined as <span class="sscode">fn</span> html attribute or with <span class="sscode">.sendFn()</span> method. Now when the button is pressed there is sent pin value and additional name of your function.</p>
+				</li>
+				<div class="codearea" style="font-weight:300;">
+					<div class="helper">HTML</div><br>
+					<p>&lt;div class="ard button P6 200" <span  style="color:blue;">fn="involt"</span>&gt;Click me&lt;/div&gt;</p>
+				</div>
+				<li>Arduino sketch
+					<p>Inside sketch there is string called <span class="sscode">fname</span>. It contains the attribute received from button. To prevent function from repeating the <span class="sscode">fname</span> is cleared at the end of loop. It's possible to add the function directly in <span class="sscode">chromeReceive()</span> but this is not recommended for beginners. </p>
+				</li>
+				<div class="codearea" style="font-weight:300;">
+					<div class="helper">ARDUINO</div><br>
+						<div>chromeReceive();</div><br>
+						<div>if (fname == "involt"){ </div>
+    						<p>void involt();</p> 
+  						<div>}</div><br>
+  						fname = "";
+				</div>
+				<p>This tutorial is similar to defining custom string but in this case button sends at the same time additional string (and value).</p>
+				<li>JQuery
+					<p>The <span class="sscode">.sendValue()</span> method automaticaly checks if there is <span class="sscode">fn</span> in object data. To send only the function use <span class="sscode">.sendFn()</span>.</p>
+				</li>
+			</ol>
 		</div>
 	</div>
-</div>
 
 	<footer class="container">
 		<div class="content">
@@ -99,6 +96,6 @@
 		</div>
 		<br style="clear:both">
 	</footer>
-	<script src="js/jq.js"></script>
+	<script src="../js/jq.js"></script>
 </body>
 </html>

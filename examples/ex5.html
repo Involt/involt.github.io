@@ -49,7 +49,7 @@
 					<p>Remember about declaring them in <span class="sscode">chromeDigital[] array</span></p>
 							<div class="codearea">
 			<div class="helper">ARDUINO</div><br>
-				//total number+1
+				//total number+1 <br>
 				chromeDigital[15] = {};
 			</div>
 					<div class="codearea" style="font-weight:300;">
@@ -74,7 +74,7 @@
 						boolean directMode = false;<br><br>
 						String customstring;
 					</div>
-					<p>2. You need to change the <span class="sscode">chromeReceive</span> function. Involt will save to <span class="sscode">customstring</span> when the received string will start from parameter. For this example add "S" letter as the parameter (you can also use this letter to store multiple variables in array with additional "if" statement. Then access them as S0,S1 etc.). </p>
+					<p>2. You need to change the <span class="sscode">chromeReceive</span> function. Involt will save to <span class="sscode">customstring</span> when the received string will start from parameter. For this example add "S" letter as the parameter. Good practice is saving strings with many letters - S, T, U... and define them in html as S0,T0,U0 (you can also use this letter to store multiple variables in array with additional "if" statement. Then access them as S0,S1 etc.). Do not use the letters P or D because sending will cause errors in sketch. </p>
 					<div class="codearea" style="font-weight:300;">
 						<div class="helper">ARDUINO</div><br>
 						if(Serial.available() > 0){<br>
@@ -83,7 +83,7 @@
 							pin = chrome.substring(1,chrome.indexOf(V)).toInt();<br>
 							String valRaw = chrome.substring(chrome.indexOf(V)+1,chromeLen);<br></p>
 							<br>
-							<div style="color:red;">if (chrome.indexOf("S") == 0){<br>
+							<div style="color:blue;">if (chrome.indexOf("S") == 0){<br>
 							<p>customstring = valRaw;</p>
 						} <br></div>
 						else{    <br> 
@@ -111,16 +111,17 @@
 					<p>4. To test you can send the string via serial monitor or use Involt:</p>
 					<div class="codearea" style="font-weight:300;">
 						<div class="helper">HTML</div><br>
-						&lt;body&gt;<br />
-						<p>&lt;div class="ard button S0 involt"&gt;&lt;/div&gt;</p>
-						&lt;/body&gt;
+						<p>&lt;div class="ard button S0 <span  style="color:blue;">involt"</span>&gt;&lt;/div&gt;</p>
+					</div>
+					<p>For sending more than single word you can add string attribute to html element:</p>
+					<div class="codearea" style="font-weight:300;">
+						<div class="helper">HTML</div><br>
+						<p>&lt;div class="ard button S0" <span style="color:blue;">string="involt"</span>&gt;&lt;/div&gt;</p>
 					</div>
 					<p>... or create input and type "involt":</p>
 					<div class="codearea" style="font-weight:300;">
 						<div class="helper">HTML</div><br>
-						&lt;body&gt;<br />
 						<p>&lt;input class="ard input-write S0"&gt;</p>
-						&lt;/body&gt;
 					</div>
 					<p>... or use JQuery:</p>
 					<div class="codearea" style="font-weight:300;">
@@ -185,6 +186,6 @@
 	</div>
 	<br style="clear:both">
 </footer>
-<script src="js/jq.js"></script>
+<script src="../js/jq.js"></script>
 </body>
 </html>

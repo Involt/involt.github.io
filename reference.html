@@ -105,7 +105,7 @@
 	</div>
 	<div class="reference" id="knob">
 		<div class="subtitle">Knob</div>
-		<p class="ref">Generates knob that shows analog value. Based on JQuery knob plugin by Anthony Terrien. You can add the data- attributes as described in plugin to change parameters of this element.</p>
+		<p class="ref">Generates knob that shows analog value. Based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> by Anthony Terrien. You can add the data- attributes as described in plugin to change parameters of this element.</p>
 		<div class="codearea">
 			<div class="helper">SYNTAX</div> 
 			<div class="refsyn">ard knob [pin] [range]</div>
@@ -137,7 +137,7 @@
 </div>
 <div class="reference" id="button">
 	<div class="subtitle">Button</div>
-	<p class="ref">Button which send value to chosen pin.</p>
+	<p class="ref">The most basic UI element of Involt. Button which sends value to chosen pin.</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
 		<div class="refsyn">ard button [pin] [value]</div>
@@ -169,7 +169,7 @@
 </div>
 <div class="reference" id="toggle-pwm">
 	<div class="subtitle">Toggle-pwm</div>
-	<p class="ref">Toggle PWM pin between [value1] and [value2]. [value1] is also pin state on Arduino startup (need to be declared in void setup( ) ).</p>
+	<p class="ref">Toggle PWM pin between [value1] and [value2]. [value1] is also pin state on Arduino startup (should be declared in void setup( ) ).</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
 		<div class="refsyn">ard toggle-pwm [pin] [value1-value2]</div>
@@ -217,7 +217,7 @@
 </div>
 <div class="reference" id="rangeslider">
 	<div class="subtitle">Rangeslider</div>
-	<p class="ref">Generates JQuery based slider with use of the Simple-slider plugin. The value is displayed inside a tooltip over object. To display the value as label you can uncomment the css in framework.css.</p>
+	<p class="ref">Generates JQuery based slider with <a href="http://refreshless.com/nouislider/">noUiSlider</a> plugin. The value is displayed inside a tooltip over object. To display the value as label you can uncomment the css in framework.css. To access the JQuery object use .rangeslider>.slider selector, for more info read the plugin documentation.</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
 		<div class="refsyn">ard rangeslider [pin] [range] [step]</div>
@@ -233,7 +233,7 @@
 </div>
 <div class="reference" id="hover">
 	<div class="subtitle">Hover</div>
-	<p class="ref">Create element that send value on hover and mouse leave.</p>
+	<p class="ref">Create element that sends value on hover and mouse leave. To combine hover with other Involt element you can simply use this as parent of target in html.</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
 		<div class="refsyn">ard hover [pin] [onhover-onleave]</div>
@@ -249,7 +249,7 @@
 </div>
 <div class="reference" id="knob-send">
 	<div class="subtitle">Knob-send</div>
-	<p class="ref">Simple knob that send value. This knob is also based on JQuery Knob plugin - you can add plugin data- attributes to this element and they will be transfred to generated object.</p>
+	<p class="ref">Simple knob that sends value. This knob is also based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> - you can add plugin data- attributes to this element and they will be transfred to generated object. To access the JQuery object use .knob-send>.knob-write selector.</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
 		<div class="refsyn">ard knob-send [pin] [startvalue] [range] [step]</div>
@@ -265,7 +265,7 @@
 </div>
 <div class="reference" id="custom-button">
 	<div class="subtitle">Custom-button</div>
-	<p class="ref">Create button that send string data to arduino. Example code show how to send PWM value 100 to pin 5. You can use it to send custom text which can be used for displaying on lcd display. You can do the same with JQuery <span class="sscode">.sendString()</span>.</p>
+	<p class="ref">Create button that sends raw string data without target pin to device. Example code shows how to send PWM value 100 to pin 5. You can use it to send custom text which can be used for displaying on lcd display. You can do the same with JQuery <span class="sscode">.sendString()</span> method.</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
 		<div class="refsyn">ard custom-button [string]</div>
@@ -280,7 +280,7 @@
 </div>
 <div class="reference" id="input-write">
 	<div class="subtitle">Input-write</div>
-	<p class="ref">Input which send written value to chosen pin.</p>
+	<p class="ref">Input which sends written value to chosen pin.</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
 		<div class="refsyn">ard input-write [pin]</div>
@@ -296,7 +296,7 @@
 </div>
 <div class="reference" id="custom-write">
 	<div class="subtitle">Custom-write</div>
-	<p class="ref">Input which send written text to Arduino as string (non-direct).</p>
+	<p class="ref">Input which sends written text to device as string (non-direct only).</p>
 	<div class="codearea">
 		<div class="helper">SYNTAX</div> 
 		<div class="refsyn">ard custom-write</div>
