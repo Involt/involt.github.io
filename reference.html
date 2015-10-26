@@ -2,376 +2,195 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Reference | Involt</title>
-	<meta content="Full reference of Involt framework with examples. Each UI element automatically communicate with hardware via serial." name="description"></meta>
-	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<title>Reference | Involt - Arduino to html prototyping framework for designers.</title>
+	<meta content="Detailed reference of Involt HTML UI framework elements. Involt converts CSS classes and generates element with automatic communication." name="description"></meta>
+	<meta content="hardware prototyping, software to hardware, arduino, html, arduino to html, framework, jquery, chrome app, physical computing, communication" name="keywords"></meta>
+	<meta content="width=device-width, initial-scale=1" name="viewport"></meta>
 	<link rel="shortcut icon" type="image/png" href="favicon.png"/>
-	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="css/style.css">	
-	<!--<script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.min.js"></script>-->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!--<script src="js/less.js"></script>-->
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<header class="nav-bg">
-		<div class="navbar">
-			<div class="logo"><a href="index.html"><img src="img/logo.svg" ></a></div>
+	<header>
+		<div class="container-head">
+			<a href="index.html" class="logo"><img src="img/logo.svg" alt=""></a>
 			<div class="ham-btn">
 				<div>
 					<span></span>
 					<span></span>
 					<span></span>
 				</div>
-			</div>
-			<div class="menu-screen">
+			</div>	
+			<nav>
 				<a href="index.html">Home</a>
-				<a href="gettingstarted.html">Getting started</a>
+				<a href="getting-started.html">Getting started</a>
 				<a href="examples.html">Examples</a>
 				<a href="reference.html">Reference</a>
 				<a href="https://github.com/Involt/Involt">Github</a>
-			</div>
-		</div>
-		<div class="menu-mobile">
-			<a href="index.html">Home</a>
-			<a href="gettingstarted.html">Getting started</a>
-			<a href="examples.html">Examples</a>
-			<a href="reference.html">Reference</a>
-			<a href="https://github.com/Involt/Involt">Github</a>
+			</nav>
 		</div>
 	</header>
-	
-	<div class="container textmain">
-		<div class="content">
-			<h2>Reference</h2>
-			<div class="columns referencelist">
-				<h3>Read data</h3>
-				<p><a href="#show">show</a></p>
-				<p><a href="#bar">bar</a></p>
-				<p><a href="#knob">knob</a></p>
-				<p><a href="#value">value</a></p>
-			</div>
-			<div class="columns referencelist">
-				<h3>Send data</h3>
-				<p><a href="#button">button</a></p>
-				<p><a href="#toggle">toggle</a></p>
-				<p><a href="#toggle-pwm">toggle-pwm</a></p>
-				<p><a href="#increase">increase</a></p>
-				<p><a href="#decrease">decrease</a></p>
-				<p><a href="#rangeslider">rangeslider</a></p>
-				<p><a href="#hover">hover</a></p>
-				<p><a href="#knob-send">knob-send</a></p>
-				<p><a href="#custom-button">custom-button</a></p>
-			</div>
-			<div class="columns referencelist">
-				<h3>HTML inputs</h3>
-				<p><a href="#input-write">input-write</a></p>
-				<p><a href="#custom-write">custom-write</a></p>
-				<p><a href="#checkbox">checkbox</a></p>
-				<p><a href="#radio">radio</a></p>
-			</div>
-		</div>
-		<br style="clear:both;">
-	</div>
-	<div class="container textmain">
-		<div class="content">
-			<div class="reference" id="show">
-				<div class="subtitle">Show</div>
-				<p class="ref">Display the analog pin value as number.</p>
-				<div class="codearea">
-					<div class="helper">SYNTAX</div> 
-					<div class="refsyn"> ard show [pin]</div>
+	<div class="bg-gray">
+		<div class="container">
+			<div class="sidebar reference">
+				<h2>UI Elements:</h2>
+				<div>
+					<a href="#read-data">Read data</a>
+					<p>				
+						<a href="#show">Show</a>
+						<a href="#bar">Bar</a>
+						<a href="#knob">Knob</a>
+						<a href="#value">Value</a>
+					</p>
 				</div>
-				<div class="codearea">
-					<div class="helper">HTML</div><br>
-
-					
-					&lt;div class="ard show A0"&gt;&lt;/div&gt;
-					
+				<div>
+					<a href="#send-data">Send data</a>
+					<p>
+						<a href="#button">Button</a>
+						<a href="#button-toggle">Button-toggle</a>
+						<a href="#toggle">Toggle</a>
+						<a href="#increase">Increase</a>
+						<a href="#decrease">Decrease</a>
+						<a href="#rangeslider">Rangeslider</a>
+						<a href="#hover">Hover</a>
+						<a href="#knob-send">Knob-send</a>
+						<a href="#custom-button">Custom-button</a>
+					</p>
 				</div>
-		<div class="reference" id="bar">
-			<div class="subtitle">Bar</div>
-			<p class="ref">Generates horizontal bar that display value of analog pin. Width of bar value is automatically scaled to CSS width of element. For scaling the value use arduino map function.</p>
-			<div class="codearea">
-				<div class="helper">SYNTAX</div> 
-				<div class="refsyn">ard bar [pin] [maxvalue]</div>
+				<div>
+					<a href="#html-inputs">HTML inputs</a>
+					<p>
+						<a href="#input-write">Input-write</a>
+						<a href="#custom-write">Custom-write</a>
+						<a href="#checkbox">Checkbox</a>
+						<a href="#radio">Radio</a>
+					</p>
+				</div>
 			</div>
-			<div class="codearea">
-				<div class="helper">HTML</div><br>
-				
-				&lt;div class="ard bar A0 1024"&gt;&lt;/div&gt;
-				
-			</div>
-
-		<a href="#" class="return">Return to top</a>
-	</div>
-	<div class="reference" id="knob">
-		<div class="subtitle">Knob</div>
-		<p class="ref">Generates knob that shows analog value. Based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> by Anthony Terrien. You can add the data- attributes as described in plugin to change parameters of this element.</p>
-		<div class="codearea">
-			<div class="helper">SYNTAX</div> 
-			<div class="refsyn">ard knob [pin] [range]</div>
-		</div>
-		<div class="codearea">
-			<div class="helper">HTML</div><br>
-			
-			&lt;div class="ard knob A0 range-0-1024"&gt;&lt;/div&gt;
-			
-		</div>
-
-	<a href="#" class="return">Return to top</a>
-</div>
-<div class="reference" id="value">
-	<div class="subtitle">Value</div>
-	<p class="ref">Set html object value attribute to received data.</p>
-	<div class="codearea">
-		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard value [pin]</div>
-	</div>
-	<div class="codearea">
-		<div class="helper">HTML</div><br>
-		
-		&lt;div class="ard value A0"&gt;&lt;/div&gt;
-		
-	</div>
-
-<a href="#" class="return">Return to top</a>
-</div>
-<div class="reference" id="button">
-	<div class="subtitle">Button</div>
-	<p class="ref">The most basic UI element of Involt. Button which sends value to chosen pin.</p>
-	<div class="codearea">
-		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard button [pin] [value]</div>
-	</div>
-	<div class="codearea">
-		<div class="helper">HTML</div><br>
-		
-		&lt;div class="ard button P5 100"&gt;&lt;/div&gt;
-		
-	</div>
-
-<a href="#" class="return">Return to top</a>
-</div>
-<div class="reference" id="toggle">
-	<div class="subtitle">Toggle</div>
-	<p class="ref">Toggle digital pin ON and OFF. [startvalue] is pin state on Arduino startup (need to be declared in void setup( ) ). The pinMode is requied to correctly toggle between digital values. For switching between two PWM values use toggle-pwm.</p>
-	<div class="codearea">
-		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard toggle [pin] [startvalue]</div>
-	</div>
-	<div class="codearea">
-		<div class="helper">HTML</div><br>
-		
-		&lt;div class="ard toggle D5 0"&gt;&lt;/div&gt;
-		
-	</div>
-
-<a href="#" class="return">Return to top</a>
-</div>
-<div class="reference" id="toggle-pwm">
-	<div class="subtitle">Toggle-pwm</div>
-	<p class="ref">Toggle PWM pin between [value1] and [value2]. [value1] is also pin state on Arduino startup (should be declared in void setup( ) ).</p>
-	<div class="codearea">
-		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard toggle-pwm [pin] [value1-value2]</div>
-	</div>
-	<div class="codearea">
-		<div class="helper">HTML</div><br>
-		
-		&lt;div class="ard toggle-pwm P5 50-100"&gt;&lt;/div&gt;
-		
-	</div>
-
-<a href="#" class="return">Return to top</a>
-</div>
-<div class="reference" id="increase">
-	<div class="subtitle">Increase</div>
-	<p class="ref">Increase pin value by [step]. [range] is limits of value. Works with decrease but both need to have same [startvalue]. You can add in void setup the [startvalue] (this is not required).</p>
-	<div class="codearea">
-		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard increase [pin] [startvalue] [range] [step]</div>
-	</div>
-	<div class="codearea">
-		<div class="helper">HTML</div><br>
-		
-		&lt;div class="ard increase P5 100 range-0-255 step-10"&gt;&lt;/div&gt;
-		
-	</div>
-
-<a href="#" class="return">Return to top</a>
-</div>
-<div class="reference" id="decrease">
-	<div class="subtitle">Decrease</div>
-	<p class="ref">Decrease pin value by [step]. [range] is limits of value. Works with increase but both need to have same [startvalue]. You can add in void setup the [startvalue] (this is not required).</p>
-	<div class="codearea">
-		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard decrease [pin] [startvalue] [range] [step]</div>
-	</div>
-	<div class="codearea">
-		<div class="helper">HTML</div><br>
-		
-		&lt;div class="ard decrease P5 100 range-0-255 step-10"&gt;&lt;/div&gt;
-		
-	</div>
-
-<a href="#" class="return">Return to top</a>
-</div>
-<div class="reference" id="rangeslider">
-	<div class="subtitle">Rangeslider</div>
-	<p class="ref">Generates JQuery based slider with <a href="http://refreshless.com/nouislider/">noUiSlider</a> plugin. The value is displayed inside a tooltip over object. To display the value as label you can uncomment the css in framework.css. To access the JQuery object use .rangeslider>.slider selector, for more info read the plugin documentation.</p>
-	<div class="codearea">
-		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard rangeslider [pin] [range] [step]</div>
-	</div>
-	<div class="codearea">
-		<div class="helper">HTML</div><br>
-		
-		&lt;div class="ard rangeslider P5 range-0-255 step-5"&gt;&lt;/div&gt;
-		
-	</div>
-
-<a href="#" class="return">Return to top</a>
-</div>
-<div class="reference" id="hover">
-	<div class="subtitle">Hover</div>
-	<p class="ref">Create element that sends value on hover and mouse leave. To combine hover with other Involt element you can simply use this as parent of target in html.</p>
-	<div class="codearea">
-		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard hover [pin] [onhover-onleave]</div>
-	</div>
-	<div class="codearea">
-		<div class="helper">HTML</div><br>
-		
-		&lt;div class="ard hover P5 255-0"&gt;&lt;/div&gt;
-		
-	</div>
-
-<a href="#" class="return">Return to top</a>
-</div>
-<div class="reference" id="knob-send">
-	<div class="subtitle">Knob-send</div>
-	<p class="ref">Simple knob that sends value. This knob is also based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> - you can add plugin data- attributes to this element and they will be transfred to generated object. To access the JQuery object use .knob-send>.knob-write selector.</p>
-	<div class="codearea">
-		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard knob-send [pin] [startvalue] [range] [step]</div>
-	</div>
-	<div class="codearea">
-		<div class="helper">HTML</div><br>
-		
-		&lt;div class="ard knob-send P5 100 range-0-255 step-1"&gt;&lt;/div&gt;
-		
-	</div>
-
-<a href="#" class="return">Return to top</a>
-</div>
-<div class="reference" id="custom-button">
-	<div class="subtitle">Custom-button</div>
-	<p class="ref">Create button that sends raw string data without target pin to device. Example code shows how to send PWM value 100 to pin 5. You can use it to send custom text which can be used for displaying on lcd display. You can do the same with JQuery <span class="sscode">.sendString()</span> method.</p>
-	<div class="codearea">
-		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard custom-button [string]</div>
-	</div>
-	<div class="codearea">
-		<div class="helper">HTML</div><br>
-		
-		&lt;div class="ard custom-button P5V100"&gt;&lt;/div&gt;
-		
-	</div>
-	<a href="#" class="return">Return to top</a>
-</div>
-<div class="reference" id="input-write">
-	<div class="subtitle">Input-write</div>
-	<p class="ref">Input which sends written value to chosen pin.</p>
-	<div class="codearea">
-		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard input-write [pin]</div>
-	</div>
-	<div class="codearea">
-		<div class="helper">HTML</div><br>
-		
-		&lt;input class="ard input-write P5"&gt;
-		
-	</div>
-
-<a href="#" class="return">Return to top</a>
-</div>
-<div class="reference" id="custom-write">
-	<div class="subtitle">Custom-write</div>
-	<p class="ref">Input which sends written text to device as string (non-direct only).</p>
-	<div class="codearea">
-		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard custom-write</div>
-	</div>
-	<div class="codearea">
-		<div class="helper">HTML</div><br>
-		
-		&lt;input class="ard custom-write"&gt;
-		
-	</div>
-
-	<a href="#" class="return">Return to top</a>
-</div>
-<div class="reference" id="checkbox">
-	<div class="subtitle">Checkbox</div>
-	<p class="ref">Create checkbox with different values on [checked] and [unchecked] input state.</p>
-	<div class="codearea">
-		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard checkbox [pin] [checked-unchecked]</div>
-	</div>
-	<div class="codearea">
-		<div class="helper">HTML</div><br>
-		
-		&lt;input type="checkbox" class="ard checkbox P5 255-0"&gt;
-		
-	</div>
-<a href="#" class="return">Return to top</a>
-</div>
-<div class="reference" id="radio">
-	<div class="subtitle">Radio</div>
-	<p class="ref">Create radiobox with selected value. You can define same input name attribute to switch between values in group of radiobox objects.</p>
-	<div class="codearea">
-		<div class="helper">SYNTAX</div> 
-		<div class="refsyn">ard radio [pin] [value]</div>
-	</div>
-	<div class="codearea">
-		<div class="helper">HTML</div>
-		<br>
-		
-		&lt;input type="radio" class="ard radio P5 0" name="myname"&gt; <br>
+			<main>
+				<h3>Reference</h3>
+				<p>Here you can find list of all HTML UI elements. Remember about writing <span>involtSend()</span> function for read-only elements and <span>digitalWrite</span> or <span>analogWrite</span> for data sending elements in Arduino sketch.</p>
+				<p>For JQuery methods reference check the <a href="">JQuery</a> page</p>
+				<h3 id="read-data">Read data</h3>
+								<!-- -->
+				<h4 id="show">Show</h4>
+				<p>Display the analog pin value as number.</p>
+				<div class="code syntax"><p>ard show [pin]</p></div>
+				<div class="code html">&lt;div class="ard show A0"&gt;&lt;/div&gt;</div>
+								<!-- -->
+				<h4 id="bar">Bar</h4>
+				<p>Generates horizontal bar that display value of analog pin. Width of bar value is automatically scaled to CSS width of element. For scaling the value use arduino map function.</p>
+				<div class="code syntax"><p>ard bar [pin] [range]</p></div>
+				<div class="code html">&lt;div class="ard bar A0 range-0-1024"&gt;&lt;/div&gt;</div>
+								<!-- -->
+				<h4 id="knob">Knob</h4>
+				<p>Generates knob that shows analog value. Based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> by Anthony Terrien. You can add the data- attributes as described in plugin to change parameters of this element.</p>
+				<div class="code syntax"><p>ard knob [pin] [range]</p></div>
+				<div class="code html">&lt;div class="ard knob A0 range-0-1024"&gt;&lt;/div&gt;</div>
+								<!-- -->
+				<h4 id="value">Value</h4>
+				<p>Set html object value attribute to received data.</p>
+				<div class="code syntax"><p>ard value [pin]</p></div>
+				<div class="code html">&lt;div class="ard value A0"&gt;&lt;/div&gt;</div>
+				<h3 id="send-data">Send data</h3>
+				<!-- -->
+				<h4 id="button">Button</h4>
+				<p>The most basic UI element of Involt. Button which sends value to chosen pin.</p>
+				<div class="code syntax"><p>ard button [pin] [value]</p></div>
+				<div class="code html">&lt;div class="ard button P5 100"&gt;&lt;/div&gt;</div>
+								<!-- -->
+				<h4 id="button-toggle">Button-toggle</h4>
+				<p>Toggle PWM pin between [value1] and [value2]. [value1] is also pin state on Arduino startup (should be declared in void setup( ) ).</p>
+				<div class="code syntax"><p>ard button-toggle [pin] [value1-value2]</p></div>
+				<div class="code html">&lt;div class="ard button-toggle P5 50-100"&gt;&lt;/div&gt;</div>
+								<!-- -->
+				<h4 id="toggle">Toggle</h4>
+				<p>Toggle digital pin ON and OFF. [startvalue] is pin state on Arduino startup (need to be declared in void setup( ) ). The pinMode is requied to correctly toggle between digital values. For switching between two PWM values use button-toggle.</p>
+				<div class="code syntax"><p>ard toggle [pin] [startvalue]</p></div>
+				<div class="code html">&lt;div class="ard toggle D5 0"&gt;&lt;/div&gt;</div>
+								<!-- -->
+				<h4 id="increase">Increase</h4>
+				<p>Increase pin value by [step]. [range] is limits of value. Works with decrease but both need to have same [startvalue]. You can add in void setup the [startvalue] (this is not required).</p>
+				<div class="code syntax"><p>ard increase [pin] [startvalue] [range] [step]</p></div>
+				<div class="code html">&lt;div class="ard increase P5 100 range-0-255 step-10"&gt;&lt;/div&gt;</div>
+								<!-- -->
+				<h4 id="decrease">Decrease</h4>
+				<p>Decrease pin value by [step]. [range] is limits of value. Works with increase but both need to have same [startvalue]. You can add in void setup the [startvalue] (this is not required).</p>
+				<div class="code syntax"><p>ard decrease [pin] [startvalue] [range] [step]</p></div>
+				<div class="code html">&lt;div class="ard decrease P5 100 range-0-255 step-10"&gt;&lt;/div&gt;</div>
+								<!-- -->
+				<h4 id="rangeslider">Rangeslider</h4>
+				<p>Generates JQuery based slider with <a href="http://refreshless.com/nouislider/">noUiSlider</a> plugin. The value is displayed inside a tooltip over object. To display the value as label you can uncomment the css in framework.css. To access the JQuery object use .rangeslider>.slider selector, for more info read the plugin documentation.</p>
+				<div class="code syntax"><p>ard rangeslider [pin] [startvalue] [range] [step]</p></div>
+				<div class="code html">&lt;div class="ard rangeslider P5 0 range-0-255 step-5"&gt;&lt;/div&gt;;</div>
+								<!-- -->
+				<h4 id="hover">Hover</h4>
+				<p>Create element that sends value on hover and mouse leave. To combine hover with other Involt element you can simply use this as parent of target in html.</p>
+				<div class="code syntax"><p>ard hover [pin] [onhover-onleave]</p></div>
+				<div class="code html">&lt;div class="ard hover P5 255-0"&gt;&lt;/div&gt;</div>
+								<!-- -->
+				<h4 id="knob-send">Knob-send</h4>
+				<p>Simple knob that sends value. This knob is also based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> - you can add plugin data- attributes to this element and they will be transfred to generated object. To access the JQuery object use .knob-send>.knob-write selector.</p>
+				<div class="code syntax"><p>ard knob-send [pin] [startvalue] [range] [step]</p></div>
+				<div class="code html">&lt;div class="ard knob-send P5 100 range-0-255 step-1"&gt;&lt;/div&gt;</div>
+								<!-- -->
+				<h4 id="custom-button">Custom-button</h4>
+				<p>Create button that sends raw string data without target pin to device. Example code shows how to send PWM value 100 to pin 5. You can use it to send custom text which can be used for displaying on lcd display. You can do the same with JQuery <span>.sendString()</span> method.</p>
+				<div class="code syntax"><p>ard custom-button [string]</p></div>
+				<div class="code html">&lt;div class="ard custom-button P5V100"&gt;&lt;/div&gt;</div>
+				<h3 id="html-inputs">HTML inputs</h3>
+				<!-- -->
+				<h4 id="input-write">Input-write</h4>
+				<p>Input which sends written value to chosen pin.</p>
+				<div class="code syntax"><p>ard input-write [pin]</p></div>
+				<div class="code html">&lt;input class="ard input-write P5"&gt;</div>
+								<!-- -->
+				<h4 id="custom-write">Custom-write</h4>
+				<p>Input which sends written text to device as string (non-direct only).</p>
+				<div class="code syntax"><p>ard custom-write</p></div>
+				<div class="code html">&lt;input class="ard custom-write"&gt;</div>
+								<!-- -->
+				<h4 id="checkbox">Checkbox</h4>
+				<p>Create checkbox with different values on [checked] and [unchecked] input state.</p>
+				<div class="code syntax"><p>ard checkbox [pin] [checked-unchecked]</p></div>
+				<div class="code html">&lt;input type="checkbox" class="ard checkbox P5 255-0"&gt;</div>
+								<!-- -->
+				<h4 id="radio">Radio</h4>
+				<p>Create radiobox with selected value. You can define same input name attribute to switch between values in group of radiobox objects.</p>
+				<div class="code syntax"><p>ard radio [pin] [value]</p></div>
+				<div class="code html">		&lt;input type="radio" class="ard radio P5 0" name="myname"&gt; <br>
 		&lt;input type="radio" class="ard radio P5 100" name="myname"&gt; <br>
-		&lt;input type="radio" class="ard radio P5 255" name="myname"&gt;
-		
-	</div>
-
-<a href="#" class="return">Return to top</a>
-</div>
-</div>
-</div>
-
-
-<footer class="container">
-	<div class="content">
-		<div class="columns">
-			<img src="img/ico1.svg" alt="involt" class="ico">
-			<p class="foot">Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. It is aimed for UX/product designers rather than professional coders.
-			</p>
-			<a href="#" class="bold">Return to top</a>
-		</div>
-		<div class="columns">
-			<img src="img/ico2.svg" alt="git" class="ico">
-			<p class="foot">You can help develop this framework or  <a href="https://github.com/Involt/Involt" class="bold">fork project on Github</a>. To see the progress of developement you can check the changelog. <br>Involt is under MIT license.</p>
-
-			<a href="https://github.com/Involt/Involt/wiki/Changelog" class="bold">See the changelog</a>
-		</div>
-		<div class="columns">
-			<img src="img/ico3.svg" alt="contact the author" class="ico">
-			<p class="foot">
-				Used Involt and enjoyed it? Do you have any questions or suggestions? You can help by sending feedback directly via mail.
-			</p>
-			<a href="mailto:ernestwarzocha@gmail.com" class="bold">ernestwarzocha@gmail.com</a>
+		&lt;input type="radio" class="ard radio P5 255" name="myname"&gt;</div>
+			</main>
 		</div>
 	</div>
-	<br style="clear:both">
-</footer>
-<script src="js/jq.js"></script>
+	<footer>
+		<div class="container">
+			<div class="column">
+				<img src="img/ico1.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. The goal is to help designers to overcome the obstacles at prototyping stage.
+				</div>
+				<a href="about.html">Read more</a>
+			</div>
+			<div class="column">
+				<img src="img/ico2.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development you can check the changelog. Involt is under MIT license.
+				</div>
+				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
+			</div>
+			<div class="column">
+				<img src="img/ico3.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					Used Involt and enjoyed it? Do you have any questions or suggestions? Help by sending feedback directly via mail.
+				</div>
+				<a href="mailto:ernestwarzocha@gmail.com">ernestwarzocha@gmail.com</a>
+			</div>
+		</div>
+	</footer>
+	<script src="js/jq-ui.js"></script>
 </body>
 </html>

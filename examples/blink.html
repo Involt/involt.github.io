@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Blink | Involt - Arduino to html prototyping framework for designers.</title>
+	<meta content="Basic blink tutorial." name="description"></meta>
+	<meta content="hardware prototyping, software to hardware, arduino, html, arduino to html, framework, jquery, chrome app, physical computing, communication" name="keywords"></meta>
+	<meta content="width=device-width, initial-scale=1" name="viewport"></meta>
+	<link rel="shortcut icon" type="image/png" href="../favicon.png"/>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<!--<script src="js/less.js"></script>-->
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<header>
+		<div class="container-head">
+			<a href="../index.html" class="logo"><img src="../img/logo.svg" alt=""></a>
+			<div class="ham-btn">
+				<div>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>	
+			<nav>
+				<a href="../index.html">Home</a>
+				<a href="../getting-started.html">Getting started</a>
+				<a href="../examples.html">Examples</a>
+				<a href="../reference.html">Reference</a>
+				<a href="https://github.com/Involt/Involt">Github</a>
+			</nav>
+		</div>
+	</header>
+	<div class="bg-gray">
+		<div class="container">
+			<div class="sidebar reference">
+				<h2>Examples:</h2>
+				<div>
+					<a href="blink.html">Blink tutorial</a>
+				</div>
+				<div>
+					<a href="2knobs.html">2 Knobs 1 App</a>
+				</div>
+				<div>
+					<a href="barrelroll.html">"Do a barrel roll"</a>
+				</div>
+				<div>
+					<a href="involtjq.html">Involt as JQuery plugin</a>
+				</div>
+				<div>
+					<a href="strings.html">Send/receive more...</a>
+				</div>
+			</div>
+			<main>
+				<h3>Blink tutorial</h3>
+				<h4>Circuit</h4>
+				<p>This example explains how to connect single LED and how control it with buttons inside app. First of all connect LED with 220 ohm resistor to pin 5.</p>
+				<img src="../img/fritzing2.png" alt="">
+				<h4>Basic example</h4>
+				<p>Make sure that Involt is installed. If you don't know how to do this go to <a href="../getting-started.html">getting started</a> page.</p>
+				<p>Add code to body section to generate switch between HIGH and LOW states of pin (the letter D in pin is for digital pins and P for PWM values or any other number). The last class is 0 because we want to start with inactive LED.</p>
+				<div class="code html">&lt;div class="ard toggle D5 0"&gt;&lt;/div&gt;</div>
+				<p>Now add <span>digitalWrite</span> to <span>void loop</span> and <span>pinMode</span> to <span>void setup</span> inside Involt Arduino sketch (in Arduino folder). The value received from App is stored in <span>chromeDigital[] </span>array with index which represents the target pin.</p>
+				<div class="code arduino">
+					<div class="code-m">
+						... <br>
+						void setup{
+							<p>Serial.begin(57600);</p>
+							<p style="color:blue;">pinMode(5,OUTPUT);</p>
+						}
+						<br><br>
+						void loop(){
+						<p>involtReceive(); </p>
+						<br>
+						<p style="color:blue;">digitalWrite(5, involtDigital[5]);</p>
+						}
+						<br><br>
+						...
+					</div>			
+				</div>
+				<h4>Example with direct mode</h4>
+				<p>Another example of LED blinking is two separate <span>button</span>s with Direct Mode. This time we want to set it to PWM value. Change the pin number from <span>D5</span> to <span>P5</span>. To toggle between two PWM values you can also use <span>button-toggle</span> button. In arduino sketch remove previous code and only change the <span>directMode</span> and <span>autoPinMode</span> to <span>true</span>. Now you don't have to change anything inside sketch to operate with basic interactions between pins (like blinking led). This mode is good for learning but not best for your project.</p>
+				<div class="code html">
+					&lt;div class="ard button P5 40"&gt;Turn me On&lt;/div&gt;<br>
+					&lt;div class="ard button P5 0"&gt;Turn me Off&lt;/div&gt;
+				</div>
+				<img src="../img/ex1result.png" alt="">
+			</main>
+		</div>
+	</div>
+	<footer>
+		<div class="container">
+			<div class="column">
+				<img src="../img/ico1.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. The goal is to help designers to overcome the obstacles at prototyping stage.
+				</div>
+				<a href="../about.html">Read more</a>
+			</div>
+			<div class="column">
+				<img src="../img/ico2.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development you can check the changelog. Involt is under MIT license.
+				</div>
+				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
+			</div>
+			<div class="column">
+				<img src="../img/ico3.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					Used Involt and enjoyed it? Do you have any questions or suggestions? Help by sending feedback directly via mail.
+				</div>
+				<a href="mailto:ernestwarzocha@gmail.com">ernestwarzocha@gmail.com</a>
+			</div>
+		</div>
+	</footer>
+	<script src="../js/jq-ui.js"></script>
+</body>
+</html>

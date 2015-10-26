@@ -3,528 +3,392 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-body {
-  margin: 0 0 10em;
-  padding: 0;
-  font-size: 100%;
-  font-family: "Source Sans Pro";
-  color: #323232;
-}
 html {
-  background: #ffffff;
   position: relative;
   min-height: 100%;
 }
-audio,
-canvas,
-img,
-video {
-  vertical-align: middle;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro';
+  color: #003645;
+  margin-bottom: 272px;
+}
+.container {
+  padding: 40px;
+  max-width: 1380px;
+  margin: auto;
 }
 a {
-  color: #323232;
-  text-decoration: underline;
+  color: #003645;
 }
-a:hover,
-a:active {
-  color: #00546d !important;
-  outline: none;
+a:hover {
+  color: #00546d;
 }
-#headline {
-  text-align: center;
-  font-size: 3em;
-  font-weight: 400;
-  margin-top: 0;
-  margin-bottom: 0.5em;
-  line-height: 1em;
+h1 {
+  margin: 0px 20px;
+  font-size: 48px;
 }
 h2 {
-  text-align: center;
+  font-size: 30px;
   font-weight: 300;
-  font-size: 1.8em;
+  text-align: center;
 }
 h3 {
-  text-align: center;
+  font-size: 32px;
   font-weight: 700;
-  font-size: 1.5em;
-}
-.lead {
   text-align: center;
-  font-weight: 300;
-  font-size: 1.5em;
-  line-height: 1.125em;
-  margin: 0.5em 0;
 }
-.lead2 {
-  text-align: center;
-  font-weight: 300;
-  font-size: 1.8em;
-  line-height: 1.125em;
-  margin: 1em 0;
-}
-p {
-  font-size: 1em;
-  font-weight: 300;
-  line-height: 1.5em;
-}
-.columns > img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 300px;
-  margin: 1em auto;
-}
-.bold {
-  font-weight: 700;
-  display: inline-block;
-}
-.lb1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.ham-btn {
-  display: block;
-  float: right;
-  width: 3em;
-  height: 3.125em;
-}
-.ham-btn:hover {
-  background: #f0f0f0;
-}
-.ham-btn div {
-  margin: 10px;
-  margin-top: 14px;
-}
-.ham-btn div span {
-  margin-top: 20%;
-  height: 4px;
-  background: black;
-  display: block;
-}
-.ham-btn div span:nth-child(1) {
-  margin-top: 0;
-}
-.nav-bg {
-  position: relative;
-  top: 0;
-  width: 100%;
-  background: #ffffff;
-  border-bottom: 1px solid #00c5ff;
-  font-weight: 300;
-}
-.nav-bg .logo img {
-  height: 2.5em;
-  width: auto;
-}
-.nav-bg .navbar {
-  height: 3.125em;
-  margin-bottom: 0;
-  padding-left: 1em;
-  padding-right: 1em;
-}
-.nav-bg .navbar .logo {
-  background: white;
-  display: inline-block;
-  margin-top: 0.33em;
-}
-.nav-bg .menu-mobile {
-  display: none;
-}
-.nav-bg .menu-mobile a {
-  text-decoration: none;
-  text-align: center;
-  border-bottom: 1px solid #f0f0f0;
-  display: block;
-  width: 100%;
-  padding: 1em;
-}
-.nav-bg .menu-mobile a:hover {
-  background: #f0f0f0;
-}
-.nav-bg .menu-screen {
-  display: none;
-  float: right;
-  line-height: 3.125em;
-}
-.nav-bg .menu-screen a {
-  text-decoration: none;
-  text-align: center;
-  display: inline-block;
-  margin-right: 1em;
-  padding: 0 0.5em;
-  height: 2em;
-  line-height: 2em;
-}
-.nav-bg .menu-screen a:hover {
-  background: #f0f0f0;
-}
-.nav-bg .menu-screen a:last-child {
-  margin-right: 0;
-}
-.button {
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  margin: 3rem auto;
+h4 {
   font-size: 24px;
-  color: #ffffff;
-  text-align: center;
-  display: block;
-  text-decoration: none;
-  background: #00546d;
-  font-weight: 400;
-  box-shadow: 0 2px 0px #0099e7;
-  border-radius: 0.375em;
-  max-width: 16em;
+  font-weight: 700;
+  margin: 20px 0;
 }
-.button:hover {
+.cta {
+  width: 240px;
+  height: 50px;
+  margin: 0 auto;
+  line-height: 50px;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3px;
+  box-shadow: 0 2px 0px #0099e7;
+  background-color: #ffde00;
+  color: black;
+  display: block;
+}
+.cta:hover {
   background: white;
   color: #00546d;
 }
-.container {
-  margin: 0;
-}
-.container .content {
-  padding: 1em;
-}
-.container.textmain {
-  max-width: 1300px;
-  margin: 0 auto;
-}
-.container .head {
-  background: #00c5ff;
-}
-.container.steps3 {
-  background: #00546d;
-}
-.container.steps3 .content {
-  padding-top: 1em;
-}
-.container.steps3 h2 {
-  color: #ffffff;
-}
-.container.steps3 img {
-  max-width: 80px;
-}
-.container.steps3 .columns {
-  margin-bottom: 1em;
-}
-.container.code h2 {
-  color: #323232;
-  font-weight: 700;
-  font-size: 1.5em;
-}
-.container.code p {
-  text-align: center;
-}
-.container.code .linkunder {
-  color: #323232;
-}
-.container.code .linkunder .bold {
-  color: #323232;
-}
-.container.code .text {
+.code {
+  font-family: 'Source Code Pro';
   font-weight: 300;
-  line-height: 1.5em;
-  text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.linkstep:hover {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-.codearea {
+  font-size: 14px;
+  padding: 20px;
   background: #f0f0f0;
-  padding: 2em;
-  text-align: center;
-  display: block;
-  margin: 1.5em auto!important;
-  font-family: "Source Code Pro";
-  font-weight: 300;
-  border-radius: 0.375em;
+  margin: 20px auto;
+  border-radius: 6px;
 }
-.textmain h2 {
-  border-bottom: 1px solid #00c5ff;
-  padding-bottom: 1em;
+.code .code-type {
+  color: #90a6ac;
+  margin-bottom: 10px;
 }
-.textmain .subtitle {
+.code.syntax > p {
+  font-family: 'Source Sans Pro';
   font-weight: 700;
-  font-size: 1.8em;
+  font-size: 24px;
+  word-spacing: 15px;
+  margin-bottom: 0;
 }
-.textmain ol {
-  font-size: 1em;
-  font-weight: 700;
+.code .code-m {
+  font-size: 14px;
+  line-height: 1.5;
 }
-.textmain ol.install {
-  font-weight: 400;
+.code .code-m p {
+  font-size: 14px;
+  margin-left: 20px;
+  margin-bottom: 0px;
 }
-.textmain ol img {
-  max-width: 100%;
-  border: 1px solid #00c5ff;
-  margin: 1em;
-}
-.textmain ol p.bold {
-  display: block;
-  font-weight: 700;
-}
-.textmain ol a.bold {
-  display: inline;
-}
-.textmain ol p {
-  font-weight: 400;
-  line-height: 1.5rem;
-}
-.textmain .codearea {
+header {
+  position: fixed;
+  top: 0;
+  background: white;
   width: 100%;
-  text-align: left;
-  font-size: 12px;
-  line-height: 1.5em;
+  height: 70px;
+  padding: 10px 0;
+  border-bottom: 1px solid #00c5ff;
 }
-.textmain .codearea p {
-  margin: 0;
-  margin-left: 2em;
+header .container-head {
+  max-width: 1380px;
+  margin: auto;
+  padding: 0 40px;
 }
-.textmain .codearea .refsyn {
-  font-family: "Source Sans Pro";
-  font-weight: 700;
-  font-size: 2em;
-  line-height: 1em;
-  word-spacing: 1em;
+header .logo img {
+  height: 50px;
 }
-.textmain .codearea .helper {
-  margin-bottom: 1em;
-  opacity: 0.4;
+header nav {
+  float: right;
+}
+header nav a {
+  height: 50px;
+  padding: 10px;
+  margin-left: 10px;
+  line-height: 50px;
+  font-weight: 300;
+  text-decoration: none;
+}
+header nav a:hover {
+  text-decoration: underline;
+  background-color: #f8f8f8;
+}
+.ham-btn {
+  display: none;
+}
+.main-lead {
+  margin-top: 70px;
+  padding-top: 100px;
+  min-height: 500px;
+  text-align: center;
+  background-color: #00c5ff;
+}
+.main-lead h2 {
+  margin-top: 15px;
+  margin-bottom: 50px;
+}
+.column {
   display: inline-block;
+  margin-top: 40px;
+  vertical-align: top;
+  width: 33%;
+  padding: 0 20px;
 }
-.textmain .example {
+.column img {
+  width: 75%;
+  display: block;
+  margin: auto;
+}
+.column p {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 30px;
+}
+.bg-gray {
+  background: #f8f8f8;
+  padding: 60px 0;
+}
+.bg-gray.howdoesit > .container {
+  margin: 0 auto;
+  background: white;
+  border-top: 1px solid #00c5ff;
+  border-bottom: 1px solid #00c5ff;
+}
+.howdoesit {
   text-align: center;
 }
-.textmain .ref {
-  font-weight: 400;
-}
-.textmain .return {
+.howdoesit p {
   font-weight: 300;
-  line-height: 1.5em;
+  font-size: 20px;
 }
-.textmain .reference > .subtitle {
-  margin-top: 1em;
+.howdoesit .code {
+  width: 66%;
+}
+.howdoesit .linkunder {
+  font-size: 20px;
+  font-weight: 300;
+}
+.howdoesit .linkunder a {
+  font-weight: 700;
+}
+.landing-end {
+  background-color: #00c5ff;
+  min-height: 260px;
+}
+.landing-end .cta {
+  margin-bottom: 20px;
+}
+main {
+  margin-left: 340px;
+  border-top: 1px solid #00c5ff;
+  float: none;
+  width: auto;
+  overflow: hidden;
+  background: white;
+  padding: 40px;
+}
+main h3 {
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 20px;
+  margin: 0;
+  margin-bottom: 30px;
+  text-align: left;
+}
+main p {
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #323232;
+}
+main p span {
+  font-family: 'Source Code Pro';
+  background: #f0f0f0;
+  margin: 0 3px;
+}
+main img {
+  max-width: 600px;
+  display: block;
+  margin: 40px auto;
+}
+main.examples {
+  text-align: center;
+}
+main.examples img {
+  margin: 20px auto;
+}
+.sidebar {
+  float: left;
+  background: #f0f0f0;
+  width: 300px;
+  margin-right: 40px;
+  padding: 40px;
+}
+.sidebar a {
+  font-weight: 700;
+  font-size: 20px;
+  display: block;
+  margin-bottom: 10px;
+}
+.sidebar p > a {
+  font-weight: 300;
+  font-size: 16px;
+  margin-bottom: 0;
+}
+.sidebar h2 {
+  text-align: left;
+  margin-top: 0;
+  font-size: 32px;
 }
 footer {
+  position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 10em;
-  background: white;
+  background-color: #f8f8f8;
   border-top: 1px solid #00c5ff;
-  padding-bottom: 1em;
 }
-footer .columns {
-  margin-bottom: 2em;
+footer .column {
+  margin-top: 0;
 }
-footer .ico {
-  max-width: 50px;
-  margin: 0 auto;
+footer img,
+footer .ico-small {
+  width: 50px;
+  margin-left: 0;
+  margin-bottom: 20px;
 }
-footer .foot {
-  margin-top: 1em;
+footer .footer-txt {
+  text-align: left;
   font-size: 14px;
-  text-align: left!important;
-  margin-bottom: 1em;
-  display: inline-block;
+  height: 100px;
+  color: #696969;
 }
 footer a {
+  font-weight: 700;
   display: inline-block;
 }
-.lb {
-  background: #00c5ff;
-}
-.steps {
-  font-weight: 300;
-  color: white;
-  text-align: center;
-}
-.linkunder {
-  font-size: 1.5rem;
-  color: white;
-  text-align: center;
-  margin: 0 auto;
-  margin-top: 2rem;
-  clear: both;
-}
-.linkunder .bold {
-  color: #ffffff;
-  text-decoration: underline;
-}
-.columns {
-  width: 100%;
-}
-.columns p {
-  text-align: center;
-}
-.columns.referencelist > h3,
-.columns.referencelist > p {
-  text-align: left!important;
-}
-.columns.referencelist > p {
-  margin: 0;
-}
-@media only screen and (min-width: 320px) and (orientation: landscape) {
-  .button {
-    width: 80%;
-  }
+@media only screen and (max-width: 1050px) {
   .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .column {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 40px;
+    border-bottom: 1px solid lightgray;
+  }
+  .column img {
+    width: 50%;
+    min-width: 200px;
+  }
+  .column:nth-child(4) {
+    border: none;
+  }
+  .main-lead {
+    padding-top: 20px;
+    min-height: 350px;
+  }
+  h1 {
+    font-size: 40px;
     margin: 0;
   }
-  .container .content {
-    padding: 2em 3em;
+  h2 {
+    font-size: 22px;
   }
-  .container .content {
-    padding-top: 2em;
+  img {
+    width: 50%;
   }
-  .navbar {
-    margin: 0 2em;
+  .sidebar {
+    float: none;
+    width: 100%;
   }
-  .steps3 > .content > .columns {
-    width: 33%;
-    float: left;
-  }
-}
-@media only screen and (min-width: 768px) {
-  body {
-    font-size: 125%;
-  }
-  .container .content.head {
-    padding-top: 5em;
-  }
-  .menu-mobile {
-    display: none;
-  }
-  .navbar {
-    margin: 0 0em;
-  }
-  .ham-btn > div {
-    margin-top: 17px;
-  }
-  .button {
-    max-width: 16em;
-  }
-  .columns {
-    padding: 0px 1em 1em 1em;
-  }
-  .columns.referencelist {
-    width: 33%;
-    float: left;
-  }
-  .steps3 > .content > .columns {
-    width: 33%;
-    float: left;
-  }
-  .lead2 {
-    margin: 0em 0;
-  }
-  .codearea {
-    font-size: 14px!important;
-  }
-  footer {
-    position: absolute;
-  }
-  footer .ico {
-    margin: 0 0;
-    margin-bottom: 1em;
-  }
-}
-@media only screen and (min-width: 768px) and (orientation: landscape) {
-  .columns {
+  .sidebar.reference > div {
     display: inline-block;
+    vertical-align: top;
+    margin-right: 40px;
   }
-  .button {
-    max-width: 16em;
+  main {
+    margin-left: 0;
   }
-  .steps3 > .content > .columns img {
-    max-width: 175px;
+  .examples > img {
+    max-width: 75px;
   }
-  .code .text {
-    font-size: 1.5em;
+  header > .container-head {
+    padding: 0 20px;
   }
-  footer .columns {
-    width: 33%;
-    float: left;
+  header > .container-head img {
+    width: 146px;
   }
-  footer .foot {
-    height: 7em;
+  header > .container-head nav {
+    display: none;
+    float: none;
+    background: white;
   }
-}
-@media only screen and (min-width: 1025px) {
+  header > .container-head nav a {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0 20px;
+  }
+  .ham-btn {
+    display: block;
+    float: right;
+    width: 50px;
+    height: 50px;
+  }
+  .ham-btn:hover {
+    background: #f0f0f0;
+  }
+  .ham-btn div {
+    margin: 10px;
+    margin-top: 14px;
+  }
+  .ham-btn div span {
+    margin-top: 20%;
+    height: 4px;
+    background: black;
+    display: block;
+  }
+  .ham-btn div span:nth-child(1) {
+    margin-top: 0;
+  }
+  .logo {
+    min-width: 200px;
+  }
+  .ico-small {
+    min-width: 50px!important;
+    width: 50px!important;
+    margin-top: 20px!important;
+  }
+  .howdoesit {
+    padding: 0;
+  }
+  .howdoesit .container {
+    margin: 0!important;
+  }
+  .howdoesit .code {
+    width: 100%;
+  }
+  .code {
+    width: 100%;
+  }
   body {
-    font-size: 125%;
-  }
-  .nav-bg {
-    padding: 0 3em;
-  }
-  .ham-btn,
-  .menu-mobile {
-    display: none!important;
-  }
-  .menu-screen {
-    display: block!important;
-  }
-  .columns {
-    width: 33%;
-    float: left;
-  }
-  .columns h3 {
-    height: 4rem;
     margin-bottom: 0;
   }
-  .columns p {
-    max-width: 400px;
-    margin: 0 auto;
+  footer {
+    position: relative;
   }
-  .steps3 .columns img {
-    max-width: 175px;
-  }
-  .button {
-    width: 220px;
-  }
-  .container .content.head {
-    padding-top: 7em;
-    padding-bottom: 5em;
-  }
-  .codearea {
-    width: 66%;
-    margin: 0 5em;
-  }
-  .sechead {
-    padding-top: 5em!important;
-    padding-bottom: 3em!important;
-  }
-  .textmain {
-    margin: 0;
-  }
-  .textmain .content {
-    padding: 2em 7em;
-  }
-  .textmain .codearea {
-    width: 80%;
-  }
-}
-@media only screen and (min-width: 1900px) {
-  body {
-    font-size: 125%;
-  }
-  .navbar,
-  .content {
-    margin: 0 auto;
-    padding-left: 8em!important;
-    padding-right: 8em!important;
-  }
-}
-
-
-.sscode{
-  font-family: "Source Code Pro";
-  font-weight: 300;
-  font-size: 0.9em;
-  background: #F0F0F0;
 }

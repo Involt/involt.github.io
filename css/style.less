@@ -1,0 +1,431 @@
+@lightBlue: #00c5ff;
+@cta: #ffde00;
+@a-color:rgb(0, 84, 109);
+@bgray: #f8f8f8;
+@codegray: #f0f0f0;
+@txtcolor:#003645;
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html{
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	margin:0;
+	padding: 0;
+	font-family: 'Source Sans Pro';
+	color:@txtcolor;
+	margin-bottom: 272px;
+}
+
+.container{
+	padding: 40px;
+	max-width: 1380px;
+	margin: auto;
+}
+
+a{
+	color:@txtcolor;
+	&:hover{
+		color: @a-color;
+	}
+}
+
+h1 {
+	margin: 0px 20px;
+	font-size: 48px;
+}
+
+h2 {
+	font-size: 30px;
+	font-weight: 300;
+	text-align: center;
+}
+
+h3 {
+	font-size: 32px;
+	font-weight: 700;
+	text-align: center;
+}
+
+h4{
+	font-size: 24px;
+	font-weight:700;
+	margin:20px 0;
+}
+
+.cta{
+	width: 240px;
+	height: 50px;
+	margin: 0 auto;
+	line-height: 50px;
+	font-size: 18px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 3px;
+	box-shadow:0 2px 0px #0099e7;
+	background-color: @cta;
+	color:black;
+	display: block;
+	&:hover{
+		background: white;
+		color:@a-color;
+	}
+}
+
+.code{
+	font-family: 'Source Code Pro';
+	font-weight: 300;
+	font-size: 14px;
+	padding:20px;
+	background: @codegray;
+	margin:20px auto;
+	border-radius: 6px;
+	.code-type{
+		color:#90a6ac;
+		margin-bottom: 10px;
+	}
+	&.syntax>p{
+		font-family: 'Source Sans Pro';
+		font-weight: 700;
+		font-size: 24px;
+		word-spacing: 15px;
+		margin-bottom: 0;
+	}
+	.code-m{
+		font-size: 14px;
+		line-height: 1.5;
+		p{
+			font-size: 14px;
+			margin-left: 20px;
+			margin-bottom: 0px;
+		}
+	}
+}
+
+header {
+	position: fixed;
+	top:0;
+	background: white;
+	width: 100%;
+	height:70px;
+	padding: 10px 0;
+	border-bottom:1px solid @lightBlue;
+	//box-shadow: 0px 0px 2px black;
+	.container-head{
+		max-width: 1380px;
+		margin: auto;
+		padding: 0 40px;
+	}
+	.logo{
+		img{
+			height: 50px;
+		}
+	}
+	nav{
+		float:right;
+		a{
+			height: 50px;
+			padding: 10px;
+			margin-left:10px;
+			line-height: 50px;
+			font-weight: 300;
+			text-decoration: none;
+			&:hover{
+				text-decoration: underline;
+				background-color:@bgray;
+			}
+		}
+	}
+}
+
+.ham-btn{
+	display: none;
+}
+
+
+
+.main-lead{
+	margin-top: 70px;
+	padding-top: 100px;
+	min-height: 500px;
+	text-align: center;
+	background-color: @lightBlue;
+	h2{
+		margin-top: 15px;
+		margin-bottom:50px;
+	}
+}
+
+.column {
+	display: inline-block;
+	margin-top: 40px;
+	vertical-align: top;
+	width:33%;
+	padding: 0 20px;
+	img{
+		width: 75%;
+		display: block;
+		margin:auto;
+	}
+	p{
+		text-align: center;
+		font-size: 20px;
+		font-weight: 300;
+		line-height: 30px;	
+	}
+}
+
+.bg-gray{
+	background: @bgray;
+	padding:60px 0;
+
+	&.howdoesit> .container{
+		margin: 0 auto;
+		background: white;
+		border-top: 1px solid @lightBlue;
+		border-bottom: 1px solid @lightBlue;
+	}
+}
+
+.howdoesit{
+	text-align: center;
+	p{
+		font-weight: 300;
+		font-size: 20px;
+		
+	}
+	.code{
+		width: 66%
+	}
+	.linkunder{
+		font-size: 20px;
+		font-weight: 300;
+		a{
+			font-weight: 700;
+		}
+	}
+}
+
+.landing-end{
+	background-color: @lightBlue;
+	min-height: 260px;
+	.cta{
+		margin-bottom: 20px;
+	}
+}
+
+main{
+	margin-left: 340px;
+	border-top: 1px solid @lightBlue;
+	float:none;
+	width: auto;
+	overflow: hidden;
+	background: white;
+	padding:40px;
+	h3{
+		border-bottom: 1px solid lightgray;
+		padding-bottom: 20px;
+		margin: 0;
+		margin-bottom: 30px;
+		text-align: left;
+		//border-bottom: 1px solid @lightBlue;
+	}
+	p{
+		margin: 0;
+		margin-bottom: 20px;
+		font-size: 16px;
+		line-height: 1.5;
+		color:#323232;
+		span{
+			font-family: 'Source Code Pro';
+			background: @codegray;
+			margin: 0 3px;
+		}
+	}
+	img{
+		max-width: 600px;
+		display: block;
+		margin: 40px auto;
+	}
+	&.examples{
+		text-align: center;
+		img{
+			margin: 20px auto;
+		}
+	}
+}
+
+.sidebar{
+	float: left;
+	background: @codegray;
+	width: 300px;
+	margin-right: 40px;
+	padding:40px;
+	a{
+		font-weight: 700;
+		font-size: 20px;
+		display: block;
+		margin-bottom: 10px;
+	}
+	p>a{
+		font-weight: 300;
+		font-size: 16px;
+		margin-bottom:0;
+	}
+	h2{
+		text-align: left;
+		margin-top:0;
+		font-size: 32px;
+	}
+}
+
+footer{
+	position: absolute;
+	left:0;
+	bottom: 0;
+	width: 100%;
+	background-color: @bgray;
+	border-top: 1px solid @lightBlue;
+	.column{
+		margin-top:0;
+	}
+	img, .ico-small{
+		width: 50px;
+		margin-left:0;
+		margin-bottom:20px;
+	}
+	.footer-txt{
+		text-align: left;
+		font-size: 14px;
+		height:100px;
+		color: #696969;
+	}
+	a{
+		font-weight: 700;
+		display: inline-block;
+	}
+}
+
+@media only screen and (max-width: 1050px){
+	.container{
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.column{
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: 40px;
+		img{
+			width: 50%;
+			min-width: 200px;
+		}
+		border-bottom: 1px solid lightgray;
+		&:nth-child(4){
+			border:none;
+		}
+	}
+	.main-lead{
+		padding-top: 20px;
+		min-height: 350px;
+	}
+	h1{
+		font-size: 40px;
+		margin: 0;
+	}
+	h2{
+		font-size: 22px;
+	}
+	img{
+		width: 50%;
+	}
+	.sidebar{
+		float:none;
+		width: 100%;
+		&.reference>div{
+			display:inline-block;
+			vertical-align: top;
+			margin-right: 40px;
+		}
+	}
+	main{
+		margin-left:0;
+	}
+	.examples>img{
+		max-width: 75px;
+	}
+	header>.container-head{
+		padding:0 20px;
+		img{
+			width: 146px;
+		}
+		nav{
+			display: none;
+			float:none;
+			background: white;
+			a{	
+				display: block;
+				width: 100%;
+				margin:0;
+				padding: 0 20px;
+			}
+		}
+	}
+
+	.ham-btn{
+		display: block;
+		float: right;
+		width: 50px;
+		height: 50px;
+		&:hover{
+			background: rgb(240,240,240);
+		}
+		div{
+			margin: 10px;
+			margin-top: 14px;
+			span{
+				margin-top: 20%;
+				height: 4px;
+				background: black;
+				display: block;
+				&:nth-child(1){
+					margin-top:0;
+				}
+			}
+		}
+	}
+
+	.logo{
+		min-width: 200px;
+	}
+	.ico-small{
+		min-width: 50px!important;
+		width: 50px!important;
+		margin-top: 20px!important;
+	}
+	.howdoesit{
+		padding: 0;
+		.container{
+			margin: 0!important;
+		}
+		.code{
+			width:100%;
+		}
+	}
+	.code{
+		width: 100%;
+	}
+	body{
+		margin-bottom: 0;
+	}
+	footer{
+		position:relative;
+	}
+}

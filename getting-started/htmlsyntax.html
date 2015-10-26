@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML Syntax | Involt - Arduino to html prototyping framework for designers.</title>
+	<meta content="Involt CSS syntax and HTML explained. This chapter also contains details about configuring the Chrome App" name="description"></meta>
+	<meta content="hardware prototyping, software to hardware, arduino, html, arduino to html, framework, jquery, chrome app, physical computing, communication" name="keywords"></meta>
+	<meta content="width=device-width, initial-scale=1" name="viewport"></meta>
+	<link rel="shortcut icon" type="../image/png" href="../favicon.png"/>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<!--<script src="js/less.js"></script>-->
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<header>
+		<div class="container-head">
+			<a href="../index.html" class="logo"><img src="../img/logo.svg" alt=""></a>
+			<div class="ham-btn">
+				<div>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>	
+			<nav>
+				<a href="../index.html">Home</a>
+				<a href="../getting-started.html">Getting started</a>
+				<a href="../examples.html">Examples</a>
+				<a href="../reference.html">Reference</a>
+				<a href="https://github.com/Involt/Involt">Github</a>
+			</nav>
+		</div>
+	</header>
+	<div class="bg-gray">
+		<div class="container">
+			<div class="sidebar reference">
+				<h2>Chapters:</h2>
+				<div>
+					<a href="../getting-started.html">Quick start</a>
+				</div>
+				<div>
+					<a href="htmlsyntax.html">HTML UI & CSS syntax</a>
+				</div>
+				<div>
+					<a href="arduino.html">Arduino sketch</a>
+				</div>
+				<div>
+					<a href="jquery.html">JQuery methods</a>
+				</div>
+				<div>
+					<a href="bluetooth.html">Bluetooth</a>
+				</div>
+			</div>
+			<main>
+				<h3>HTML UI & CSS syntax</h3>
+				<p>This section explains software part of Involt and creating the interface inside index.html of framework. The most important thing is understanding how to create HTML elements. Next part of this chapter is about configuring the app.</p>
+				<p>Involt converts CSS classes into specified user interface element, function and its parameters. The <span>ard</span> class defines the Involt object.</p>
+				<div class="code syntax"><p>ard [element] [pin] [value] [parameters]</p></div>
+				<p>The syntax in html will look like this:</p>
+				<div class="code html">&lt;div class="ard [element] [pin] [value] [parameters]"&gt;&lt;/div&gt;</div>
+				<h4>element</h4>
+				<p>Describe what UI element you want to create... for list of elements check  <a href="../reference.html">reference.</a></p>
+				<h4>pin</h4>
+				<p>Analog or digital pin number. Type of pin defines what kind of data you want to send. Currently the limit is only one pin per element but you can distribute the data inside sketch. For multiple values use JQuery Methods.</p>
+				<p>P - PWM pin data (0-255 or any other number you want to send to arduino variable) - <span>P5</span>, <span>P6</span> ...</p>
+				<p>D - digital pin data (0/1) - <span>D5</span>, <span>D13</span> ...</p>
+				<p>A - analog pin (read) - <span>A0</span> , <span>A1</span> ...</p>
+				<p> Involt uses the term "pin" to easy understand what element manipulates which pin but it can be used to store more variables than your device total pin amount. Other letters will work as parameter for additional string sent to device. These strings need to be declared in sketch file. For example you can send string "involt" to declared string in arduino sketch with Involt CSS S0, this is described in this <a href="">tutorial</a>.</p>
+				<h4>value</h4>
+				<p>Value you want to send or beginning value for dynamic objects. Some elements like hover or checkbox require two or more values to work - write them separated in one class: [value1-value2] (example: <span>50-100</span>). The current value is shared between elements with same pin (each pin can have one value at once).</p>
+				<p>In Arduino the value is stored in <span>involtDigital</span> array, in app it's in <span>digitalPins</span> array with same index number. Threat them as container for transfered variables and actual pin states.</p>
+				<h4>parameters</h4>
+				<p>Many elements requires parameters like minimum or maximum value. To check what parameters are required for element read the <a href="../reference.html">references.</a>. </p>
+				<p>Range: <span>range-[minimum]-[maximum]</span> example: <span>range-0-255</span></p>
+				<p>Step: <span>step-[step]</span> example: <span>step-5</span></p>
+				<p>Beginning value: this is defined as <span>[value]</span> of elements.</p>
+				<p>There are default values for each parameter. For read elements range is 0-1024, send elements have range: 0-255, beginning value: 0 and step: 1.</p>
+				<p>The order of parameter classes doesn't matter. Only the <span>ard [element] [pin] [value]</span> must remain in correct order.</p>
+				<h4>Custom CSS</h4>
+				<p>You can add custom CSS class before or after the Involt syntax. Don't mix your custom CSS between Involt classes. Avoid using <span>ard</span> class on non-Involt elements. To change existing styleguide edit the core/framework.css</p>
+				<h3>Loader</h3>
+				<p>On launch Involt uses loader to ask for Arduino device. To customize loader screen edit core/loader.css. </p>
+				<h4>How to remove the loader?</h4>
+				<ol>
+					<li>Open core/involt.js</li>
+					<li>Change loaderOnLaunch to false.</li>
+					<li>Set default connection settings below. After that Involt will connect to selected device on launch.</li>
+				</ol>
+				<h3>Settings</h3>
+				<h4>How to change project name?</h4>
+				<p>Open manifest.json. Do not change other elements inside manifest because your project will disappear from launcher. For details about manifest file go to <a href="https://developer.chrome.com/extensions/manifest">Chrome Manifest website</a>. Some changes requires app to reload from chrome extensions menu.</p>
+				<h4>How to change window dimensions?</h4>
+				<p>Open core/background.js and change screenWidth or screenHeight. To run app on fullscreen uncomment the fullscreen parameter.</p>
+				<h4>Read-only elements update rate.</h4>
+				<p>The update rate affects smoothness of updating HTML read elements. Default value is compromise between smoothness and cpu usage. Lower value will update objects almost in real time but will affect CPU usage. To change this open core/involt.js and change <span>updateRate</span>. This will not affect the connection bitrate.</p>
+				<h4>Persistent connection</h4>
+				<p>Due to many issues when working on code from both sides, Involt now have improved connection management. Previous versions blocked connected serial port and made tests frustrating. Now when connecting, user can decide to connect to port and closing previous connections or resume connection without rebooting device.</p>
+				<p>Chrome keeps the connection for very, very short time by default. This can be extended by changing <span>isPersistent</span> to <span>true</span> in core/involt.js. Keep in mind that with this mode it's impossible to upload sketch to device.</p>
+				<p>Issue affects only a serial connection, the bluetooth connection is not blocking the port when paired. Remember about disconnecting RX/TX pins during sketch upload.</p>
+				<h4>Debug mode</h4>
+				<p>Debug mode prints to console additional informations about what is happening in Involt and connection settings. To turn on debug mode open core/involt.js and change debugMode to true.</p>
+			</main>
+		</div>
+	</div>
+	<footer>
+		<div class="container">
+			<div class="column">
+				<img src="../img/ico1.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. The goal is to help designers to overcome the obstacles at prototyping stage.
+				</div>
+				<a href="../about.html">Read more</a>
+			</div>
+			<div class="column">
+				<img src="../img/ico2.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development you can check the changelog. Involt is under MIT license.
+				</div>
+				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
+			</div>
+			<div class="column">
+				<img src="../img/ico3.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					Used Involt and enjoyed it? Do you have any questions or suggestions? Help by sending feedback directly via mail.
+				</div>
+				<a href="mailto:ernestwarzocha@gmail.com">ernestwarzocha@gmail.com</a>
+			</div>
+		</div>
+	</footer>
+	<script src="../js/jq-ui.js"></script>
+</body>
+</html>

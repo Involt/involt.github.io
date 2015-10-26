@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Bluetooth | Involt - Arduino to html prototyping framework for designers.</title>
+	<meta content="Involt classic Bluetooth wireless prototyping guide." name="description"></meta>
+	<meta content="hardware prototyping, software to hardware, arduino, html, arduino to html, framework, jquery, chrome app, physical computing, communication" name="keywords"></meta>
+	<meta content="width=device-width, initial-scale=1" name="viewport"></meta>
+	<link rel="shortcut icon" type="../image/png" href="../favicon.png"/>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<!--<script src="js/less.js"></script>-->
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<header>
+		<div class="container-head">
+			<a href="../index.html" class="logo"><img src="../img/logo.svg" alt=""></a>
+			<div class="ham-btn">
+				<div>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>	
+			<nav>
+				<a href="../index.html">Home</a>
+				<a href="../getting-started.html">Getting started</a>
+				<a href="../examples.html">Examples</a>
+				<a href="../reference.html">Reference</a>
+				<a href="https://github.com/Involt/Involt">Github</a>
+			</nav>
+		</div>
+	</header>
+	<div class="bg-gray">
+		<div class="container">
+			<div class="sidebar reference">
+				<h2>Chapters:</h2>
+				<div>
+					<a href="../getting-started.html">Quick start</a>
+				</div>
+				<div>
+					<a href="htmlsyntax.html">HTML UI & CSS syntax</a>
+				</div>
+				<div>
+					<a href="arduino.html">Arduino sketch</a>
+				</div>
+				<div>
+					<a href="jquery.html">JQuery methods</a>
+				</div>
+				<div>
+					<a href="bluetooth.html">Bluetooth</a>
+				</div>
+			</div>
+			<main>
+				<h3>Bluetooth</h3>
+				<p>Wireless prototyping is crucial for mobile projects. Currently Involt supports classic Bluetooth communication with same as default serial sketch. </p>
+				<p>The bluetooth support was tested with the basic hc-05 device. It's cheap and easy to setup.</p>
+				<p>This chapter will not describe how to connect hc-05 or how to launch AT mode. There are many tutorials on the internet. Remember to not use software serial - just connect to RX/TX pins but remember to disconnect the cables before uploading sketch.</p>
+				<h4>Configuring the device</h4>
+				<p>Enter the AT mode and write:</p>
+				<p><span>AT+UART=57600,0,0</span> to change speed.</p>
+				<p><span>AT+ROLE=0</span> to set as slave device.</p>
+				<p>There are many settings but I don't recommend to change them. Maybe change name to INVOLT with <span>AT+NAME=INVOLT</span></p>
+				<p>To get the device address you can use <span>AT+ADDR</span> or check this in Involt app console (after changing to BT mode).</p>
+				<p>In your system turn On bluetooth adapter and pair the device with default 1234 password (for hc-05). The device must be paired before launching the app.</p>
+				<h4>App setup</h4>
+				<p>First, change the <span>isBluetooth</span> variable to <span>true</span> and <span>isSerial</span> to <span>false</span> at the beginning of core/involt.js.</p>
+				<p>Another thing is the address and UUID of service. The easiest way to find this after changing the <span>isBluetooth</span> is open the chrome console. Open the app, right click and inspect element. It's important to have loader on launch when discovering devices.</p>
+				<img src="../img/btconsole.png" alt="">
+				<p>You should paste the UUID (and address if you wish to work without loader) to <span>uuid</span> in core/involt.js and manifest.json (this will require reloading your app from chrome extenstions menu). </p>
+				<p>If everything is correct the app will launch after pressing the connect button. If your device is not on the list press button to search for devices. If there are connection errors check the console.</p>
+			</main>
+		</div>
+	</div>
+	<footer>
+		<div class="container">
+			<div class="column">
+				<img src="../img/ico1.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. The goal is to help designers to overcome the obstacles at prototyping stage.
+				</div>
+				<a href="../about.html">Read more</a>
+			</div>
+			<div class="column">
+				<img src="../img/ico2.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development you can check the changelog. Involt is under MIT license.
+				</div>
+				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
+			</div>
+			<div class="column">
+				<img src="../img/ico3.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					Used Involt and enjoyed it? Do you have any questions or suggestions? Help by sending feedback directly via mail.
+				</div>
+				<a href="mailto:ernestwarzocha@gmail.com">ernestwarzocha@gmail.com</a>
+			</div>
+		</div>
+	</footer>
+	<script src="../js/jq-ui.js"></script>
+</body>
+</html>

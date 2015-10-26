@@ -2,147 +2,102 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Involt - Arduino to html framework for designers</title>
-	<meta content="Create your app with hardware interaction. You only need basic knowledge about html, css and Arduino to get started. Involt supports JQuery." name="description"></meta>
-	<meta content="hardware prototyping, software to hardware, arduino, html, arduino to html, framework, jquery, chrome app, physical computing, communication" name="keywords"></meta>
+	<title>Involt - Arduino to html prototyping framework for designers.</title>
+	<meta content="Prototyping framework for designers to easily create interaction between hardware and software. You only need basic knowledge about html, css and Arduino to get started." name="description"></meta>
+	<meta content="hardware prototyping, software to hardware, arduino, html, arduino to html, framework, jquery, chrome app, physical computing, communication, prototyping, bluetooth" name="keywords"></meta>
 	<meta content="width=device-width, initial-scale=1" name="viewport"></meta>
- <!-- <meta property="og:title" content="Involt" /> 
-  <meta property="og:image" content="img/facebook-og.png" /> 
-  <meta property="og:description" content="Arduino to html framework for designers" />
-  <meta property="og:url" content="http://www.:).com"> -->
 	<link rel="shortcut icon" type="image/png" href="favicon.png"/>
-	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="css/style.css">	
-	<!--<script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.min.js"></script>-->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!--<script src="js/less.js"></script>-->
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<header class="nav-bg">
-		<div class="navbar">
-			<div class="logo"><a href="index.html"><img src="img/logo.svg" alt="involt - arduino to html framework"></a></div>
+	<header>
+		<div class="container-head">
+			<a href="/" class="logo"><img src="img/logo.svg" alt=""></a>
 			<div class="ham-btn">
 				<div>
 					<span></span>
 					<span></span>
 					<span></span>
 				</div>
-			</div>
-			<div class="menu-screen">
+			</div>	
+			<nav>
 				<a href="index.html">Home</a>
-				<a href="gettingstarted.html">Getting started</a>
+				<a href="getting-started.html">Getting started</a>
 				<a href="examples.html">Examples</a>
 				<a href="reference.html">Reference</a>
 				<a href="https://github.com/Involt/Involt">Github</a>
-			</div>
-		</div>
-		<div class="menu-mobile">
-				<a href="index.html">Home</a>
-				<a href="gettingstarted.html">Getting started</a>
-				<a href="examples.html">Examples</a>
-				<a href="reference.html">Reference</a>
-				<a href="https://github.com/Involt/Involt">Github</a>
+			</nav>
 		</div>
 	</header>
-	
-
-	<div class="container lb">
-		<div class="content head">
-			<h2 id="headline">An easy way to think outside the box.</h2>
-			<h1 class="lead">Chrome based <strong class="bold">Arduino to HTML</strong> framework for designers.</h1>
-			<a href="https://github.com/Involt/Involt" class="button">Download</a>
+	<div class="main-lead">
+		<div class="container">
+			<h1>An easy way to think outside the box.</h1>
+			<h2>HTML to Arduino prototyping framework for designers.</h2>
+			<a href="https://github.com/Involt/Involt" class="cta">Download</a>
 		</div>
 	</div>
 	<div class="container">
-		<div class="content">
-			<h2 class="lb1">
-				Involt is a bridge between easy to edit hardware interaction and HTML App interface.
-			</h2>
-			
-			<div class="columns">
-				<img src="img/feature1.svg" alt="No advanced coding">
-				<h3>No advanced coding</h3>
-				<p>Create your app using only basic knowledge about HTML, CSS and Arduino. Instead of learning advanced coding you can focus on overall experience and quickly develop results.</p>
-			</div>
-			<div class="columns">
-				<img src="img/feature2.svg" alt="fast results">
-				<h3>Fast results with CSS</h3>
-				<p>Using classes is really fast technique. Each UI element automatically communicates with Arduino via serial. Involt comes with editable UI kit to help you get started.</p>
-			</div>
-			<div class="columns">
-				<img src="img/feature3.svg" alt="offline prototyping via serial">
-				<h3>Easy development</h3>
-				<p>Thanks to Chrome Apps you don't have to worry about building software from scratch. You don't need additional hardware to run Involt. It's only you and your project.</p>
-			</div>
-			<br style="clear:both">
-			
+		<h2>Involt is a bridge between hardware prototyping and easy to create app interaction.</h2>
+		<div class="column">
+			<img src="img/feature1.svg" alt="no coding">
+			<h3>No advanced coding</h3>
+			<p>Create your app using only basic knowledge about HTML, CSS and Arduino. Instead of learning advanced coding focus on overall experience and quickly develop results.</p>
+		</div>
+		<div class="column">
+			<img src="img/feature2.svg" alt="css">
+			<h3>Fast results with CSS</h3>
+			<p>Using classes is really fast technique. Each UI element automatically communicates with Arduino. Involt comes with editable UI kit to help you get started.</p>
+		</div>	
+		<div class="column">
+			<img src="img/feature3.svg" alt="prototyping">
+			<h3>Easy prototyping</h3>
+			<p>Thanks to Chrome Apps, you don’t need to build software from scratch. There is no need of additional hardware to run Involt. It's only you and your project.</p>
 		</div>
 	</div>
-	<div class="container steps3">
-		<div class="content">
-			<h2>
-				Three steps to create your project:
-			</h2>
-			<div class="columns">
-				<img src="img/step1.svg" alt="Chrome app install">
-				<div class="steps">1.Install app</div>
-			</div>
-			<div class="columns">
-				<img src="img/step2.svg" alt="Edit the arduino sketch">
-				<div class="steps">2.Edit Arduino sketch</div>
-			</div>
-			<div class="columns">
-				<img src="img/step3.svg" alt="create the layout">
-				<div class="steps">3.Create the HTML layout</div>
-			</div>			
-			<div class="linkunder">
-				Read the <a href="gettingstarted.html" class="bold linkstep">getting started page</a>
-			</div>
+	<div class="bg-gray howdoesit">
+		<div class="container">
+			<h3>How does it work?</h3>
+			<h2>Involt translates CSS classes into functions. You only need to specify UI element, target pin and variables like desired values or their range.</h2>
+			<div class="code">&lt;div class="ard button P5 255"&gt; Click me &lt;/div&gt;</div>
+			<p>For more advanced project you can use JavaScript and JQuery. You can do the same thing with Involt JQuery methods:</p>
+			<div class="code">$(this).pinDefine("P5").sendValue(255);</div>
+			<div class="linkunder">Read the <a href="getting-started.html">getting started</a> or <a href="reference.html">reference</a> page.</div>
 		</div>
 	</div>
-	<div class="container code">
-		<div class="content ">
-			<h2>How does it work?</h2>
-			<div class="text">Involt translates CSS classes into functions. You only need to specify UI element, target pin and variables like desired values or their range.</div>
-			<div class="codearea">
-				&lt;div class="ard button P5 255"&gt; Click me &lt;/div&gt;
-			</div>
-			<p>For more advanced project you can use full features of JQuery and Chrome API. You can do the same thing with custom JQuery:</p>
-			<div class="codearea">
-				$(this).pinDefine("P5").sendValue(255);
-			</div>
-			<div class="linkunder">Check the <a href="reference.html" class="bold">references</a> or <a href="examples.html" class="bold">start with examples</a></div>
-		</div>
+	<div class="landing-end">
+		<div class="container">
+			<h3>Involt is ready to use Chrome App with built-in hardware communication.</h3>
+			<a href="https://github.com/Involt/Involt" class="cta">Download</a>
+		</div>	
 	</div>
-	<div class="container lb">
-		<div class="content head sechead">
-			<div class="lead2">Involt is ready to use Chrome App with built-in hardware communication. </div>
-			<a href="https://github.com/Involt/Involt" class="button">Download</a>
-		</div>
-	</div>
-	<footer class="container">
-		<div class="content">
-			<div class="columns">
-				<img src="img/ico1.svg" alt="involt" class="ico">
-				<p class="foot">Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. It is aimed for UX/product designers rather than professional coders.
-				</p>
-				<a href="#" class="bold">Return to top</a>
+	<footer>
+		<div class="container">
+			<div class="column">
+				<img src="img/ico1.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. The goal is to help designers to overcome the obstacles at prototyping stage.
+				</div>
+				<a href="about.html">Read more</a>
 			</div>
-			<div class="columns">
-				<img src="img/ico2.svg" alt="git" class="ico">
-				<p class="foot">You can help develop this framework or  <a href="https://github.com/Involt/Involt" class="bold">fork project on Github</a>. To see the progress of developement you can check the changelog. <br>Involt is under MIT license.</p>
-
-				<a href="https://github.com/Involt/Involt/wiki/Changelog" class="bold">See the changelog</a>
+			<div class="column">
+				<img src="img/ico2.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development you can check the changelog. Involt is under MIT license.
+				</div>
+				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
 			</div>
-			<div class="columns">
-				<img src="img/ico3.svg" alt="contact the author" class="ico">
-				<p class="foot">
-					Used Involt and enjoyed it? Do you have any questions or suggestions? You can help by sending feedback directly via mail.
-				</p>
-				<a href="mailto:ernestwarzocha@gmail.com" class="bold">ernestwarzocha@gmail.com</a>
+			<div class="column">
+				<img src="img/ico3.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					Used Involt and enjoyed it? Do you have any questions or suggestions? Help by sending feedback directly via mail.
+				</div>
+				<a href="mailto:ernestwarzocha@gmail.com">ernestwarzocha@gmail.com</a>
 			</div>
 		</div>
-		<br style="clear:both">
 	</footer>
-	<script src="js/jq.js"></script>
+	<script src="js/jq-ui.js"></script>
 </body>
 </html>
