@@ -95,7 +95,7 @@
 				<h4>Read-only elements update rate.</h4>
 				<p>The update rate affects smoothness of updating HTML read elements. Default value is compromise between smoothness and cpu usage. Lower value will update objects almost in real time but will affect CPU usage. To change this open core/involt.js and change <span>updateRate</span>. This will not affect the connection bitrate.</p>
 				<h4>Persistent connection</h4>
-				<p>Due to many issues when working on code from both sides, Involt now have improved connection management. Previous versions blocked connected serial port and made tests frustrating. Now when connecting, user can decide to connect to port and closing previous connections or resume connection without rebooting device.</p>
+				<p>Due to many issues when working on code from both sides, Involt now has improved connection management. Previous versions blocked connected serial port and made tests frustrating. Now when connecting, user can decide to connect to port and closing previous connections or resume connection without rebooting device.</p>
 				<p>Chrome keeps the connection for very, very short time by default. This can be extended by changing <span>isPersistent</span> to <span>true</span> in core/involt.js. Keep in mind that with this mode it's impossible to upload sketch to device.</p>
 				<p>Issue affects only a serial connection, the bluetooth connection is not blocking the port when paired. Remember about disconnecting RX/TX pins during sketch upload.</p>
 				<h4>Debug mode</h4>
