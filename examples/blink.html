@@ -70,7 +70,7 @@
 				<p>Make sure that Involt is installed. If you don't know how to do this go to <a href="../getting-started.html">getting started</a> page.</p>
 				<p>Add code to body section to generate switch between HIGH and LOW states of pin (the letter D in pin is for digital pins and P for PWM values or any other number). The last class is 0 because we want to start with inactive LED.</p>
 				<div class="code html">&lt;div class="ard toggle D5 0"&gt;&lt;/div&gt;</div>
-				<p>Now add <span>digitalWrite</span> to <span>void loop</span> and <span>pinMode</span> to <span>void setup</span> inside Involt Arduino sketch (in Arduino folder). The value received from App is stored in <span>chromeDigital[] </span>array with index which represents the target pin.</p>
+				<p>Now add <span>digitalWrite</span> to <span>void loop</span> and <span>pinMode</span> to <span>void setup</span> inside Involt Arduino sketch (in Arduino folder). The value received from App is stored in <span>involtDigital[] </span>array with index which represents the target pin.</p>
 				<div class="code arduino">
 					<div class="code-m">
 						... <br>
