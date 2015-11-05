@@ -210,7 +210,7 @@ header nav a:hover {
   margin-bottom: 20px;
 }
 main {
-  margin-left: 340px;
+  /*margin-left: 340px;*/
   border-top: 1px solid #00c5ff;
   float: none;
   width: auto;
