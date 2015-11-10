@@ -65,9 +65,9 @@
 				<h3>Arduino sketch</h3>
 				<p>In arduino folder Involt contains prepared sketch which you must use to correctly use framework (serial communication by default).</p>
 				<h4>Variables</h4>
-				<p>Involt sketch automatically updates values received from app. Values are updated in <span>involtDigital</span>array where length is total pin number +1. Undeclared array length may cause some errors in some cases so it's better to have it defined.</p>
+				<p>Involt sketch automatically updates values received from app. Values are updated in <span>involtDigital</span> array where length is total pin number +1. Undeclared array length may cause some errors in some cases so it's better to have it defined. <span>receivedString</span> contains strings.</p>
 				<p>Sometimes it's a good practice to define beginning values in <span>void setup()</span> to make the hardware state consistent to app beginning values.</p>
-				<p>Keep in mind that you can send more values than your pin number. You can use more variables to operate inside sketch functions or send values to expanders or shift registers. For example in Arduino UNO using <span>involtDigital</span> values 14-20 to use with shift register.</p>
+				<p>Keep in mind that you can send more values than your pin number. You can use more variables to operate inside sketch functions or send values to expanders or shift registers. For example in Arduino UNO using <span>involtDigital</span> values 14-20 to use with shift register. Check <a href="../examples/strings.html">Send/receive more...</a> tutorial.</p></p>
 				<h4>Receiving data</h4>
 				<p>The received values are updated to <span>involtDigital[pinIndex]</span> array. To use them just write <span>digitalWrite</span> or <span>analogWrite</span> using the desired variable. Button with pin <span>P6</span> will send value to <span>involtDigital[6]</span>.</p>
 				<div class="code arduino">
@@ -83,7 +83,7 @@
 						...
 					</div>	
 				</div>
-				<p>Receiving strings is not possible with this method - check <a href="../examples/strings.html">Send/receive more...</a> tutorial.</p>
+				<p>Receiving strings is possible with <span>receivedString[pinIndex]</span> array and using S letter in HTML pin parameter.
 				<h4>Sending data</h4>
 				<p>For sending values use <span>involtSend(pinIndex, value)</span> function. The <span>pinIndex</span> will be same inside app.</p>
 				<div class="code arduino">
@@ -134,11 +134,11 @@
 				<h4>autoPinMode</h4>
 				<p>The <span>autoPinMode</span> sets <span>pinMode</span> for output for each pin value received. By using this you don't have to write <span>pinMode</span> in <span>void setup()</span>. This mode is not recommended when using specific hardware or using mixed inputs and outputs but its good for quick testing.</p>
 				<h4>directMode</h4>
-				<p>For quick testing <span>direcMode</span> will automatically send received value to target pin without writing <span>digitalWrite</span> or <span>analogWrite</span> to sketch <span>void loop()</span>. This mode will not update the variables in <span>involtDigital</span> array.</p>
+				<p>For quick testing <span>direcMode</span> will automatically send received value to target pin without writing <span>digitalWrite</span> or <span>analogWrite</span> to sketch <span>void loop()</span>. This mode will not update the variables in <span>involtDigital</span> array. Strings from <span>receivedString</span> will not work with this mode.</p>
 				<h4>Bitrate</h4>
 				<p>Changing bitrate is not recommended but remember to change it from both sides. In sketch just change the <span>Serial.begin</span> and in app open core/involt.js and change <span>bitrate</span> to same value.</p>
 				<h4>Hardware-specific support</h4>
-				<p>Involt sketch uses only serial library to work. Everything should work fine as long as you don't try to use software serial. </p>
+				<p>Involt sketch uses only serial library. Everything should work fine as long as you don't try to use software serial. </p>
 			</main>
 		</div>
 	</div>

@@ -79,37 +79,12 @@
 				</div>
 				<p>Now you can access this value in involtDigital array as <span>involtDigital[14]</span>. You can use this method to send values to shift register or expander.</p>
 				<h4>How to send a custom string to Arduino.</h4>
-				<p>Involt communication is based on variable/integer exchange by using serial. Even if data is transfered with string data - it is not possible to send the custom string directly. Here is example how data is sent from Involt to Arduino: </p>
-				<div class="code">
-					//Send to pwm pin 5 value 255: <br>	<br>
-					P5V255\n <br><br>				
-					//the "\n" is used for Serial.readStringUntil() inside sketch to stop the function from reading data.
-				</div>
-				<p>To store your string you need to define your custom string. </p>
-				<div class="code arduino">String customstring;</div>
-				<p>You need to change the <span>involtReceive</span> function. Involt will save to <span>customstring</span> when the received string will start from parameter. For this example add "S" letter as the parameter. Good practice is saving strings with many letters - S, T, U... and define them in html as S0,T0,U0 (you can also use this letter to store multiple variables in array with additional "if" statement. Then access them as S0,S1 etc.). Do not use the letters P or D because sending will cause errors in sketch.</p>
-				<p>Edit the <span>involtReceive()</span> function </p>
-				<div class="code arduino">
-					<div class="code-m">
-						... <br><br>
-						if(Serial.available() > 0){
-						<p>involt = Serial.readStringUntil('\n');</p>
-						<p>involtLen = involt.length();</p><br>
-						<p>if (involt.indexOf("S") == 0){</p>
-						<br>
-						<p>customstring = involt.substring(involt.indexOf(V) + 1, involtLen);</p>
-						<br>
-						<p>}</p><br><br>
-						...
-					</div>
-				</div>
-				<p>To save your customstring as "involt" you need to send:</p>
-				<div class="code">S0Vinvolt</div>
-				<p>Now test this function with connected led to pin 5: </p>
+				<p>Use the <span>receivedString[pinIndex]</span> array where pinIndex is index of S parameter from HTML pin attribute. (<span>S0</span> is <span>receivedString[0]</span>) </p>
+				<p>Test this with connected led to pin 5: </p>
 				<div class="code arduino">
 					<div class="code-m">
 						//Add this to void loop section <br><br>
-						if (customstring == "involt"){ 
+						if (receivedString[0] == "involt"){ 
 						<p>analogWrite(5, 255);</p>
 						}
 					</div>

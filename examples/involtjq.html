@@ -63,7 +63,7 @@
 			</div>
 			<main>
 				<h3>Involt as JQuery plugin</h3>
-				<p>By using JavaScript it's possible to create your custom scripts and UI elements. JQuery can be used not only to manipulate current Involt objects - it's easy to create new UI elenents and their interaction. With some advanced coding skills you can do most of your project with JS. Below there are examples of Involt JQuery methods. The best way to include your custom script is adding it in head section of index.html.</p>
+				<p>By using JavaScript it's possible to create your custom scripts and UI elements. JQuery can be used not only to manipulate current Involt objects - it's easy to create new UI elenents and their interaction. With some advanced coding skills you can do most of your project with JS. Below there are examples of Involt JQuery methods. You should add your custom script as additional .js file to head section - inline scripting is not allowed in chrome apps.</p>
 				<h4>Defining pin</h4>
 				<p>Target pin is most important part of framework - it's not only the pin we want to communicate with. Pin is index of <span>digitalPins[]</span> and <span>analogPins[]</span> global array which can be used to transfer more variables between software and hardware.</p>
 				<p><span>.pinDefine()</span> is required to communicate with framework and it should be your starting point. <span>.pinDefine()</span> adds to object <span>pin</span> and <span>pinNumber</span> data. Here is example how to attach pin data to object:</p>

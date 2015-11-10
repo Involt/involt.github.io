@@ -71,11 +71,13 @@
 				<h4>element</h4>
 				<p>Describe what UI element you want to create... for list of elements check  <a href="../reference.html">reference.</a></p>
 				<h4>pin</h4>
-				<p>Analog or digital pin number. Type of pin defines what kind of data you want to send. Currently the limit is only one pin per element but you can distribute the data inside sketch. For multiple values use JQuery Methods.</p>
+				<p>Analog or digital pin number. Type of pin defines what kind of data you want to send. Currently the limit is only one pin per element but you can distribute the data inside sketch. <span>P3</span> from HTML will be stored in both <span>digitalPins[3]</span>(software/js) and <span>involtDigital[3]</span>(hardware). For multiple values use JQuery Methods.</p>
 				<p>P - PWM pin data (0-255 or any other number you want to send to arduino variable) - <span>P5</span>, <span>P6</span> ...</p>
 				<p>D - digital pin data (0/1) - <span>D5</span>, <span>D13</span> ...</p>
+				<p>Both P and D can be accessed in <span>involtDigital</span> array in Arduino sketch.</p>
 				<p>A - analog pin (read) - <span>A0</span> , <span>A1</span> ...</p>
-				<p> Involt uses the term "pin" to easy understand what element manipulates which pin but it can be used to store more variables than your device total pin amount. Other letters will work as parameter for additional string sent to device. These strings need to be declared in sketch file. For example you can send string "involt" to declared string in arduino sketch with Involt CSS S0, this is described in this <a href="">tutorial</a>.</p>
+				<p>S - string (words, letters etc.) which can be accessed in <span>receivedString</span> array in Arduino sketch- <span>S0</span> , <span>S1</span> ...</p>
+				<p> Involt uses the term "pin" to easy understand what element manipulates which pin but it can be used to store more variables than your device total pin amount. It's described in this <a href="../examples/strings.html">tutorial</a>.</p>
 				<h4>value</h4>
 				<p>Value you want to send or beginning value for dynamic objects. Some elements like hover or checkbox require two or more values to work - write them separated in one class: [value1-value2] (example: <span>50-100</span>). The current value is shared between elements with same pin (each pin can have one value at once).</p>
 				<p>In Arduino the value is stored in <span>involtDigital</span> array, in app it's in <span>digitalPins</span> array with same index number. Threat them as container for transfered variables and actual pin states.</p>
@@ -86,8 +88,10 @@
 				<p>Beginning value: this is defined as <span>[value]</span> of elements.</p>
 				<p>There are default values for each parameter. For read elements range is 0-1024, send elements have range: 0-255, beginning value: 0 and step: 1.</p>
 				<p>The order of parameter classes doesn't matter. Only the <span>ard [element] [pin] [value]</span> must remain in correct order.</p>
-				<h4>Custom CSS</h4>
-				<p>You can add custom CSS class before or after the Involt syntax. Don't mix your custom CSS between Involt classes. Avoid using <span>ard</span> class on non-Involt elements. To change existing styleguide edit the core/framework.css</p>
+				<h3>Custom CSS</h3>
+				<p>To change existing styleguide edit the core/framework.css. You can add custom CSS class before or after the Involt syntax. Don't mix your custom CSS between Involt classes. Avoid using <span>ard</span>class on non-Involt elements. Because Involt is CSS based you can try to remove the css file and replace it with other CSS frameworks.</p>
+				<h4>Standard UI and prototyping UI</h4>
+				<p>For prototyping purpose there is additional UI kit which is in grayscale and without some additional effects so it's better to combine with wireframes. If you work as UX designer you know how important it is. To use it, just uncoment the link to proto.css and proto-loader.css in index.html. Remember about removing the standard UI kit. </p>
 				<h3>Loader</h3>
 				<p>On launch Involt uses loader to ask for Arduino device. To customize loader screen edit core/loader.css. </p>
 				<h4>How to remove the loader?</h4>
@@ -108,7 +112,7 @@
 				<p>Chrome keeps the connection for very, very short time by default. This can be extended by changing <span>isPersistent</span> to <span>true</span> in core/involt.js. Keep in mind that with this mode it's impossible to upload sketch to device.</p>
 				<p>Issue affects only a serial connection, the bluetooth connection is not blocking the port when paired. Remember about disconnecting RX/TX pins during sketch upload.</p>
 				<h4>Debug mode</h4>
-				<p>Debug mode prints to console additional informations about what is happening in Involt and connection settings. To turn on debug mode open core/involt.js and change debugMode to true.</p>
+				<p>Debug mode prints to console additional informations about what is happening in Involt and connection settings. To turn on debug mode open core/involt.js and change <span>debugMode</span> to <span>true</span>.</p>
 			</main>
 		</div>
 	</div>

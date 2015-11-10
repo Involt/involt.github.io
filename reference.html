@@ -75,6 +75,7 @@
 						<a href="#custom-write">Custom-write</a>
 						<a href="#checkbox">Checkbox</a>
 						<a href="#radio">Radio</a>
+						<a href="#submit-button">Submit-button</a>
 					</p>
 				</div>
 			</div>
@@ -95,7 +96,7 @@
 				<div class="code html">&lt;div class="ard bar A0 range-0-1024"&gt;&lt;/div&gt;</div>
 								<!-- -->
 				<h4 id="knob">Knob</h4>
-				<p>Generates knob that shows analog value. Based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> by Anthony Terrien. You can add the data- attributes as described in plugin to change parameters of this element.</p>
+				<p>Generates knob that shows analog value. Based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> by Anthony Terrien. You can add the data- attributes as described in plugin to change parameters of this element. For using proto UI kit add <span>proto</span> class to make it consistent with UI.</p>
 				<div class="code syntax"><p>ard knob [pin] [range]</p></div>
 				<div class="code html">&lt;div class="ard knob A0 range-0-1024"&gt;&lt;/div&gt;</div>
 								<!-- -->
@@ -141,7 +142,7 @@
 				<div class="code html">&lt;div class="ard hover P5 255-0"&gt;&lt;/div&gt;</div>
 								<!-- -->
 				<h4 id="knob-send">Knob-send</h4>
-				<p>Simple knob that sends value. This knob is also based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> - you can add plugin data- attributes to this element and they will be transfred to generated object. To access the JQuery object use .knob-send>.knob-write selector.</p>
+				<p>Simple knob that sends value. This knob is also based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> - you can add plugin data- attributes to this element and they will be transfred to generated object. For using proto UI kit add <span>proto</span> class to make it consistent with UI.</p>
 				<div class="code syntax"><p>ard knob-send [pin] [startvalue] [range] [step]</p></div>
 				<div class="code html">&lt;div class="ard knob-send P5 100 range-0-255 step-1"&gt;&lt;/div&gt;</div>
 								<!-- -->
@@ -152,7 +153,7 @@
 				<h3 id="html-inputs">HTML inputs</h3>
 				<!-- -->
 				<h4 id="input-write">Input-write</h4>
-				<p>Input which sends written value to chosen pin.</p>
+				<p>Input which sends written value to chosen pin. You can use the <span>type="number"</span> to create input similar to increase/decrease element.</p>
 				<div class="code syntax"><p>ard input-write [pin]</p></div>
 				<div class="code html">&lt;input class="ard input-write P5"&gt;</div>
 								<!-- -->
@@ -169,9 +170,22 @@
 				<h4 id="radio">Radio</h4>
 				<p>Create radiobox with selected value. You can define same input name attribute to switch between values in group of radiobox objects.</p>
 				<div class="code syntax"><p>ard radio [pin] [value]</p></div>
-				<div class="code html">		&lt;input type="radio" class="ard radio P5 0" name="myname"&gt; <br>
-		&lt;input type="radio" class="ard radio P5 100" name="myname"&gt; <br>
-		&lt;input type="radio" class="ard radio P5 255" name="myname"&gt;</div>
+				<div class="code html">		
+					&lt;input type="radio" class="ard radio P5 0" name="myname"&gt; <br>
+					&lt;input type="radio" class="ard radio P5 100" name="myname"&gt; <br>
+					&lt;input type="radio" class="ard radio P5 255" name="myname"&gt;
+				</div>
+								<!-- -->
+				<h4 id="submit-button">Submit-button</h4>
+				<p>Send values of HTML inputs as regular <span>HTML form</span> with <span>submit</span> button. This will prevent default sending event of html inputs (or rangeslider and knob-send) to trigger only when the button is pressed, passing all the values at once. The button and all target elements must be inside form tag. You can add the <span>fn="functionNameString"</span> HTML attribute to trigger function in arduino when pressed. Submit-button has no other parameters.</p>
+				<div class="code syntax"><p>ard submit-button</p></div>
+				<div class="code html">		
+					&lt;form&gt; <br>
+					&lt;input type="text" class="ard input-write S0" placeholder="Name"&gt; <br>
+					&lt;input type="text" class="ard input-write S1" placeholder="Surename"&gt; <br><br>
+					&lt;button type="button" class="ard submit-button"&gt;Submit&lt;/button&gt; <br><br>
+					&lt;/form&gt;
+				</div>
 			</main>
 		</div>
 	</div>

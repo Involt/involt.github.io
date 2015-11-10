@@ -64,7 +64,7 @@
 			<main>
 				<h3>JavaScript support and JQuery methods</h3>
 				<h4>How does it work?</h4>
-				<p>CSS classes contains specified function and parameters that JavaScript converts to raw serial data (pin number, value). Involt automatically exchange data between Arduino and App using Serial library and Chrome API. Because framework is JQuery based it's possible to access the object data with JQuery <span>.data()</span> method or manipulate it with Involt JQuery methods described below. </p>
+				<p>CSS classes contains specified function and parameters that JavaScript converts to raw serial data (pin number, value). Involt automatically exchange data between Arduino and App using Serial library and Chrome API. Because framework is JQuery based it's possible to access the object data with JQuery <span>.data()</span> method or manipulate it with Involt JQuery methods described below. Your own script should be included in head section because chrome app inline scripting is blocked.</p>
 				<img src="../img/diagram.svg" alt="involt diagram">
 				<h3>JavaScript global variables</h3>
 				<p>List of global variables to use with your custom script:</p>
@@ -107,7 +107,7 @@
 				<p>The Involt parameters are: <span>pin, pinNumber, value, value2, min, max, step, fn</span></p>
 				<h3>JQuery methods reference</h3>
 				<p>Involt is based on JQuery methods and using them allows to create more advanced projects. Using JQuery methods doesn't require defining their parameters with CSS classes - to do this use JavaScript.</p>
-				<p>For details on how to start with JQuery check the <a href="">Involt as JQuery plugin</a> tutorial</p>
+				<p>For details on how to start with JQuery check the <a href="../examples/involtjq.html">Involt as JQuery plugin</a> tutorial</p>
 				<h4>.pinDefine("pin")</h4>
 				<p>Defines <span>pin</span> and <span>pinNumber</span> for target element. The <span>.pinDefine("pin")</span> is required for other methods work with framework arrays.</p>
 				<div class="code javascript">$(this).pinDefine("P5");</div>

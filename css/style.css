@@ -57,6 +57,7 @@ h4 {
   background-color: #ffde00;
   color: black;
   display: block;
+  transition:background-color 0.2s linear;
 }
 .cta:hover {
   background: white;
@@ -122,6 +123,7 @@ header nav a {
 header nav a:hover {
   text-decoration: underline;
   background-color: #f8f8f8;
+  transition:background-color 0.2s linear;
 }
 .ham-btn {
   display: none;
