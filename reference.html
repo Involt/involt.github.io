@@ -153,7 +153,7 @@
 				<div class="code html">&lt;div class="ard hover P5 value-0-255"&gt;&lt;/div&gt;</div>
 								<!-- -->
 				<h4 id="knob-send">Knob-send</h4>
-				<p>Simple knob that sends value. This knob is also based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> - you can add plugin data- attributes to this element and they will be transfred to generated object. For using proto UI kit add <span>proto</span> class to make it consistent with UI.</p>
+				<p>Simple knob that sends value. This knob is also based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> - you can add plugin data- attributes to this element and they will be transfred to generated object. For using proto UI kit add <span>proto</span> class to make it consistent with UI. To send the values in real time, not only on release add the <span>fluid</span> class (may cause buffer overloads so step 1 is not recommended).</p>
 				<div class="code syntax"><p>ard knob-send [pin] [startvalue] [range] [step]</p></div>
 				<div class="code html">&lt;div class="ard knob-send P5 value-100 range-0-255 step-1"&gt;&lt;/div&gt;</div>
 								<!-- -->
