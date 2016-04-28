@@ -37,6 +37,7 @@
 				<a href="../getting-started.html">Getting started</a>
 				<a href="../examples.html">Examples</a>
 				<a href="../reference.html">Reference</a>
+				<a href="../about.html">About</a>
 				<a href="https://github.com/Involt/Involt">Github</a>
 			</nav>
 		</div>
@@ -67,7 +68,7 @@
 				<p>This example shows how to display values from two potentiometers. Connect potentiometers to pin A0 and A1</p>
 				<img src="../img/fritzing1.png" alt="">
 				<h4>Display knob value</h4>
-				<p>Add <span>analogRead</span> to your sketch inside <span>involtSend</span> function. The <span>delay</span> prevents the sketch from port overload.</p>
+				<p>Add <span>analogRead</span> to your sketch inside <span>involtSend</span> function. The <span>delay</span> prevents the sketch from buffer overload (if required - set it to higher value).</p>
 				<div class="code arduino">
 					<div class="code-m">
 						... <br><br>
@@ -89,7 +90,7 @@
 					&lt;div class="ard bar A1 range-0-1024"&gt;&lt;/div&gt;
 				</div>
 				<p>Here is preview of results:</p>
-				<img src="../img/ex2result.png" alt="">
+				<img src="../img/2knobs new bar and show.jpg" alt="">
 			</main>
 		</div>
 	</div>

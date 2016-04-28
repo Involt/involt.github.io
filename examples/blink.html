@@ -37,6 +37,7 @@
 				<a href="../getting-started.html">Getting started</a>
 				<a href="../examples.html">Examples</a>
 				<a href="../reference.html">Reference</a>
+				<a href="../about.html">About</a>
 				<a href="https://github.com/Involt/Involt">Github</a>
 			</nav>
 		</div>
@@ -68,9 +69,10 @@
 				<img src="../img/fritzing2.png" alt="">
 				<h4>Basic example</h4>
 				<p>Make sure that Involt is installed. If you don't know how to do this go to <a href="../getting-started.html">getting started</a> page.</p>
-				<p>Add code to body section to generate switch between HIGH and LOW states of pin (the letter D in pin is for digital pins and P for PWM values or any other number). The last class is 0 because we want to start with inactive LED.</p>
-				<div class="code html">&lt;div class="ard toggle D5 0"&gt;&lt;/div&gt;</div>
-				<p>Now add <span>digitalWrite</span> to <span>void loop</span> and <span>pinMode</span> to <span>void setup</span> inside Involt Arduino sketch (in Arduino folder). The value received from App is stored in <span>involtDigital[] </span>array with index which represents the target pin.</p>
+				<p>Add code to body section of <span>index.html</span> to generate switch between HIGH and LOW states of pin (or 0-1). The value is 0 because we want to start with inactive LED.</p>
+				<div class="code html">&lt;div class="ard toggle P5 value-0"&gt;&lt;/div&gt;</div>
+				<img src="../img/toggle.jpg" alt="toggle button">
+				<p>Now add <span>digitalWrite</span> to <span>void loop</span> and <span>pinMode</span> (<span>pinMode</span> is required for <span>digitalWrite</span> to work correctly) to <span>void setup</span> inside Involt Arduino sketch (in Arduino folder). The value received from App is stored in <span>involtPin[] </span>array with index which represents the target pin.</p>
 				<div class="code arduino">
 					<div class="code-m">
 						... <br>
@@ -82,19 +84,24 @@
 						void loop(){
 						<p>involtReceive(); </p>
 						<br>
-						<p style="color:blue;">digitalWrite(5, involtDigital[5]);</p>
+						<p style="color:blue;">digitalWrite(5, involtPin[5]);</p>
 						}
 						<br><br>
 						...
 					</div>			
 				</div>
-				<h4>Example with direct mode</h4>
-				<p>Another example of LED blinking is two separate <span>button</span>s with Direct Mode. This time we want to set it to PWM value. Change the pin number from <span>D5</span> to <span>P5</span>. To toggle between two PWM values you can also use <span>button-toggle</span> button. In arduino sketch remove previous code and only change the <span>directMode</span> and <span>autoPinMode</span> to <span>true</span>. Now you don't have to change anything inside sketch to operate with basic interactions between pins (like blinking led). This mode is good for learning but not best for your project.</p>
-				<div class="code html">
-					&lt;div class="ard button P5 40"&gt;Turn me On&lt;/div&gt;<br>
-					&lt;div class="ard button P5 0"&gt;Turn me Off&lt;/div&gt;
-				</div>
-				<img src="../img/ex1result.png" alt="">
+				<h4>PWM</h4>
+				<p>There are other similar ways to do this, in this case I will use PWM values. Instead of <span>digitalWrite</span> use <span>analogWrite</span> in your sketch:</p>
+				<div class="code html">&lt;div class="ard button-toggle P5 value-0-255"&gt; Click Me &lt;/div&gt;</div>
+				<div class="code html">&lt;div class="ard switch P5 value-0-50"&gt;&lt;/div&gt;</div>
+				<div class="code html">&lt;input type="checkbox" class="ard checkbox P5 value-0-255"&gt;</div>
+				<img src="../img/blink tutorial combo.jpg">
+				<h4>Rangeslider</h4>
+				<p>There are more sophisticated elements. One of them is rangeslider. It will change the brightness of connected LED.</p>
+				<div class="code html">&lt;div class="ard rangeslider P5 value-0 range-0-255 step-1"&gt;&lt;/div&gt;</div>
+				<img src="../img/rangeslider.jpg">
+				<p>Each dynamic UI element has its default settings (based on PWM and analog read resolution) so in this case, the same element can be defined without parameteres:</p>
+				<div class="code html">&lt;div class="ard rangeslider P5"&gt;&lt;/div&gt;</div>
 			</main>
 		</div>
 	</div>

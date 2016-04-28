@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Send/receive more... | Involt - Arduino to html prototyping framework for designers.</title>
-	<meta content="With Involt it's possible to send strings which is useful in many cases. Framework can transfer more variables between software and hardware." name="description"></meta>
+	<title>Functions | Involt - Arduino to html prototyping framework for designers.</title>
+	<meta content="Triggering functions from app to device and vice versa." name="description"></meta>
 	<meta content="hardware prototyping, software to hardware, arduino, html, arduino to html, framework, jquery, chrome app, physical computing, communication" name="keywords"></meta>
 	<meta content="width=device-width, initial-scale=1" name="viewport"></meta>
-	<link rel="shortcut icon" type="image/png" href="../favicon.png"/>
+	<link rel="shortcut icon" type="../image/png" href="../favicon.png"/>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<!--<script src="js/less.js"></script>-->
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -45,63 +45,73 @@
 	<div class="bg-gray">
 		<div class="container">
 			<div class="sidebar reference">
-				<h2>Examples:</h2>
+				<h2>Chapters:</h2>
 				<div>
-					<a href="blink.html">Blink tutorial</a>
+					<a href="../getting-started.html">Quick start</a>
 				</div>
 				<div>
-					<a href="2knobs.html">2 Knobs 1 App</a>
+					<a href="htmlsyntax.html">HTML UI & CSS syntax</a>
 				</div>
 				<div>
-					<a href="barrelroll.html">"Do a barrel roll"</a>
+					<a href="arduino.html">Arduino sketch</a>
 				</div>
 				<div>
-					<a href="involtjq.html">Involt as JQuery plugin</a>
+					<a href="functions.html">Triggering functions</a>
 				</div>
 				<div>
-					<a href="strings.html">Send/receive more...</a>
+					<a href="jquery.html">JQuery methods</a>
+				</div>
+				<div>
+					<a href="bluetooth.html">Bluetooth</a>
+				</div>
+				<div>
+					<a href="mobile.html">Mobile</a>
+				</div>
+				<div>
+					<a href="layout.html">Layout</a>
 				</div>
 			</div>
 			<main>
-				<h3>Send/receive more...</h3>
-				<p>How to read/send more variables or custom string.</p>
-				<h4>Read more variables from Arduino</h4>
-				<p>To read data from multiplexers, I2C devices like gyro or from other hardware use the <span>involtSend(pinNumber, value)</span> function to send values.  The <span>pin</span> is analog pin index. Send the data as additional analog pin to use it inside your App. For example add 16 values of CD74HC4067 analog multiplexer as analog pins from A6 to A22 (for UNO) and access them in Involt <span>involtReceivedPin</span> array.</p>
-				<h4>How to read a custom string from Arduino.</h4>
-				<p>Just use the <span>involtSendString(pinNumber, string)</span> function.</p>
-				<h4>Send more variables to Arduino.</h4>
-				<p>To send additional variable declare it as non existing pin. For example try to send value to Arduino UNO (with highest pin number 13) as pin P14.Remember about declaring them in <span>involtPin[]</span> array</p>
-				<div class="code arduino">
-					//total number+1 +1 additional value <br>
-					involtPin[15] = {}; 
-				</div>
-				<div class="code html">
-					&lt;div class="ard button P14 value-200"&gt;&lt;/div&gt;
-				</div>
-				<p>Now you can access this value in involtPin array as <span>involtPin[14]</span>. You can use this method to send values to shift register or expander.</p>
-				<h4>How to send a custom string to Arduino.</h4>
-				<p>Use the <span>involtString[pinIndex]</span> array where pinIndex is index of S parameter from HTML pin attribute. (<span>S0</span> is <span>involtString[0]</span>) </p>
-				<p>Test this with connected led to pin 5: </p>
+				<h3>Triggering functions</h3>
+				<p>Sometimes, exchanging the data is not enough. In more complex projects there are events that occurs from both sides, especially triggering some event in arduino from html button. It's great to know that Involt cares about simplicity of such events.</p>
+				<h4>Triggering from app to device</h4>
+				<p>For example, use HTML element to send its value and trigger some event in Arduino sketch:</p>
+				<div class="code html">&lt;div class="ard button P6 value-255 <span style="color:blue;">fn-involt</span>"&gt;Click me&lt;/div&gt;</div>
 				<div class="code arduino">
 					<div class="code-m">
-						//Add this to void loop section <br><br>
-						if (involtString[0] == "involt"){ 
-						<p>analogWrite(5, 255);</p>
+						...
+						<br><br>
+						void loop(){<br>
+						<p>involtReceive(); </p>
+						<br>
+						<p>if(fname == <span style="color:blue;">"involt"</span>){</p>
+						<div>
+							<p style="color:blue;">doSomething...</p>
+						</div>
+						<p>};</p>
+						<br>
+						<p>fname = ""; //clear the name to prevent from repeating the function each time</p>
 						}
+						<br>...
+					</div>	
+				</div>
+				<p>There are other possibilites to do this in app. The first is to use <span>involt-cta</span> with fn HTML attribute. It will only send the function when pressed. This element can be used along with Involt pagination and <span>involt-pagelink</span> to trigger an event when user goes to another page.</p>
+				<div class="code html">&lt;div class="involt-cta" fn="involt"&gt;Click me&lt;/div&gt;</div>
+				<p>JQuery method to send function:</p>
+				<div class="code javascript">$(this).sendFn("involt");</div>
+				<p>Pure JS solution:</p>
+				<div class="code javascript">involt.arduinoFn("involt");</div>
+				<h4>Triggering from device to app</h4>
+				<p>Adding this function to sketch will send name of function to app.</p>
+				<div class="code arduino" style="color:blue;">involtSendFunction("involt");</div>
+				<p>This one is tricky. Unlike previous versions and listening for changes in interval, now it's done with declaring the function in <span>involtFunction</span> JS object. Include the custom script in new file and attach it to end of HTML head section.</p>
+				<div class="code javascript">
+					<div class="code-m" style="color:blue;">
+						involtFunction.involt = function(){
+							<p>doSomething...</p>
+						};
 					</div>
-				</div>
-				<p>To test you can send the string with button:</p>
-				<div class="code html">
-					&lt;div class="ard button S0 value-involt"&gt;&lt;/div&gt;
-				</div>
-				<p>For sending more than single word you can add string attribute to html element:</p>
-				<div class="code html">
-					&lt;div class="ard button S0" string="involt"&gt;&lt;/div&gt;
-				</div>
-				<p>... or create input and type "involt":</p>
-				<div class="code html">
-					&lt;input class="ard input-write S0"&gt;
-				</div>
+				</div>		
 			</main>
 		</div>
 	</div>

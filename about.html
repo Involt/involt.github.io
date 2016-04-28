@@ -37,6 +37,7 @@
 				<a href="getting-started.html">Getting started</a>
 				<a href="examples.html">Examples</a>
 				<a href="reference.html">Reference</a>
+				<a href="about.html">About</a>
 				<a href="https://github.com/Involt/Involt">Github</a>
 			</nav>
 		</div>
@@ -54,18 +55,36 @@
 				</div>
 			</div>
 			<main>
-				<h3>About</h3>
+				<h3>About and FAQ</h3>
 				<h4>Why Involt?</h4>
-				<p>Prototyping interactive product is multidisciplinary task. It's related to industrial design, programming, user experience and sometimes graphic design skills. Arduino is easy hardware prototyping platform but things get complicated when software is involved in project. For designers it's a huge obstacle that blocks many concepts from making it to the real world. Involt is a framework to help designers in their projects on early stages without advanced programming. The key to Involt is to "make it simple" to develop software to hardware communication.</p>
-				<p>The main feature of this framework is easy and quick workflow. The syntax was inspired by popular responsive design frameworks. You can create your app with basic knowledge about HTML, CSS and Arduino. You can also create more advanced interactions with use of JavaScript and JQuery.</p>
+				<p>Developing interactive product is multidisciplinary task. It's related to industrial design, programming, user experience and sometimes graphic design skills. Arduino is easy hardware prototyping platform but things get complicated when software is involved in project - even if there are many great tools and frameworks for app prototyping. For designers it's a huge obstacle that blocks many concepts from making it to the real world. Involt is a framework to help designers in their projects on early stages without advanced programming. </p>
+				<p>The key to Involt is to "make it simple" to prototype, iterate and quickly show results to users. Involt can be a huge boost in your design process, especially during RITE method (Rapid Iterative Testing and Evaluation).</p>
 				<h4>Who is it for?</h4>
-				<p>It's a tool "for designers by designers". Nowdays there is huge focus on prototyping, iterating and user experience related stuff. More designers are involved in development process. Sometimes it's hard to start without programmer, but thanks to Involt it's easier on early stages of ideation and early prototypes. With Involt it's easy to create prototype and quickly start testing on users.</p>
-				<p>It's also good starting point for entry level Arduino users.</p>
+				<p>It's a tool "for designers by designers". Nowadays there is a huge focus on prototyping, iterating and user experience methodology. More designers are involved in development process. Sometimes it's hard to start without programmer, but thanks to Involt it's easier on early stages of ideation and prototyping your project. It's also good starting point for entry level Arduino users and students.</p>
 				<h4>Why it's better than other solutions?</h4>
-				<p>Quick research on the web shows that there are many but not simple solutions. You can write native app for target system or look for hybrid solutions like Node.js or Evothings. Each of them requires programming skills and are not "out of the box" solutions. To work with Arduino and web app it's possible to work over wifi/ethernet but this also requires some skills and additional hardware.</p>
-				<p>With CSS and Involt, creating user interface is easy and flexible. The target for framework is prototyping. For advanced interactions there are ready to use JQuery methods which are easy to understand. </p>
+				<p>Quick research on the web shows that there are many great but not simple solutions, especially if you are not a programmer but for example - interaction/UX designer. You can write native app for target system or look for hybrid solutions like Node.js libraries or Cordova plugins and Evothings. They require programming skills (for their API) and are not "out of the box" solutions suitable for prototyping. </p>
+				<p> Involt took a step forward toward simplicity of prototyping. It's easier to use CSS than scripting interactions from scratch beacuse you are probably more familiar with it (HTML/CSS) and it's more flexible when developing the layout. Practically you are a few steps forward. Involt automatically handles all of the communication and connection so you have basic setup right after installation. Another powerful feature is the fact that for Bluetooth 2.0 the same app will work fine on both desktop and mobile.</p>
+				<h4>What's the future of Involt?</h4>
+				<p>It depends on many things. I was looking for solution that will fit my needs. I saw a huge opportunity in it and what is more important - I know that many people use it. I decided to continue the project as a tool for prototyping rather than another complex solution for programmers or another IOT service whith dashboard full of diagrams (online support is not a bad idea but it requires a lot of changes). However, if you know JQuery and Javascript you can actually do anything you want. With each main update I want to implement new communication method and improve some problems. If popularity constantly grow I will consider development of more complex prototyping tool with graphic interface instead of HTML coding.</p>
+				<p>It's important that dependency on Chrome or Cordova might be removed in future. Now node webkit supports Chrome Apps API and there are people who do Bluetooth LE implementation directly into web browsers. </p>
+				<h4>I designed a layout. Will injecting Involt have impact on my project?</h4>
+				<p>No problem in adding framework to existing project even if you use other frameworks as long as you have single page layout. You don't have to use Involt CSS stylesheet, just use the Involt syntax on existing HTML element while keeping its original appearance (keep in mind that some elements generates additional HTML elements to work correctly). If you have JQuery based app, you can just include Involt JQuery methods where you want to send or receive data. For hardware it can be a little bit more complicated, you need to adapt your project to Involt sketch and its functions. Luckily, Involt sketch is only dependent on Serial library so it shouldn't collide with your project (as long as your device by default have this kind of communication).</p>
 				<h4>Limitations</h4>
-				<p>Currently Involt is build on top of Chrome Apps so it's actually not a online web app. In Chrome apps there are some limitations but it's not a problem when prototyping - most of them are possible to avoid. The communication is via serial and classic Bluetooth. In future there will be support for mobile(BT LE) and online.</p>
+				<ol>
+					<li>Involt based apps requires single page layout structure. Maybe it's not limiting but otherwise it will not work.</li>
+					<li>Involt on desktop is built on top of Chrome Packaged Apps and Involt for mobile is Cordova based. All things related to their API apply to them (for example - Chrome Packaged App doesn't allow inline scripting).</li>
+					<li>Project is based on web technologies but keep in mind that it does not support online communication so you can't develop working IoT solution(maybe in future).</li>
+					<li>IOS and Bluetooth LE are not supported (for now).</li>
+				</ol>
+				<h4>How can I help?</h4>
+				<p>That's a good question! There are still many things to do with this project and I constantly learn new things. I will appreciate any help. Things that interest me the most:</p>
+				<ol>
+					<li>I will really appreciate if you send me name of hardware device or smartphone on which framework works (or not). I'm trying the project on everything I have but I want to create trusted devices list. Also compability with other frameworks and tools would be great.</li>
+					<li>Suggestions in script behaviour and improvements. Especially the functions for receiving values from device to app (<span>onReceive</span> and <span>onReceiveParse</span>) are better with each version but they can be improved.</li>
+					<li><a href="https://github.com/Involt/Involt/issues">Issues on Github</a></li>
+					<li>A link about your completed and well designed Involt project so I could put it in future in case studies section.</li>
+					<li>Suggestion for tutorials or things that must be more explained on the website.</li>
+				</ol>
 			</main>
 		</div>
 	</div>

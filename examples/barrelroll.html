@@ -37,6 +37,7 @@
 				<a href="../getting-started.html">Getting started</a>
 				<a href="../examples.html">Examples</a>
 				<a href="../reference.html">Reference</a>
+				<a href="../about.html">About</a>
 				<a href="https://github.com/Involt/Involt">Github</a>
 			</nav>
 		</div>
@@ -102,15 +103,15 @@
 					</div>
 				</div>
 				<h3>JQuery</h3>
-				<p>The final step is real-time manipulation of square. Use set interval to automatically update data. Each analog pin value is stored in "analogPins" array where index is the pin number. The 50ms delay is used to lower the CPU usage.</p>
+				<p>The final step is real-time manipulation of square. Use set interval to automatically update data. Each analog pin value is stored in <span>involtReceivedPin</span> array where index is the pin number. The 50ms delay is used to lower the CPU usage.</p>
 				<div class="code">
 					<div class="code-m">
 						setInterval(function(){ <br>
 						<p>$(".square").css({</p>
 						<br>
-						<p>"width": analogPins[0],</p>
-						<p>"height": analogPins[0],</p>
-						<p>"transform": "rotate("+analogPins[1]+"deg)"</p>
+						<p>"width": involtReceivedPin[0],</p>
+						<p>"height": involtReceivedPin[0],</p>
+						<p>"transform": "rotate("+involtReceivedPin[1]+"deg)"</p>
 						<br>
 						<p>});</p>
 						},50); 

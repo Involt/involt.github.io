@@ -37,6 +37,7 @@
 				<a href="../getting-started.html">Getting started</a>
 				<a href="../examples.html">Examples</a>
 				<a href="../reference.html">Reference</a>
+				<a href="../about.html">About</a>
 				<a href="https://github.com/Involt/Involt">Github</a>
 			</nav>
 		</div>
@@ -65,20 +66,20 @@
 				<h3>Involt as JQuery plugin</h3>
 				<p>By using JavaScript it's possible to create your custom scripts and UI elements. JQuery can be used not only to manipulate current Involt objects - it's easy to create new UI elenents and their interaction. With some advanced coding skills you can do most of your project with JS. Below there are examples of Involt JQuery methods. You should add your custom script as additional .js file to head section - inline scripting is not allowed in chrome apps.</p>
 				<h4>Defining pin</h4>
-				<p>Target pin is most important part of framework - it's not only the pin we want to communicate with. Pin is index of <span>digitalPins[]</span> and <span>analogPins[]</span> global array which can be used to transfer more variables between software and hardware.</p>
+				<p>Target pin is most important part of framework - it's not only the pin we want to communicate with. Pin is index of <span>involtPin[]</span> and <span>involtReceivedPin[]</span> global array which can be used to transfer more variables between software and hardware.</p>
 				<p><span>.pinDefine()</span> is required to communicate with framework and it should be your starting point. <span>.pinDefine()</span> adds to object <span>pin</span> and <span>pinNumber</span> data. Here is example how to attach pin data to object:</p>
 				<div class="code javascript">$(this).pinDefine("P5"); </div>
 				<h3>Sending the value</h3>
-				<p>There are many ways to send the value. To completly integrate with framework use the <span>.sendValue()</span> method. Remember about defining the desired value in <span>digitalPins[]</span> array - without doing this you can't easily communicate with generated Involt elements (they are depended on this array). Here are simple JQuery button examples:</p>
+				<p>There are many ways to send the value. To completly integrate with framework use the <span>.sendValue()</span> method. Remember about defining the desired value in <span>involtPin[]</span> array and <span>involtString[]</span> array for <span>S</span> pins - without doing this you can't easily communicate with generated Involt elements (they are depended on this array). Here are simple JQuery button examples:</p>
 				<div class="code javascript">
 					<div class="code-m">					
 						//by defining the value in array this can be used for other Involt elements to operate. 
 						<br><br>
 						$(".test1").click(function() { 
-						<p>digitalPins[10] = 100;</p>
+						<p>involtPin[10] = 100;</p>
 						<p>$(this).pinDefine("P10").sendValue();</p>
 						}); <br><br>
-						//From the hardware point of view this is the same but value hasn't been updated in digitalPins.
+						//From the hardware point of view this is the same but value hasn't been updated in involtPin.
 						<br><br>
 						$(".test2").click(function() { 
 						<p>$(this).pinDefine("P10").sendValue(100);</p>
@@ -92,11 +93,11 @@
 						<br><br>
 						$(".test3").click(function() { 
 						<p>$(this).pinDefine("P10").updateValue(100);</p>
-						<p>arduinoSend($(this).data("pin"), digitalPins[$(this).data("pinNumber")]);</p>
+						<p>arduinoSend($(this).data("pin"), involtPin[$(this).data("pinNumber")]);</p>
 						}); <br><br>
 					</div>
 				</div>
-				<p>To update the value without sending it use .updateValue(). This method changes the digitalPins[pinNumber] value where pinNumber is the defined pin number (P3 = 3).</p>
+				<p>To update the value without sending it use .updateValue(). This method changes the involtPin[pinNumber] value where pinNumber is the defined pin number (P3 = 3).</p>
 				<div class="code javascript">
 					<div class="code-m">					
 						//update the value refered to target pin and send it 
@@ -154,7 +155,7 @@
 					</div>
 				</div>
 				<h4>Send multiple values to multiple pins</h4>
-				<p>It's easy to send one value to multiple pins because this requires only using the same <span>involtDigital[]</span> value for each pin in Arduino sketch. The problem starts when sending multiple values to multiple pins at once. To do this there are many possibilities:</p>	
+				<p>It's easy to send one value to multiple pins because this requires only using the same <span>involtPin[]</span> value for each pin in Arduino sketch. The problem starts when sending multiple values to multiple pins at once. To do this there are many possibilities:</p>	
 				<div class="code javascript">
 					<div class="code-m">					
 						//This is the simplest example
@@ -164,15 +165,15 @@
 						<p>involt.arduinoSend("P10", 50);</p>
 						<p>involt.arduinoSend("P11", 100);</p>
 						}); <br><br>
-						//You can use defined value from digitalPins[]
+						//You can use defined value from involtPin[]
 						<br><br>
 						$(".test9").click(function() { 
-						<p>digitalPins[9] = 10;</p>
-						<p>digitalPins[10] = 50;</p>
-						<p>digitalPins[11] = 100;</p>
-						<p>involt.arduinoSend("P9", digitalPins[9]);</p>
-						<p>involt.arduinoSend("P10", digitalPins[10]);</p>
-						<p>involt.arduinoSend("P11", digitalPins[11]);</p>
+						<p>involtPin[9] = 10;</p>
+						<p>involtPin[10] = 50;</p>
+						<p>involtPin[11] = 100;</p>
+						<p>involt.arduinoSend("P9", involtPin[9]);</p>
+						<p>involt.arduinoSend("P10", involtPin[10]);</p>
+						<p>involt.arduinoSend("P11", involtPin[11]);</p>
 						});
 					</div>
 				</div>	
@@ -186,7 +187,7 @@
 				</div>	
 				<p>For many data sent at once <span>involt.arduinoSend(pin, value)</span> is better solution because JQuery is slower. Sending too much data can cause buffer overload and errors in communication (remember about this when using loops).</p>
 				<h4>Read data from Arduino</h4>
-				<p>The values in <span>analogPins[]</span> array are updated automatically. Currently there are no methods related to data receiving but keep in mind that the only thing you need to do is to use this array in your JS.</p>
+				<p>The values in <span>involtReceivedPin[]</span> array are updated automatically. Currently there are no methods related to data receiving but keep in mind that the only thing you need to do is to use this array in your JS.</p>
 			</main>
 		</div>
 	</div>
