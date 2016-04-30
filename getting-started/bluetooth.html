@@ -84,7 +84,7 @@
 				<p>To get the device address you can use <span>AT+ADDR</span> or check this in Involt app console (after changing to BT mode).</p>
 				<p>In your system turn On bluetooth adapter and pair the device with default 1234 password (for hc-05). The device must be paired before launching the app.</p>
 				<h4>App setup</h4>
-				<p>First, change the <span>isBluetooth</span> variable to <span>true</span> and <span>isSerial</span> to <span>false</span> at the beginning of core/involt.js.</p>
+				<p>First, change the <span>isBluetooth</span> variable to <span>true</span> and <span>isSerial</span> to <span>false</span> in settings.js.</p>
 				<p>Another thing is the address and UUID of service. The easiest way to find this after changing the <span>isBluetooth</span> is open the chrome console. Open the app, right click and inspect element. It's important to have loader on launch when discovering devices.</p>
 				<img src="../img/btconsole.png" alt="">
 				<p>You should paste the UUID (and address if you wish to work without loader) to <span>uuid</span> in settings.js and manifest.json (this will require reloading your app from chrome extenstions menu). </p>
