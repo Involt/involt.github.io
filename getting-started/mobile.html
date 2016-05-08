@@ -72,7 +72,7 @@
 				</div>
 			</div>
 			<main>
-				<h3>Involt for mobile (beta)</h3>
+				<h3>Involt for mobile</h3>
 				<p>What is better than having HTML project communicating with hardware? Having the same app working on mobile. Without any effort.</p>
 				<h4>Configuration</h4>
 				<p>Nothing. Just make sure you work with Bluetooth 2.0 and Android (change the communication mode in settings.js). Low energy support will be released soon. For changing Phonegap related settings use config instead of manifest file.</p>
@@ -90,6 +90,16 @@
 				<p>Connect RGB led to pins 9,10 and 11 and use HC-05 Bluetooth device (with settings from <a href="http://involt.github.io/getting-started/bluetooth.html">Involt bluetooth guide</a>). Upload the sketch downloaded from <a href="https://github.com/Involt/Involt-for-Mobile-RGB-demo">this repo on Github</a></p>
 				<p>To install the app you can use QR code scanner on your device or <a href="https://build.phonegap.com/apps/2049312/share">download the file</a></p>
 				<img src="../img/mobile-qr-code.png" alt="">
+				<h3>Low Energy (beta)</h3>
+				<p>Currently the low energy implementation based on <a href="https://github.com/don/cordova-plugin-ble-central">cordova-plugin-ble-central</a> and Adafruit Bluefruit Low Energy. I tested it on Bluefruit LE Micro. However, low energy is not suitable for streaming as Involt do so I strongly suggest to use classic bluetooth instead. There must be longer delays between sending functions from hardware to app inside prepaired Bluefruit sketch. You can use Phonegap Developer App for live previews. </p>
+				<p>Important things before you begin:</p>
+				<ol>
+					<li>Set the isLowEnergy in settings to true. Remember about the UUID, you should get them from device documentation.</li>
+					<li>Delays, if you know why is it working like this please contact me.</li>
+					<li>If received errors (when sending to app), probably communication will crash. </li>
+					<li>Everything technically works the same as other ways of communication.</li>
+					<li>You should consider using classic bluetooth for large data transmission.</li>
+				</ol>
 			</main>
 		</div>
 	</div>
