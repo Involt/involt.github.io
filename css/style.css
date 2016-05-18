@@ -341,7 +341,6 @@ footer a {
     width: 100%;
   }
   .sidebar.reference > div {
-    display: inline-block;
     vertical-align: top;
     margin-right: 40px;
   }
@@ -425,5 +424,27 @@ footer a {
   }
   footer {
     position: relative;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  main{
+    padding:40px 20px;
+  }
+  .bg-gray{
+    padding-top: 20px;
+  }
+  .main-lead, .container>.column, .landing-textmid, .howdoesit>.container, .landing-end{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .howdoesit>.container>.code{
+    word-wrap:break-word;
+  }
+  footer{
+    padding: 10px;
   }
 }
