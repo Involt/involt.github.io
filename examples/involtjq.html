@@ -64,130 +64,128 @@
 			</div>
 			<main>
 				<h3>Involt as JQuery plugin</h3>
-				<p>By using JavaScript it's possible to create your custom scripts and UI elements. JQuery can be used not only to manipulate current Involt objects - it's easy to create new UI elenents and their interaction. With some advanced coding skills you can do most of your project with JS. Below there are examples of Involt JQuery methods. You should add your custom script as additional .js file to head section - inline scripting is not allowed in chrome apps.</p>
-				<h4>Defining pin</h4>
-				<p>Target pin is most important part of framework - it's not only the pin we want to communicate with. Pin is index of <span>involtPin[]</span> and <span>involtReceivedPin[]</span> global array which can be used to transfer more variables between software and hardware.</p>
-				<p><span>.pinDefine()</span> is required to communicate with framework and it should be your starting point. <span>.pinDefine()</span> adds to object <span>pin</span> and <span>pinNumber</span> data. Here is example how to attach pin data to object:</p>
-				<div class="code javascript">$(this).pinDefine("P5"); </div>
-				<h3>Sending the value</h3>
-				<p>There are many ways to send the value. To completly integrate with framework use the <span>.sendValue()</span> method. Remember about defining the desired value in <span>involtPin[]</span> array and <span>involtString[]</span> array for <span>S</span> pins - without doing this you can't easily communicate with generated Involt elements (they are depended on this array). Here are simple JQuery button examples:</p>
+				<p>This tutorial is continuation of JQuery section of getting started page. You should start from reading the <a href="../getting-started/jquery.html">JS & JQuery methods</a>.</p> 
+				<p>Below are practical examples of working with multiple elements:</p>
+
+				<h4>Sending the value</h4>
+				<p>The pin and element value can be defined once. This is something similar to Involt button element. The <span>updateValue</span> makes sure that <span>test1</span> sends same value all the time. Only after clicking the <span>test2</span> it will send different value. </p>
+				<p><span>test3</span> will force the <span>test1</span> to send its value.</p>
 				<div class="code javascript">
-					<div class="code-m">					
-						//by defining the value in array this can be used for other Involt elements to operate. 
-						<br><br>
+					<div class="code-m">	
+						
+						$(".test1").pinDefine("P11"); <br>
+						$(".test1").data("value", 123); <br><br>
+
 						$(".test1").click(function() { 
-						<p>involtPin[10] = 100;</p>
-						<p>$(this).pinDefine("P10").sendValue();</p>
+						<p>$(this).updateValue().sendValue();</p>
 						}); <br><br>
-						//From the hardware point of view this is the same but value hasn't been updated in involtPin.
-						<br><br>
+
 						$(".test2").click(function() { 
-						<p>$(this).pinDefine("P10").sendValue(100);</p>
+						<p>$(".test1").data("value", 255);</p>
 						}); <br><br>
-						//Other way to send a value, involt.arduinoSend(pin, value) is not based on JQuery
-						<br><br>
+
 						$(".test3").click(function() { 
-						<p>involt.arduinoSend("P10", 100);</p>
+						<p>$(".test1").sendValue();</p>
+						}); 
+					</div>
+				</div>
+
+				<p>Without <span>updateValue</span> it will use current pin value. In this example only <span>test2</span> and <span>test3</span> manipulates the pin. In this case <span>test1</span> has no value and pin assigned so it's completly dependent on other elements.</p>
+				<div class="code javascript">
+					<div class="code-m">	
+
+						involt.pin.P[11] = 255;<br><br>
+						
+
+						$(".test1").click(function() { 
+						<p>$(this).sendValue();</p>
 						}); <br><br>
-						//More complex solution of arduinoSend
-						<br><br>
+
+						$(".test2").click(function() { 
+						<p>$(".test1").pinDefine("P11");</p>
+						<p>involt.pin.P[11] = 100;</p>
+						});<br><br>
+
 						$(".test3").click(function() { 
-						<p>$(this).pinDefine("P10").updateValue(100);</p>
-						<p>arduinoSend($(this).data("pin"), involtPin[$(this).data("pinNumber")]);</p>
+						<p>$(".test1").pinDefine("P12");</p>
+						<p>involt.pin.P[12] = 0;</p>
+						});
+					</div>
+				</div>
+
+				<h4>Changing the attributes of Involt elements</h4>
+				<p>For this example use Involt button (classes are: <span>ard button P5 255 demo</span>). Change the value of that button (other parameters can be changed this way). <span>updateValue</span> is not necessary because we want to change pin value when the button is pressed.</p>
+				<div class="code javascript">
+					<div class="code-m">	
+
+						$(".changeValue").click(function() { 
+						<p>$(".demo").data("value", 100);</p>
 						}); <br><br>
+
 					</div>
 				</div>
-				<p>To update the value without sending it use .updateValue(). This method changes the involtPin[pinNumber] value where pinNumber is the defined pin number (P3 = 3).</p>
+				<p>Change pin of that button. After clicking <span>changeValue</span> and <span>changePin</span>, previously defined button will send to P6 value 100.</p>
 				<div class="code javascript">
-					<div class="code-m">					
-						//update the value refered to target pin and send it 
-						<br><br>
-						$(".test4").click(function() { 
-						<p>$(this).pinDefine("P11").updateValue(100).sendValue();</p>
+					<div class="code-m">	
+
+						$(".changePin").click(function() { 
+						<p>$(".demo").pinSwap("P6");</p>
 						});
+
 					</div>
 				</div>
-				<h4>Interaction between elements</h4>
-				<p>To interact with other elements start with basic Involt button <span>ard button P6 200</span>.Use <span>.pinSwap()</span> to change pin of target element.</p>
+				<p>Shorthand for switching pin of all Involt elements that shares same pin at once:</p>
 				<div class="code javascript">
-					<div class="code-m">					
-						//now the target pin of button is changed from P5 to P9 
-						<br><br>
-						$(".test5").click(function() { 
-						<p>$(".button").pinSwap("P9");</p>
+					<div class="code-m">	
+
+						$(".changePins").click(function() { 
+						<p>$(".P5").pinSwap("P6");</p>
+						});
+
+					</div>
+				</div>
+
+				<h4>Send multiple values to multiple pins at once</h4>
+				<p>These examples do the same thing. To avoid long chains you should use plain javascript for better performance.</p>
+				<div class="code javascript">
+					<div class="code-m">	
+
+						$(".test1").click(function() { 
+						<p>$(this).pinDefine("P9").updateValue(100).sendValue();</p>
+						<p>$(this).pinSwap("P10").updateValue(50).sendValue();</p>
 						}); <br><br>
-						//change the pin to P11 when double-clicked 
-						<br><br>
-						$(".test5").dblclick(function() { 
-						<p>$(".button").pinSwap("P11");</p>
-						});
-					</div>
-				</div>
-				<p>Because <span>.pinSwap()</span> transfers the previous pin variable which simplify the exchange sometimes it's better to use again <span>.pinDefine()</span> when the value is defined or use this method with <span>.updateValue()</span>.</p>
-				<div class="code javascript">
-					<div class="code-m">					
-						//Now there is new value attached to this button
-						<br><br>
-						$(".test6").click(function() { 
-						<p>$(".button").pinSwap("P11").updateValue(30);</p>
-						}); <br><br>
-						//Selecting pin class is also good idea to operate between framework elements
-						<br><br>
-						$(".test6").click(function() { 
-						<p>$(".P6").pinSwap("P11").updateValue(30);</p>
-						});
-					</div>
-				</div>
-				<p>To send value attached to other element just write this code:</p>
-				<div class="code javascript">
-					<div class="code-m">					
-						$(".test7").click(function() { 
-						<p>$(".button").sendValue();</p>
-						});
+
+						$(".test2").click(function() { 
+							<p>involt.pin.P[9] = 100;</p>
+							<p>involt.pin.P[10] = 50;</p>
+							<p>involt.send("P9", involt.pin.P[9]);</p>
+							<p>involt.send("P10", involt.pin.P[10]);</p>
+						});<br><br>
 					</div>
 				</div>	
-				<p>It's possible to manually define or update object data with <span>.data()</span>. The <span>.pinDefine()</span> is equal to:</p>	
+				<p>...or with multiple selectors:</p>
 				<div class="code javascript">
-					<div class="code-m">					
-						$(".test8").data("pin", "P6"); 
-						<br>
-						$(".test8").data("pinNumber", 6); 
+					<div class="code-m">	
+
+						$(".test3").click(function() { 
+						<p>$(".test4, .test5, .test6").sendValue();</p>
+						});
+
 					</div>
 				</div>
-				<h4>Send multiple values to multiple pins</h4>
-				<p>It's easy to send one value to multiple pins because this requires only using the same <span>involtPin[]</span> value for each pin in Arduino sketch. The problem starts when sending multiple values to multiple pins at once. To do this there are many possibilities:</p>	
+				
+				<h4>How to use received data?</h4>
+				<p>These values are updated automatically. This simple example will change font size of your app. To respond when values are changed check <a href="../getting-started/functions.html">triggering functions</a> section.</p>
 				<div class="code javascript">
-					<div class="code-m">					
-						//This is the simplest example
-						<br><br>
-						$(".test9").click(function() { 
-						<p>involt.arduinoSend("P9", 10);</p>
-						<p>involt.arduinoSend("P10", 50);</p>
-						<p>involt.arduinoSend("P11", 100);</p>
-						}); <br><br>
-						//You can use defined value from involtPin[]
-						<br><br>
-						$(".test9").click(function() { 
-						<p>involtPin[9] = 10;</p>
-						<p>involtPin[10] = 50;</p>
-						<p>involtPin[11] = 100;</p>
-						<p>involt.arduinoSend("P9", involtPin[9]);</p>
-						<p>involt.arduinoSend("P10", involtPin[10]);</p>
-						<p>involt.arduinoSend("P11", involtPin[11]);</p>
+					<div class="code-m">	
+
+						$(".yourbutton").click(function() {
+						<p>$("*").css('font-size', involt.pin.A[0]);</p>
 						});
+
 					</div>
-				</div>	
-				<p>You can also combine multiple methods like this:</p>
-				<div class="code javascript">
-					<div class="code-m">					
-						$(".test10").click(function() {  
-						<p>$(this).pinDefine("P9").sendValue(50).pinSwap("P10").sendValue(10);</p>
-						});
-					</div>
-				</div>	
-				<p>For many data sent at once <span>involt.arduinoSend(pin, value)</span> is better solution because JQuery is slower. Sending too much data can cause buffer overload and errors in communication (remember about this when using loops).</p>
-				<h4>Read data from Arduino</h4>
-				<p>The values in <span>involtReceivedPin[]</span> array are updated automatically. Currently there are no methods related to data receiving but keep in mind that the only thing you need to do is to use this array in your JS.</p>
+				</div>
+			
 			</main>
 		</div>
 	</div>
@@ -196,14 +194,14 @@
 			<div class="column">
 				<img src="../img/ico1.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. The goal is to help designers to overcome the obstacles at prototyping stage.
+					Involt was made to quickly create interactive objects with software to hardware communication by using HTML and CSS. The goal is to help you to overcome the obstacles at prototyping stage.
 				</div>
 				<a href="../about.html">Read more</a>
 			</div>
 			<div class="column">
 				<img src="../img/ico2.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					You can help develop framework on Github. There are new features added with each version. To see the progress of development you can check the changelog. Involt is under MIT license.
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development check the changelog. Involt is under MIT license.
 				</div>
 				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
 			</div>

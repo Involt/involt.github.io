@@ -69,8 +69,8 @@
 				<img src="../img/fritzing2.png" alt="">
 				<h4>Basic example</h4>
 				<p>Make sure that Involt is installed. If you don't know how to do this go to <a href="../getting-started.html">getting started</a> page.</p>
-				<p>Add code to body section of <span>index.html</span> to generate switch between HIGH and LOW states of pin (or 0-1). The value is 0 because we want to start with inactive LED.</p>
-				<div class="code html">&lt;div class="ard toggle P5 value-0"&gt;&lt;/div&gt;</div>
+				<p>Add code to body section of <span>app.html</span> to generate switch between HIGH and LOW states of pin (or 0-1).</p>
+				<div class="code html">&lt;div class="ard toggle P5"&gt;&lt;/div&gt;</div>
 				<img src="../img/toggle.jpg" alt="toggle button">
 				<p>Now add <span>digitalWrite</span> to <span>void loop</span> and <span>pinMode</span> (<span>pinMode</span> is required for <span>digitalWrite</span> to work correctly) to <span>void setup</span> inside Involt Arduino sketch (in Arduino folder). The value received from App is stored in <span>involtPin[] </span>array with index which represents the target pin.</p>
 				<div class="code arduino">
@@ -92,9 +92,9 @@
 				</div>
 				<h4>PWM</h4>
 				<p>There are other similar ways to do this, in this case I will use PWM values. Instead of <span>digitalWrite</span> use <span>analogWrite</span> in your sketch:</p>
-				<div class="code html">&lt;div class="ard button-toggle P5 value-0-255"&gt; Click Me &lt;/div&gt;</div>
+				<div class="code html">&lt;div class="ard toggle P5 value-0-255"&gt; Click Me &lt;/div&gt;</div>
 				<div class="code html">&lt;div class="ard switch P5 value-0-50"&gt;&lt;/div&gt;</div>
-				<div class="code html">&lt;input type="checkbox" class="ard checkbox P5 value-0-255"&gt;</div>
+				<div class="code html">&lt;input type="checkbox" class="ard involt-input P5 value-0-255"&gt;</div>
 				<img src="../img/blink tutorial combo.jpg">
 				<h4>Rangeslider</h4>
 				<p>There are more sophisticated elements. One of them is rangeslider. It will change the brightness of connected LED.</p>
@@ -110,14 +110,14 @@
 			<div class="column">
 				<img src="../img/ico1.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. The goal is to help designers to overcome the obstacles at prototyping stage.
+					Involt was made to quickly create interactive objects with software to hardware communication by using HTML and CSS. The goal is to help you to overcome the obstacles at prototyping stage.
 				</div>
 				<a href="../about.html">Read more</a>
 			</div>
 			<div class="column">
 				<img src="../img/ico2.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					You can help develop framework on Github. There are new features added with each version. To see the progress of development you can check the changelog. Involt is under MIT license.
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development check the changelog. Involt is under MIT license.
 				</div>
 				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
 			</div>

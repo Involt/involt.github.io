@@ -59,7 +59,7 @@
 					<a href="functions.html">Triggering functions</a>
 				</div>
 				<div>
-					<a href="jquery.html">JQuery methods</a>
+					<a href="jquery.html">JS & JQuery methods</a>
 				</div>
 				<div>
 					<a href="bluetooth.html">Bluetooth</a>
@@ -67,82 +67,129 @@
 				<div>
 					<a href="mobile.html">Mobile</a>
 				</div>
-				<div>
-					<a href="layout.html">Layout</a>
-				</div>
 			</div>
 			<main>
-				<h3>JavaScript support and JQuery methods</h3>
-				<p>Each UI element communicates with device via JQuery. It has its function based on its event and specified object data. The framework consists of JQuery methods that allows you to build your own scripts and UI kits. Custom script should be included in HTML head section (remember about JQuery <span>.ready</span>).</p>
-				<p>If you want to manipulate the element parameters you can use JQuery <span>.data()</span> to access them. These parameters are: <span>pin, pinNumber, pinType, value, min, max, step, fn</span></p>
-				<h4>Where are the values?</h4>
-				<p>The current values of each pin to send to the device are stored in two arrays:</p>
-				<p><span>involtPin[index]</span> contains the values of each <span>P</span> pin. Index is the number without the letter.</p>
-				<p><span>involtString[index]</span> is for <span>S</span> pin and strings.</p>
-				<p>The values received from device are stored in <span>involtReceivedPin[index]</span> and contains both numeric values and strings.</p>
-				<p>It's important to use these arrays and update their values so the framework can be consistent. Their names are same as in arduino sketch.</p>
+				<h3>JavaScript support</h3>
+
+				<h4>Where are the pin values?</h4>
+				<p>It's important to use these arrays and update their values so the framework pin states can be consistent.</p>
+
+				<p><span>involt.pin.P[index]</span> array contains the <span>P</span> pins.</p>
+				<p><span>involt.pin.S[index]</span> contains the strings.</p>
+				<p><span>involt.pin.A[index]</span> contains the received values (updated automatically).</p>
+	
+				<h4>involt.send(pin, value)</h4>
+				<p>Send value to target pin:</p>
+				<div class="code javascript">
+					involt.pin.P[6] = 255; <br>
+					involt.send("P6", involt.pin.P[6]); 
+				</div>
+
+				<h4>involt.sendFunction(name)</h4>
+				<p>Send the function name to device. For triggering function from device to app check <a href="functions.html"> functions</a> page.</p>
+				<div class="code javascript">
+					involt.sendFunction("test"); 
+				</div>
+
+				<h4>involt.sendToDevice(string)</h4>
+				<p>Send raw string to device. This should be used only with custom arduino sketch.</p>
+				<div class="code javascript">
+					var string = "anything"+"\n"; 
+					<br><br>
+					involt.sendToDevice(string); 
+				</div>
+
+
 				<h3>JQuery methods</h3>
-				<p>Most basic example of defining the target pin, updating its value in array and send it to device. You should use this pattern as much as possible if you want to mix custom events with involt UI kit.</p>
-				<div class="code javascript">$(this).pinDefine("P6").updateValue(100).sendValue();</div>
+				<p>For better modularity and simplicity of working on existing Involt UI elements use JQuery methods. Framework elements are based on them.</p>
 				<p>For more examples check the <a href="../examples/involtjq.html">Involt as JQuery plugin</a>.</p>
-				<h4>.pinDefine(pin)</h4>
-				<p>Defines the pin for selected element (<span>pin, pinNumber, pinType</span> data). You don't have to use this method each time, just define this once.</p>
-				<div class="code javascript">$(this).pinDefine("P6");</div>
-				<h4>.sendValue(value)</h4>
-				<p>Send the value to defined pin. If value is not defined, it will send the value stored in <span>involtPin</span> or <span>involtString</span> array with index same as target pin. Remember that without the <span>.updateValue()</span> the corresponding pin value will not be updated.</p>
-				<div class="code javascript">$(this).pinDefine("P6").sendValue(255);</div>
-				<h4>.updateValue(value)</h4>
-				<p>Update the value in Involt arrays to keep the values up to date for other elements. It's highly recommended to use it when sending the values. If value is not defined it will use object <span>value</span> data. Of course you can update the variable directly in array without using this method.</p>
+
+				<h4>Changing the UI element parameters</h4>
+				<p>To manipulate the parameters in framework elements use JQuery <span>.data()</span>. These parameters are: <span>pin, pinNumber, pinType, value, min, max, step, fn</span>. While working with HTML inputs use <span>.attr()</span> instead.</p>
+
+				<h4>Basic pattern</h4>
+				<p>Most basic example of assigning the pin to element, updating its value in array and send it to device. You should use this pattern as much as possible. There is one golden rule: using Involt JQuery methods is more about manipulating pins rather than elements that control them.</p>
 				<div class="code javascript">$(this).pinDefine("P6").updateValue(100).sendValue();</div>
+
+				<p>Currently there are no methods related to receiving data from device. Listening for pin or triggering function is something that reacts to receive event but it's not related to JQuery. The values are updated automatically so use the <span>involt.pin.A[index]</span> if necessary.</p>
+
+				<p>Important: remember about JQuery document <span>ready</span> to make sure that everything is loaded.</p>
+
+				<h3>1. Assigning the pin to element</h3>
+
+				<h4>.pinDefine(pin)</h4>
+				<p>Defines the pin for selected element (<span>pin, pinNumber, pinType</span>). You don't have to use this method each time, just define this once.</p>
+				<div class="code javascript">$(this).pinDefine("P6");</div>
+
 				<h4>.pinSwap(newPin)</h4>
-				<p>Similar to pinDefine but checks if there is defined pin value in <span>involtPin[]</span> array. If not - set it to previous pin value.</p>
+				<p>Similar to <span>pinDefine</span> but checks if there is defined pin value in <span>involt.pin</span> arrays. If not - set it to previous pin value. The previous pin must be defined.</p>
 				<div class="code javascript">// if the P7 value was undefined, it will be 100. <br><br>$(this).pinDefine("P6").updateValue(100).pinSwap("P7");</div>
-				<h4>.sendFn(functionName)</h4>
-				<p>Send function. If not defined, send the <span>fn</span> data</p>
-				<div class="code javascript">$(this).sendFn("involt");</div>
-				<h4>.sendAndUpdate(pin, value)</h4>
-				Shorthand for sending and updating pin and its value.
-				<div class="code javascript">
-					
-					<div class="code-m">
-						$(this).sendAndUpdate("P6",255);
-						<br> <br>
-						//is equal to:
-						<br> <br>
-						$(this).pinDefine("P6").updateValue(255).sendValue(); 
-						<br><br>
-						//and...
-						<br><br>
-						$(this).sendAndUpdate(255);
-						<br><br>
-						//is equal to:
-						<br><br>
-						$(this).updateValue(255).sendValue();
-					</div>
 				
-				</div>
-				<h4>.sendString(rawString)</h4>
-				<p>Send raw string to Arduino outside of framework. Use it only if you really have to. If you work only with data outside of framework but using its JQuery methods you don't have to use Involt sketch (or you can customize the receive function). The same rule applies to <span>involt.send</span> function.</p>
-				<div class="code javascript">$(this).sendString("Something to send");</div>
-				<h3>Javascript functions</h3>
-				<p>If you want to avoid JQuery you can use some JS functions from involt object. There are more functions included but establishing connection and communication is handled automatically and shouldn't be changed.</p>
-				<h4>involt.arduinoSend(pin, value);</h4>
-				<p>Send value to target pin.</p>
-				<h4>involt.send(data)</h4>
-				<p>Send raw value/string to device.</p>
-				<h4>involt.arduinoFn(name);</h4>
-				<p>Send function name to device.</p>
-				<h3>Reading the data</h3>
-				<p>There are no methods related to reading the values. The <span>involtReceivedPin</span> is updated automatically. It can be used with JQuery functions or interval based script.</p>
+				<h3>2. Updating pin value</h3>
+
+				<h4>.updateValue(value, updateElement)</h4>
+				<p>Updates the pin current value before sending it to device (<span>involt.pin</span> array). <span>updateValue</span> keeps them up to date so the framework is consistent and multiple UI elements share same single value. Each pin can have only one value at once.</p>
+				<p>If <span>value</span> is not defined, the pin current value will change to UI element value stored with JQuery data (make sure that the element has <span>.data("value")</span>). If <span>value</span> is set, the pin current value will be same as passed variable to this method.</p>
+				<p>Define <span>updateElement</span> as true to update both pin value and element value at once.</p>
+				<p>Before updating the value you must define the pin with <span>pinDefine</span>.</p>
+
+				<p>Use the UI element value to update pin value:</p>
 				<div class="code javascript">
-					<div class="code-m">
-						//button which changes font size based on A0 pin value.
-						<br><br>
-						$(".yourbutton").click(function() { 
-						<p>$("div").css('font-size', involtReceivedPin[0]);</p>
-						}); 
-					</div>
+					$(this).updateValue();
 				</div>
+				<p>Assigned pin now will have new value but not the element itself:</p>
+				<div class="code javascript">
+					$(this).updateValue(255);
+				</div>
+				<p>Both UI element and pin will have same new value:</p>
+				<div class="code javascript">
+					$(this).updateValue(255,true);
+				</div>
+			
+				<h3>3. Sending</h3>
+
+				<h4>.sendValue(value)</h4>
+				<p>If the pin is defined and its value is set, it's time to send it to device. Passing the <span>value</span> to this method will send the variable to target pin without updating anything.</p>
+
+				<p>When everything is defined, send the value:</p>
+				<div class="code javascript">
+					$(this).sendValue();
+				</div> 
+				<p>Send the defined with <span>updateValue</span> value of pin.:</p>
+				<div class="code javascript"> 
+					$(this).pinDefine("P6").updateValue(100).sendValue();
+				</div>
+				<p>Send the value from element JQuery data ( <span>.data("value", 100)</span>):</p>
+				<div class="code javascript">
+					$(this).pinDefine("P6").updateValue().sendValue();
+				</div>
+				<p>Set pin and element value to same number and send it:</p>
+				<div class="code javascript">
+					$(this).pinDefine("P6").updateValue(255, true).sendValue();
+				</div>
+				<p>Send the value to pin without updating anything and outside of pin array:</p>
+				<div class="code javascript">
+					$(this).pinDefine("P6").sendValue(123);
+				</div>
+
+				<h4>.sendFn(name)</h4>
+				<p>Send function name to device. If name is not defined it will use <span>fn</span> data (declaring <span>fn</span> should be avoided if you don't want to send function on <span>sendValue</span>) event. </p>
+				<div class="code javascript">
+					$(this).sendFn("test");
+				</div>
+
+				<h4>.sendRawString(string)</h4>
+				<p>Send string to device. Similar to <span>involt.sendToDevice(string)</span>.</p>
+				<div class="code javascript">
+					$(this).sendRawString("sendAnything");
+				</div>
+
+				<h4>.sendAndUpdate(pin, value)</h4>
+				<p>Shorthand for:</p>
+				<div class="code javascript">
+					$(this).pinDefine(pin).updateValue(value, true).sendValue();
+				</div>
+
 			</main>
 		</div>
 	</div>
@@ -151,14 +198,14 @@
 			<div class="column">
 				<img src="../img/ico1.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. The goal is to help designers to overcome the obstacles at prototyping stage.
+					Involt was made to quickly create interactive objects with software to hardware communication by using HTML and CSS. The goal is to help you to overcome the obstacles at prototyping stage.
 				</div>
 				<a href="../about.html">Read more</a>
 			</div>
 			<div class="column">
 				<img src="../img/ico2.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					You can help develop framework on Github. There are new features added with each version. To see the progress of development you can check the changelog. Involt is under MIT license.
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development check the changelog. Involt is under MIT license.
 				</div>
 				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
 			</div>

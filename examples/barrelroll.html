@@ -67,7 +67,7 @@
 				<h4>Circuit</h4>
 				<p>This example shows how to prepare custom JQuery script to control element without use of framework UI elements. Connect potentiometers to pin A0 and A1.</p>
 				<img src="../img/fritzing1.png" alt="">
-				<h4>Edit the Arduino sketch</h4>
+				<h4>Edit the Involt Arduino sketch</h4>
 				<div class="code arduino">
 					<div class="code-m">
 						... <br><br>
@@ -84,9 +84,9 @@
 					</div>			
 				</div>
 				<h4>HTML & CSS</h4>
-				<p>In this tutorial we need big square at the center of app screen. First add HTML code in index.html to create square.</p>
+				<p>In this tutorial we need big square at the center of app screen. First add HTML code in app.html to create square.</p>
 				<div class="code html">&lt;div class="square"&gt;&lt;/div&gt;</div>
-				<p>Create custom JavaScript file and CSS in Involt folder. Name the new files customjquery.js and customstyle.css. Link them in head section. Important: You are not allowed to use inline scripting in Chrome App.</p>
+				<p>Create custom JavaScript file and CSS.</p>
 				<div class="code html">
 					&lt;script src="customjquery.js"&gt;&lt;/script&gt; <br>
 					&lt;link rel="stylesheet" type="text/css" href="customstyle.css"&gt;
@@ -103,21 +103,44 @@
 					</div>
 				</div>
 				<h3>JQuery</h3>
-				<p>The final step is real-time manipulation of square. Use set interval to automatically update data. Each analog pin value is stored in <span>involtReceivedPin</span> array where index is the pin number. The 50ms delay is used to lower the CPU usage.</p>
+				<h4>Interval based script</h4>
+				<p>The final step is real-time manipulation of square. Use set interval to automatically update data. Each analog pin value is stored in <span>involt.pin.A[index]</span> array where index is the pin number. The 50ms delay is used to lower the CPU usage.</p>
 				<div class="code">
 					<div class="code-m">
 						setInterval(function(){ <br>
 						<p>$(".square").css({</p>
 						<br>
-						<p>"width": involtReceivedPin[0],</p>
-						<p>"height": involtReceivedPin[0],</p>
-						<p>"transform": "rotate("+involtReceivedPin[1]+"deg)"</p>
+						<p>"width": involt.pin.A[0],</p>
+						<p>"height": involt.pin.A[0],</p>
+						<p>"transform": "rotate("+involt.pin.A[1]+"deg)"</p>
 						<br>
 						<p>});</p>
 						},50); 
 					</div>
 				</div>
 				<p>Now open your App and test the script. You should be able to rotate the square.</p>
+				<h4>Listen for pin</h4>
+				<p>You should be able to do the same thing with listening for pin function. The <span>involtListenForPin</span> must be defined for each pin separately.</p>
+				<p>Important: because it will update the square each time the value of pins are received, you must add higher delay in your arduino sketch.</p>
+				<div class="code javascript">
+					<div class="code-m">
+						involtListenForPin[0] = function(index, value){
+							<p>$(".square").css({</p>
+							<br>
+							<p>"width": value,</p>
+							<p>"height": value</p>
+							<br>
+							<p>});</p>
+						}; <br><br>
+						involtListenForPin[1] = function(index, value){
+							<p>$(".square").css({</p>
+							<br>
+							<p>"transform": "rotate("+value+"deg)"</p>
+							<br>
+							<p>});</p>
+						}; 
+					</div>
+				</div>
 			</main>
 		</div>
 	</div>
@@ -126,14 +149,14 @@
 			<div class="column">
 				<img src="../img/ico1.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. The goal is to help designers to overcome the obstacles at prototyping stage.
+					Involt was made to quickly create interactive objects with software to hardware communication by using HTML and CSS. The goal is to help you to overcome the obstacles at prototyping stage.
 				</div>
 				<a href="../about.html">Read more</a>
 			</div>
 			<div class="column">
 				<img src="../img/ico2.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					You can help develop framework on Github. There are new features added with each version. To see the progress of development you can check the changelog. Involt is under MIT license.
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development check the changelog. Involt is under MIT license.
 				</div>
 				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
 			</div>

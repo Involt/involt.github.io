@@ -59,7 +59,7 @@
 					<a href="functions.html">Triggering functions</a>
 				</div>
 				<div>
-					<a href="jquery.html">JQuery methods</a>
+					<a href="jquery.html">JS & JQuery methods</a>
 				</div>
 				<div>
 					<a href="bluetooth.html">Bluetooth</a>
@@ -67,16 +67,13 @@
 				<div>
 					<a href="mobile.html">Mobile</a>
 				</div>
-				<div>
-					<a href="layout.html">Layout</a>
-				</div>
 			</div>
 			<main>
 				<h3>Triggering functions</h3>
 				<p>Sometimes, exchanging the data is not enough. In more complex projects there are events that occurs from both sides, especially triggering some event in arduino from html button. It's great to know that Involt cares about simplicity of such events.</p>
 				<h4>Triggering from app to device</h4>
 				<p>For example, use HTML element to send its value and trigger some event in Arduino sketch:</p>
-				<div class="code html">&lt;div class="ard button P6 value-255 <span style="color:blue;">fn-involt</span>"&gt;Click me&lt;/div&gt;</div>
+				<div class="code html">&lt;button class="ard button P6 value-255 <span style="color:blue;">fn-involt</span>"&gt;Click me&lt;/button&gt;</div>
 				<div class="code arduino">
 					<div class="code-m">
 						...
@@ -95,12 +92,12 @@
 						<br>...
 					</div>	
 				</div>
-				<p>There are other possibilites to do this in app. The first is to use <span>involt-cta</span> with fn HTML attribute. It will only send the function when pressed. This element can be used along with Involt pagination and <span>involt-pagelink</span> to trigger an event when user goes to another page.</p>
-				<div class="code html">&lt;div class="involt-cta" fn="involt"&gt;Click me&lt;/div&gt;</div>
+				<p>For sending only the function use <span>button-cta</span>.</p>
+				<div class="code html">&lt;div class="button-cta" fn="involt"&gt;Click me&lt;/div&gt;</div>
 				<p>JQuery method to send function:</p>
 				<div class="code javascript">$(this).sendFn("involt");</div>
 				<p>Pure JS solution:</p>
-				<div class="code javascript">involt.arduinoFn("involt");</div>
+				<div class="code javascript">involt.sendFunction("involt");</div>
 				<h4>Triggering from device to app</h4>
 				<p>Adding this function to sketch will send name of function to app.</p>
 				<div class="code arduino" style="color:blue;">involtSendFunction("involt");</div>
@@ -108,10 +105,20 @@
 				<div class="code javascript">
 					<div class="code-m" style="color:blue;">
 						involtFunction.involt = function(){
-							<p>doSomething...</p>
+							<p>//do something when function "involt" was triggered from device...</p>
 						};
 					</div>
-				</div>		
+				</div>
+				<h4>Listen for received pin value</h4>
+				<p>Use it to trigger function each time when app receives value from certain pin. The <span>index, value</span> are related to received pin data.</p>
+				<div class="code javascript">
+					<div class="code-m" style="color:blue;">
+						involtListenForPin[0] = function(index, value){
+							<p>//do something when received value from pin A0...</p>
+						};
+					</div>
+				</div>
+				<p>Be aware of using it for real time update, especially when manipulating the DOM. Instead use interval based update.</p>
 			</main>
 		</div>
 	</div>
@@ -120,14 +127,14 @@
 			<div class="column">
 				<img src="../img/ico1.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. The goal is to help designers to overcome the obstacles at prototyping stage.
+					Involt was made to quickly create interactive objects with software to hardware communication by using HTML and CSS. The goal is to help you to overcome the obstacles at prototyping stage.
 				</div>
 				<a href="../about.html">Read more</a>
 			</div>
 			<div class="column">
 				<img src="../img/ico2.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					You can help develop framework on Github. There are new features added with each version. To see the progress of development you can check the changelog. Involt is under MIT license.
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development check the changelog. Involt is under MIT license.
 				</div>
 				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
 			</div>

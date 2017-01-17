@@ -59,7 +59,7 @@
 					<a href="functions.html">Triggering functions</a>
 				</div>
 				<div>
-					<a href="jquery.html">JQuery methods</a>
+					<a href="jquery.html">JS & JQuery methods</a>
 				</div>
 				<div>
 					<a href="bluetooth.html">Bluetooth</a>
@@ -67,14 +67,11 @@
 				<div>
 					<a href="mobile.html">Mobile</a>
 				</div>
-				<div>
-					<a href="layout.html">Layout</a>
-				</div>
 			</div>
 			<main>
 				<h3>Bluetooth</h3>
-				<p>Wireless prototyping is crucial for mobile projects. Currently Involt supports classic Bluetooth communication with same as default serial sketch. </p>
-				<p>The bluetooth support was tested with the basic hc-05 device and XM-15B. It's cheap and easy to setup.</p>
+				<p>Wireless prototyping is crucial for mobile projects. Currently Involt supports classic Bluetooth communication with same Arduino sketch.</p>
+				<p>The bluetooth support was tested with hc-05, hc-06 and XM-15B. They are cheap and easy to setup.</p>
 				<p>This chapter will not describe how to connect hc-05 or how to launch AT mode. There are many tutorials on the internet.</p>
 				<p>Remember to not use software serial - just connect to RX/TX pins (RX -> TX, TX -> RX).</p>
 				<h4>Configuring the device</h4>
@@ -84,12 +81,7 @@
 				<p>There are many settings but I don't recommend to change them. Maybe change name to INVOLT with <span>AT+NAME=INVOLT</span></p>
 				<p>To get the device address you can use <span>AT+ADDR</span> or check this in Involt app console (after changing to BT mode).</p>
 				<p>In your system turn On bluetooth adapter and pair the device with default 1234 password (for hc-05). The device must be paired before launching the app.</p>
-				<h4>App setup</h4>
-				<p>First, change the <span>isBluetooth</span> variable to <span>true</span> and <span>isSerial</span> to <span>false</span> in settings.js.</p>
-				<p>Another thing is the address and UUID of service. The easiest way to find this after changing the <span>isBluetooth</span> is open the chrome console. Open the app, right click and inspect element. It's important to have loader on launch when discovering devices.</p>
-				<img src="../img/btconsole.png" alt="">
-				<p>You should paste the UUID (and address if you wish to work without loader) to <span>uuid</span> in settings.js and manifest.json (this will require reloading your app from chrome extenstions menu). </p>
-				<p>If everything is correct the app will launch after pressing the connect button. If your device is not on the list press button to search for devices. If there are connection errors check the console.</p>
+				<p>Change the <span>isBluetooth</span> variable to <span>true</span> and <span>isSerial</span> to <span>false</span> in settings.js.</p>
 			</main>
 		</div>
 	</div>
@@ -98,14 +90,14 @@
 			<div class="column">
 				<img src="../img/ico1.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. The goal is to help designers to overcome the obstacles at prototyping stage.
+					Involt was made to quickly create interactive objects with software to hardware communication by using HTML and CSS. The goal is to help you to overcome the obstacles at prototyping stage.
 				</div>
 				<a href="../about.html">Read more</a>
 			</div>
 			<div class="column">
 				<img src="../img/ico2.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					You can help develop framework on Github. There are new features added with each version. To see the progress of development you can check the changelog. Involt is under MIT license.
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development check the changelog. Involt is under MIT license.
 				</div>
 				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
 			</div>

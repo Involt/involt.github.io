@@ -59,7 +59,7 @@
 					<a href="functions.html">Triggering functions</a>
 				</div>
 				<div>
-					<a href="jquery.html">JQuery methods</a>
+					<a href="jquery.html">JS & JQuery methods</a>
 				</div>
 				<div>
 					<a href="bluetooth.html">Bluetooth</a>
@@ -67,40 +67,27 @@
 				<div>
 					<a href="mobile.html">Mobile</a>
 				</div>
-				<div>
-					<a href="layout.html">Layout</a>
-				</div>
 			</div>
 			<main>
 				<h3>Involt for mobile</h3>
 				<p>What is better than having HTML project communicating with hardware? Having the same app working on mobile. Without any effort.</p>
 				<h4>Configuration</h4>
-				<p>Nothing. Just make sure you work with Bluetooth 2.0 and Android (change the communication mode in settings.js). Low energy support will be released soon. For changing Phonegap related settings use config instead of manifest file.</p>
-				<p>Involt for mobile is based on Cordova/Phonegap and uses chrome libraries for mobile (this is not Chrome app for mobile but uses same libraries). I will really appreciate any feedback if it works on particular Android devices and system versions. I'm working on Galaxy S5 with Android 5.1.1.</p>
+				<p>Nothing. Just make sure you work with Bluetooth 2.0 and Android (change the communication mode in settings.js). For changing Phonegap related settings use config instead of manifest file.</p>
+				<p>The previous Low Energy beta is depreciated. However, it can return in future releases. </p>
+				<p>Involt for mobile is based on Cordova/Phonegap and uses chrome libraries for mobile. I will really appreciate any feedback if it works on particular Android devices and system versions. I'm working on Galaxy S5 with Android 6.0.1 (previously with 5.1.1).</p>
 				<h4>Installation (Phonegap Build)</h4>
-				<p>The easiest way is to use <a href="https://build.phonegap.com">Phonegap Build</a>. With free account you can upload single private app as .zip file or multiple public Github forks. It must be zip where the www folder and config file are at the top of structure (if everything is correct you should see Involt icon and name). As you can see there aren't many things to do here. When you finish uploading your project you can download it via QR code scanner on your phone.</p>
+				<p>The easiest way is to use <a href="https://build.phonegap.com">Phonegap Build</a>. With free account you can upload single private app as .zip file or multiple public Github forks. Add to zip archive the contents of involt folder (if everything is correct you should see Involt icon and name). As you can see there aren't many things to do here. When you finish uploading your project you can download it via QR code scanner on your phone.</p>
 				<img src="../img/phonegap.jpg" alt="involt for mobile phonegap">
-				<p>Enabling hydration will check for updates automatically so you don't have to manually redownload the app.</p>
 				<h4>Additional info</h4>
-				<p>Mobile communication may work different than on desktop. Sometimes you should consider using higher delays in sketch when there is a lot of data to send.</p>
-				<p>Phonegap Developer App is not supported. However, if you wish you can use it to work on layout without Bluetooth interactions (without reuploading the code each time). Remove loader to make it work.</p>
-				<p>In some cases your app will require changes in CSS.</p>
-				<p>Remember to pair the device, however - when app is launched Android should ask to pair the device.</p>
-				<p>Form multiple involt apps change ID and name in config.xml</p>
-				<h4>Quick demo</h4>
-				<p>Connect RGB led to pins 9,10 and 11 and use HC-05 Bluetooth device (with settings from <a href="http://involt.github.io/getting-started/bluetooth.html">Involt bluetooth guide</a>). Upload the sketch downloaded from <a href="https://github.com/Involt/Involt-for-Mobile-RGB-demo">this repo on Github</a></p>
-				<p>To install the app you can use QR code scanner on your device or <a href="https://build.phonegap.com/apps/2049312/share">download the file</a></p>
-				<img src="../img/mobile-qr-code.png" alt="">
-				<h3>Low Energy (beta)</h3>
-				<p>Currently the low energy implementation based on <a href="https://github.com/don/cordova-plugin-ble-central">cordova-plugin-ble-central</a> and Adafruit Bluefruit Low Energy. I tested it on Bluefruit LE Micro. However, low energy is not suitable for streaming as Involt do so I strongly suggest to use classic bluetooth instead. There must be longer delays between sending functions from hardware to app inside prepaired Bluefruit sketch. You can use Phonegap Developer App for live previews. </p>
-				<p>Important things before you begin:</p>
-				<ol>
-					<li>Set the isLowEnergy in settings to true. Remember about the UUID, you should get them from device documentation.</li>
-					<li>Delays, if you know why is it working like this please contact me.</li>
-					<li>If received errors (when sending to app), probably communication will crash. </li>
-					<li>Everything technically works the same as other ways of communication.</li>
-					<li>You should consider using classic bluetooth for large data transmission.</li>
-				</ol>
+				<ul>
+					<li>Mobile communication may work different than on desktop. Sometimes you should consider using higher delays in sketch when there is a lot of data to send.</li>
+					<li>In some cases your app will require changes in CSS (due to some Cordova quirks not the Involt itself). Heavy DOM manipulations from javascript are not recommended.</li>
+					<li>Enabling hydration will check for updates automatically so you don't have to manually redownload the app.</li>
+					<li>Chrome dev tool has ability to inspect (and preview) the app from remote device and use console to debug.</li>
+					<li>Phonegap Developer App is not supported.</li>
+					<li>Remember to pair the device, however - when app is launched Android should ask to pair the device.</li>
+					<li>For multiple involt apps change ID and name in config.xml</li>
+				</ul>
 			</main>
 		</div>
 	</div>
@@ -109,14 +96,14 @@
 			<div class="column">
 				<img src="../img/ico1.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. The goal is to help designers to overcome the obstacles at prototyping stage.
+					Involt was made to quickly create interactive objects with software to hardware communication by using HTML and CSS. The goal is to help you to overcome the obstacles at prototyping stage.
 				</div>
 				<a href="../about.html">Read more</a>
 			</div>
 			<div class="column">
 				<img src="../img/ico2.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					You can help develop framework on Github. There are new features added with each version. To see the progress of development you can check the changelog. Involt is under MIT license.
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development check the changelog. Involt is under MIT license.
 				</div>
 				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
 			</div>

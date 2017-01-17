@@ -59,7 +59,7 @@
 					<a href="functions.html">Triggering functions</a>
 				</div>
 				<div>
-					<a href="jquery.html">JQuery methods</a>
+					<a href="jquery.html">JS & JQuery methods</a>
 				</div>
 				<div>
 					<a href="bluetooth.html">Bluetooth</a>
@@ -67,16 +67,14 @@
 				<div>
 					<a href="mobile.html">Mobile</a>
 				</div>
-				<div>
-					<a href="layout.html">Layout</a>
-				</div>
 			</div>
 			<main>
 				<h3>Arduino sketch</h3>
 				<p>You must use arduino sketch from arduino folder each time when working with Involt. It contains variables and functions used for communication.</p>
 				<p>Involt sketch automatically updates the values received from app into <span>involtPin</span> array where length is total pin number +1. Undeclared array length may cause some errors in some cases so it's better to have it defined. <span>involtString</span> contains strings. Sometimes it's a good practice to define beginning values in <span>void setup()</span> to make the hardware state consistent to app beginning values (or avoid some bugs).</p>
 				<p>Keep in mind, as written in previous chapter that you can send more values than your device pin number. You can use more variables to operate inside sketch functions or send values to expanders or shift registers. For example in Arduino UNO, using <span>involtPin</span> index 14-20 to use with shift register. Check <a href="../examples/strings.html">Send/receive more...</a> tutorial.</p>
-				<p>Involt sketch uses only serial library. Everything should work fine as long as you don't try to use software serial. For ATmega32u4 devices remember to replace the <span>Serial</span> with <span>Serial1</span>.</p>
+				<p>Involt sketch uses only serial library. Everything should work fine as long as you don't try to use software serial. Some devices may need to change <span>Serial</span>to <span>Serial1</span>.</p>
+				<p>Small delays between multiple send functions are required.</p>
 				<h4>Where did the data received from app go?</h4>
 				<p>The received values are updated to <span>involtPin[pinIndex]</span> array. To use them just write <span>digitalWrite</span> or <span>analogWrite</span> using the desired variable. Button with pin <span>P6</span> will send value to <span>involtPin[6]</span>. You should keep the index consistent in your project for readability reasons.</p>
 				<div class="code arduino">
@@ -125,9 +123,9 @@
 						...
 					</div>			
 				</div>
-				<h4>Delays... (or how to avoid buffer overload)</h4>
+				<h4>How to avoid buffer overload</h4>
 				<p>The larger the amount of data is transmitted, or when multiple send functions are in next few lines, the higher the delays between should be. However, you should consider changes in your project if you're trying to send string in real time like "I really want to update this string to app and show it in real time". It's important especially when sending multiple strings (sometimes 10,20 ms is required).</p>
-				<p>How to see the buffer overload? It's simple - it occurs when some numeric values are updated fast and some of them slow. For strings, it's visible when you get some glitches or the data is updated slowly. It's more problematic on bluetooth and mobile devices.</p>
+				<p>How to see the buffer overload? It's simple - it occurs when some numeric values are updated fast and some of them slow (or nothing happens). For strings, it's visible when you get some glitches or the data is updated slowly. It's more problematic on bluetooth and mobile devices.</p>
 				<p>Changing the bitrate may help. Remember to set it to same value in <span>settings.js</span></p>
 			</main>
 		</div>
@@ -137,14 +135,14 @@
 			<div class="column">
 				<img src="../img/ico1.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. The goal is to help designers to overcome the obstacles at prototyping stage.
+					Involt was made to quickly create interactive objects with software to hardware communication by using HTML and CSS. The goal is to help you to overcome the obstacles at prototyping stage.
 				</div>
 				<a href="../about.html">Read more</a>
 			</div>
 			<div class="column">
 				<img src="../img/ico2.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					You can help develop framework on Github. There are new features added with each version. To see the progress of development you can check the changelog. Involt is under MIT license.
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development check the changelog. Involt is under MIT license.
 				</div>
 				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
 			</div>

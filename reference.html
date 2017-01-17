@@ -59,7 +59,6 @@
 					<a href="#send-data">Send data</a>
 					<p>
 						<a href="#button">Button</a>
-						<a href="#button-toggle">Button-toggle</a>
 						<a href="#toggle">Toggle</a>
 						<a href="#switch">Switch</a>
 						<a href="#increase">Increase</a>
@@ -67,27 +66,21 @@
 						<a href="#rangeslider">Rangeslider</a>
 						<a href="#hover">Hover</a>
 						<a href="#knob-send">Knob-send</a>
-						<a href="#custom-button">Custom-button</a>
 						<a href="#involt-cta">Involt-cta</a>
 					</p>
 				</div>
 				<div>
-					<a href="#html-inputs">HTML inputs</a>
+					<a href="#html-inputs">HTML inputs and forms</a>
 					<p>
 						<a href="#involt-input">Involt-input</a>
-						<a href="#input-write">Input-write</a>
-						<a href="#custom-write">Custom-write</a>
-						<a href="#checkbox">Checkbox</a>
-						<a href="#radio">Radio</a>
-						<a href="#submit-button">Submit-button</a>
+						<a href="#involt-submit">Involt-submit</a>
 					</p>
 				</div>
 			</div>
 			<main>
 				<h3>Reference</h3>
-				<p>Here you can find list of all HTML UI elements. Remember about writing <span>involtSend()</span> function for read-only elements and <span>digitalWrite</span> or <span>analogWrite</span> for data sending elements in Arduino sketch with corresponding <span>involtPin[index]</span>.</p>
-				<p>The <span>[value1-value2]</span> mean that the value parameter requires two values <span>value-[value1]-[value2]</span>. <span>[startvalue]</span> is the beginning state of dynamic elements.</p>
-				<p>The value and parameters can be arranged in any order. Only the <span>ard [element] [pin]</span> must remain unchanged.</p>
+				<p>Here you can find list of all HTML UI elements. Remember about writing <span>involtSend()</span> function for read-only elements and <span>digitalWrite</span> or <span>analogWrite</span> for data sending elements in Arduino sketch with corresponding pin. </p>
+				<p>The syntax parameters can be defined as CSS classes or HTML attributes. ( <span>&lt;button class="ard button P6 value-255"&gt;&lt;/button&gt;</span> is same as <span>&lt;button class="ard button" pin="P6" value="255"&gt;&lt;/button&gt;</span>)</p>
 				<p>For JQuery methods reference check the <a href="getting-started/jquery.html">JQuery</a> page</p>
 				<h3 id="read-data">Read data</h3>
 								<!-- -->
@@ -102,30 +95,25 @@
 				<div class="code html">&lt;div class="ard bar A0 range-0-1024"&gt;&lt;/div&gt;</div>
 								<!-- -->
 				<h4 id="knob">Knob</h4>
-				<p>Generates knob that shows analog value. Based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> by Anthony Terrien. You can add the data- attributes as described in plugin to change parameters of this element. For using proto UI kit add <span>proto</span> class to make it consistent with UI.</p>
+				<p>Generates knob that shows analog value. Based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> by Anthony Terrien. You can add the data- attributes as described in plugin to change parameters of this element.
 				<div class="code syntax"><p>ard knob [pin] [range]</p></div>
 				<div class="code html">&lt;div class="ard knob A0 range-0-1024"&gt;&lt;/div&gt;</div>
 								<!-- -->
 				<h4 id="value">Value</h4>
 				<p>Set html object value attribute to received data.</p>
 				<div class="code syntax"><p>ard value [pin]</p></div>
-				<div class="code html">&lt;div class="ard value A0"&gt;&lt;/div&gt;</div>
+				<div class="code html">&lt;input type="text" class="ard value A0"&gt;</div>
 				<h3 id="send-data">Send data</h3>
-				<!-- -->
-				<h4 id="button">Button</h4>
-				<p>The most basic UI element of Involt. Send the value (numeric or string) to target pin when button is pressed.</p>
-				<div class="code syntax"><p>ard button [pin] [value]</p></div>
-				<div class="code html">&lt;div class="ard button P5 value-100"&gt;&lt;/div&gt;</div>
 								<!-- -->
-				<h4 id="button-toggle">Button-toggle</h4>
-				<p>Toggle PWM pin between [value1] and [value2]. [value1] is also pin state on Arduino startup (should be declared in void setup( ) ).</p>
-				<div class="code syntax"><p>ard button-toggle [pin] [value1-value2]</p></div>
-				<div class="code html">&lt;div class="ard button-toggle P5 value-50-100"&gt;&lt;/div&gt;</div>
+				<h4 id="button">Button</h4>
+				<p>The most basic UI element of Involt. Send the value (numeric or string) to target pin when button is pressed. It can be any HTML object (<span>div</span> etc.).</p>
+				<div class="code syntax"><p>ard button [pin] [value]</p></div>
+				<div class="code html">&lt;button class="ard button P5 value-100"&gt;&lt;/button&gt;</div>
 								<!-- -->
 				<h4 id="toggle">Toggle</h4>
-				<p>Toggle digital pin ON and OFF. [startvalue] is pin state on Arduino startup (need to be declared in <span>void setup()</span> ). The <span>pinMode</span> is requied to correctly toggle between digital values. For switching between two PWM values use button-toggle.</p>
-				<div class="code syntax"><p>ard toggle [pin] [startvalue]</p></div>
-				<div class="code html">&lt;div class="ard toggle P5 value-0"&gt;&lt;/div&gt;</div>
+				<p>Toggle pin between <span>[value1]</span> and <span>[value2]</span>. <span>[value1]</span> is also beginning state on startup (should be declared in <span>void setup( )</span> ). By not defining the values it will become 0/1 switch.</p>
+				<div class="code syntax"><p>ard toggle [pin] [value1-value2]</p></div>
+				<div class="code html">&lt;button class="ard toggle P5 value-50-100"&gt;&lt;/button&gt;</div>
 								<!-- -->
 				<h4 id="switch">Switch</h4>
 				<p>Toggle between two values with mobile-like switch. To start with active state add <span>active</span> class.</p>
@@ -133,17 +121,18 @@
 				<div class="code html">&lt;div class="ard switch P5 value-0-255"&gt;&lt;/div&gt;</div>
 								<!-- -->
 				<h4 id="increase">Increase</h4>
-				<p>Increase pin value by [step]. [range] is limits of value. Works with decrease but both need to have same [startvalue]. You can add in void setup the [startvalue] (this is not required).</p>
+				<p>Increase pin value by <span>[step]</span>. <span>[range]</span> is limit of value. Works with decrease but both need to have same <span>[startvalue]</span>. You can add in void setup the <span>[startvalue]</span> (this is not required).</p>
 				<div class="code syntax"><p>ard increase [pin] [startvalue] [range] [step]</p></div>
-				<div class="code html">&lt;div class="ard increase P5 value-100 range-0-255 step-10"&gt;&lt;/div&gt;</div>
+				<div class="code html">&lt;button class="ard increase P5 value-100 range-0-255 step-10"&gt;&lt;/button&gt;</div>
 								<!-- -->
 				<h4 id="decrease">Decrease</h4>
-				<p>Decrease pin value by [step]. [range] is limits of value. Works with increase but both need to have same [startvalue]. You can add in void setup the [startvalue] (this is not required).</p>
+				<p>Decrease pin value by <span>[step]</span>. <span>[range]</span> is limits of value. Works with increase but both need to have same <span>[startvalue]</span>. You can add in void setup the <span>[startvalue]</span> (this is not required).</p>
 				<div class="code syntax"><p>ard decrease [pin] [startvalue] [range] [step]</p></div>
-				<div class="code html">&lt;div class="ard decrease P5 value-100 range-0-255 step-10"&gt;&lt;/div&gt;</div>
+				<div class="code html">&lt;button class="ard decrease P5 value-100 range-0-255 step-10"&gt;&lt;/button&gt;</div>
 								<!-- -->
 				<h4 id="rangeslider">Rangeslider</h4>
 				<p>Generates JQuery based slider with <a href="http://refreshless.com/nouislider/">noUiSlider</a> plugin. The value is displayed inside a tooltip over object.  Add the <span>label-constant</span> class to show the value in constant position. To access the JQuery object use .rangeslider>.slider selector, for more info read the plugin documentation. To send the values in real time, not only on release add the <span>fluid</span> class (may cause buffer overloads so step 1 is not recommended).</p>
+				<p>For plain HTML rangeslider use involt-input element</p>
 				<div class="code syntax"><p>ard rangeslider [pin] [startvalue] [range] [step]</p></div>
 				<div class="code html">&lt;div class="ard rangeslider P5 value-0 range-0-255 step-5"&gt;&lt;/div&gt;;</div>
 								<!-- -->
@@ -153,64 +142,51 @@
 				<div class="code html">&lt;div class="ard hover P5 value-0-255"&gt;&lt;/div&gt;</div>
 								<!-- -->
 				<h4 id="knob-send">Knob-send</h4>
-				<p>Simple knob that sends value. This knob is also based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> - you can add plugin data- attributes to this element and they will be transfred to generated object. For using proto UI kit add <span>proto</span> class to make it consistent with UI. To send the values in real time, not only on release add the <span>fluid</span> class (may cause buffer overloads so step 1 is not recommended).</p>
+				<p>Simple knob that sends value. This knob is also based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> - you can add plugin data- attributes to this element and they will be transfred to generated object. To send the values in real time, not only on release add the <span>fluid</span> class (may cause buffer overloads so step 1 is not recommended).</p>
 				<div class="code syntax"><p>ard knob-send [pin] [startvalue] [range] [step]</p></div>
 				<div class="code html">&lt;div class="ard knob-send P5 value-100 range-0-255 step-1"&gt;&lt;/div&gt;</div>
 								<!-- -->
-				<h4 id="custom-button">Custom-button</h4>
-				<p>Create button that sends raw string data without target pin to device. Example code shows how to send PWM value 100 to pin 5. You can use it to send custom text which can be used for displaying on lcd display. You can do the same with JQuery <span>.sendString()</span> method.</p>
-				<div class="code syntax"><p>ard custom-button [string]</p></div>
-				<div class="code html">&lt;div class="ard custom-button P5V100"&gt;&lt;/div&gt;</div>
-								<!-- -->
 				<h4 id="involt-cta">Involt-cta</h4>
-				<p>Technically not a part of Involt UI kit but anything not from the reference list with that class will send a function. For sending functions with Involt UI element just use <span>fn</span> class. With involt-cta you have to add the function name as <span>fn</span> HTML attribute (not CSS).</p>
-				<p>For functions check the <a href="getting-started/functions.html">triggering functions tutorial.</a></p>
-				<p>This element will also work great with <span>involt-pagelink</span> in <a href="getting-started/layout.html">Involt pagination</a> where going to another page will trigger function in device.</p>
-				<div class="code syntax"><p>involt-cta (+functionName)</p></div>
-				<div class="code html">&lt;div class="involt-cta" fn="functionName"&gt;&lt;/div&gt;</div>
-				<h3 id="html-inputs">HTML inputs</h3>
+				<p>Simple call to action for triggering functions in device.</p>
+				<div class="code syntax"><p>ard involt-cta [functionName]</p></div>
+				<div class="code html">&lt;button class="ard involt-cta fn-functionName"&gt;&lt;/button&gt;</div>
+				<h3 id="html-inputs">HTML inputs & forms</h3>
 								<!-- -->
 				<h4 id="involt-input">Involt-input</h4>
-				<p>A general purpose class for adding hardware communication to non-Involt HTML inputs (rangesliders, text inputs, select etc.). For some elements like checkbox it's better to use Involt element. In more advanced project you should consider your own JQuery event.</p>
-				<div class="code syntax"><p>ard involt-input [pin]</p></div>
-				<div class="code html">&lt;input type="range" class="ard involt-input P10" min="0" max="100" value="50"&gt;</div>
-				<!-- -->
-				<h4 id="input-write">Input-write</h4>
-				<p>Input which sends written value to chosen pin. You can use the <span>type="number"</span> to create input similar to increase/decrease element.</p>
-				<div class="code syntax"><p>ard input-write [pin]</p></div>
-				<div class="code html">&lt;input class="ard input-write P5"&gt;</div>
-								<!-- -->
-				<h4 id="custom-write">Custom-write</h4>
-				<p>Input which sends written text to device as string (non-direct only).</p>
-				<div class="code syntax"><p>ard custom-write</p></div>
-				<div class="code html">&lt;input class="ard custom-write"&gt;</div>
-								<!-- -->
-				<h4 id="checkbox">Checkbox</h4>
-				<p>Create checkbox with different values on [checked] and [unchecked] input state.</p>
-				<div class="code syntax"><p>ard checkbox [pin] [unchecked-checked]</p></div>
-				<div class="code html">&lt;input type="checkbox" class="ard checkbox P5 value-0-255"&gt;</div>
-								<!-- -->
-				<h4 id="radio">Radio</h4>
-				<p>Create radiobox with selected value. You can define same input name attribute to switch between values in group of radiobox objects.</p>
-				<div class="code syntax"><p>ard radio [pin] [value]</p></div>
-				<div class="code html">		
-					&lt;input type="radio" class="ard radio P5 value-0" name="myname"&gt; <br>
-					&lt;input type="radio" class="ard radio P5 value-100" name="myname"&gt; <br>
-					&lt;input type="radio" class="ard radio P5 value-255" name="myname"&gt;
+				<p>Handle the hardware interactions for HTML inputs. The data is sent on input change. Remember that <span>parameters</span> can be defined as classes and HTML attributes.</p>
+				<p>Supported inputs: <span>text, range, number, checkbox, radio, select</span></p>
+				<div class="code syntax"><p>ard involt-input [parameters]</p></div>
+				<div class="code html">
+					&lt;input type="text" class="ard involt-input S0"&gt; <br><br>
+					&lt;input type="number" class="ard involt-input P10"&gt; <br><br>
+					&lt;input type="checkbox" class="ard involt-input" pin="P9" value="0-255"&gt; <br><br>
+					&lt;input type="range" class="ard involt-input P10" min="0" max="100" step="10" value="50"&gt; <br><br>
+					&lt;input type="radio" name="demo" class="ard involt-input P14" value="0"&gt; <br>
+					&lt;input type="radio" name="demo" class="ard involt-input P14" value="1"&gt; <br><br>
+					&lt;select class="ard involt-input" pin="P13"&gt; <br>
+					&lt;option value="0"&gt;0&lt;/option&gt;<br>
+					&lt;option value="100"&gt;100&lt;/option&gt;<br>
+					&lt;option value="255"&gt;255&lt;/option&gt;<br>
+					&lt;/select&gt;<br>
 				</div>
 								<!-- -->
-				<h4 id="submit-button">Submit-button</h4>
-				<p>Send values of HTML inputs as regular <span>HTML form</span> with <span>submit</span> button. This will prevent default sending event of html inputs (or rangeslider and knob-send) to trigger only when the button is pressed, passing all the values at once. The button and all target elements must be inside form tag. You can add the <span>fn="functionNameString"</span> HTML attribute to trigger function in arduino when pressed. Submit-button has no other parameters.</p>
-				<div class="code syntax"><p>ard submit-button</p></div>
-				<div class="code html">		
+				<h4 id="involt-submit">Involt-submit</h4>
+				<p>Use involt-submit inside HTML form to send form inputs value only on submitting by this button. The <span>functionName</span> is not required, the function itself is triggered after all values are passed to device. The <span>type=""button"</span> is required.</p>
+				<p>Ui elements affected: <span>involt-input, knob-send, rangeslider.</span></p>
+				<div class="code syntax"><p>ard involt-submit [functionName]</p></div>
+				<div class="code html">&lt;button type="button" class="ard involt-submit fn-functionName"&gt;&lt;/button&gt;</div>
+				<p>Quick example:</p>
+				<div class="code html">
 					<div class="code-m">
-						&lt;form&gt; <br>
-						<p>&lt;input type="text" class="ard input-write S0" placeholder="Name"&gt;</p>
-						<p>&lt;input type="text" class="ard input-write S1" placeholder="Surename"&gt; </p><br>
-						<p>&lt;button type="button" class="ard submit-button"&gt;Submit&lt;/button&gt; </p>
+						&lt;input type="text" class="ard involt-input S0"&gt; //Send value when it's changed
+						<br><br>
+						&lt;form&gt;
+							<p>&lt;input type="text" class="ard involt-input S0"&gt; //Changing will not send the value immediately.</p> 
+							<p>&lt;button type="button" class="ard involt-submit"&gt;Submit&lt;/button&gt; //Click to send value</p>
 						&lt;/form&gt;
 					</div>
 				</div>
+
 			</main>
 		</div>
 	</div>
@@ -219,14 +195,14 @@
 			<div class="column">
 				<img src="img/ico1.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					Involt is ready to use Chrome packaged app template. You can use it to quickly create interactive object with software to hardware communication. The goal is to help designers to overcome the obstacles at prototyping stage.
+					Involt was made to quickly create interactive objects with software to hardware communication by using HTML and CSS. The goal is to help you to overcome the obstacles at prototyping stage.
 				</div>
 				<a href="about.html">Read more</a>
 			</div>
 			<div class="column">
 				<img src="img/ico2.svg" class="ico-small" alt="">
 				<div class="footer-txt">
-					You can help develop framework on Github. There are new features added with each version. To see the progress of development you can check the changelog. Involt is under MIT license.
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development check the changelog. Involt is under MIT license.
 				</div>
 				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
 			</div>
