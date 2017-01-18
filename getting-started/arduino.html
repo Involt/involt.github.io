@@ -76,7 +76,7 @@
 				<p>Involt sketch uses only serial library. Everything should work fine as long as you don't try to use software serial. Some devices may need to change <span>Serial</span>to <span>Serial1</span>.</p>
 				<p>Small delays between multiple send functions are required.</p>
 				<h4>Where did the data received from app go?</h4>
-				<p>The received values are updated to <span>involtPin[pinIndex]</span> array. To use them just write <span>digitalWrite</span> or <span>analogWrite</span> using the desired variable. Button with pin <span>P6</span> will send value to <span>involtPin[6]</span>. You should keep the index consistent in your project for readability reasons.</p>
+				<p>The received values are updated to <span>involtPin[pinIndex]</span> array. To use them just write <span>digitalWrite</span> or <span>analogWrite</span> using the desired variable. Button with pin <span>P6</span> (stored in <span>involt.pin.P[6]</span>) will send value to <span>involtPin[6]</span>. You should keep the index consistent in your project for readability reasons.</p>
 				<div class="code arduino">
 					<div class="code-m">
 						...
@@ -90,10 +90,10 @@
 						...
 					</div>	
 				</div>
-				<p>The <span>S</span> string pin from app will go to <span>involtString[pinIndex]</span> (<span>S0</span> will be in <span>involtString[0]</span>).</p>
+				<p>The <span>S</span> string pin from app will go to <span>involtString[pinIndex]</span> (<span>S0</span> will be in <span>involtString[0]</span> and <span>involt.pin.S[0]</span> in app).</p>
 				<p>For sending 0-1 values for <span>digitalWrite</span> you need to add the <span>pinMode</span>.</p>
 				<h4>Sending the value to app</h4>
-				<p>For sending values use <span>involtSend(pinIndex, value)</span> function. The <span>pinIndex</span> will be same inside app. <span>involtSend(0, analogRead(A0))</span> can be shown with <span>A0</span> pin in app.</p>
+				<p>For sending values use <span>involtSend(pinIndex, value)</span> function. The <span>pinIndex</span> will be same inside app. <span>involtSend(0, analogRead(A0))</span> can be shown with <span>A0</span> pin in app (for example: <span>ard show A0</span>).</p>
 				<div class="code arduino">
 					<div class="code-m">
 						...
