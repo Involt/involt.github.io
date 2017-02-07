@@ -215,7 +215,7 @@ header nav a:hover {
   margin-bottom: 20px;
 }
 main {
-  /*margin-left: 340px;*/
+  margin-left: 340px;
   border-top: 1px solid #00c5ff;
   float: none;
   width: auto;
@@ -254,7 +254,7 @@ main.examples img {
   margin: 20px auto;
 }
 .sidebar {
-  float: left;
+  position:fixed;
   background: #f0f0f0;
   width: 300px;
   margin-right: 40px;
@@ -339,6 +339,7 @@ footer a {
   .sidebar {
     float: none;
     width: 100%;
+    position:initial;
   }
   .sidebar.reference > div {
     vertical-align: top;
