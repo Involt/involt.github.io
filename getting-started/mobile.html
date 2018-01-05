@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<!--<script src="js/less.js"></script>-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:400' rel='stylesheet' type='text/css'>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -50,16 +50,16 @@
 					<a href="../getting-started.html">Quick start</a>
 				</div>
 				<div>
-					<a href="htmlsyntax.html">HTML UI & CSS syntax</a>
+					<a href="htmlsyntax.html">HTML/CSS interactions</a>
 				</div>
 				<div>
-					<a href="arduino.html">Arduino sketch</a>
+					<a href="arduino.html">Pins & Arduino sketch</a>
 				</div>
 				<div>
 					<a href="functions.html">Triggering functions</a>
 				</div>
 				<div>
-					<a href="jquery.html">JS & JQuery methods</a>
+					<a href="jquery.html">JS & JQuery</a>
 				</div>
 				<div>
 					<a href="bluetooth.html">Bluetooth</a>
@@ -67,16 +67,16 @@
 				<div>
 					<a href="mobile.html">Mobile</a>
 				</div>
+				<div>
+					<a href="faq.html">FAQ & known issues</a>
+				</div>
 			</div>
 			<main>
 				<h3>Involt for mobile</h3>
-				<p>What is better than having HTML project communicating with hardware? Having the same app working on mobile. Without any effort.</p>
 				<h4>Configuration</h4>
-				<p>Nothing. Just make sure you work with Bluetooth 2.0 and Android (change the communication mode in settings.js). For changing Phonegap related settings use <span>config.xml</span> instead of <span>package.json</span> file.</p>
-				<p>The previous Low Energy beta is depreciated. However, it can return in future releases. </p>
-				<p>Involt for mobile is based on Cordova/Phonegap and uses chrome libraries for mobile. I will really appreciate any feedback if it works on particular Android devices and system versions. I'm working on Galaxy S5 with Android 6.0.1 (previously with 5.1.1).</p>
-				<h4>Installation (Phonegap Build)</h4>
-				<p>The easiest way is to use <a href="https://build.phonegap.com">Phonegap Build</a>. With free account you can upload single private app as .zip file or multiple public Github forks. Add to zip archive the contents of involt folder (if everything is correct you should see Involt icon and name). As you can see there aren't many things to do here. When you finish uploading your project you can download it via QR code scanner on your phone.</p>
+				<p>The current mobile version is made for Bluetooth 2.0 and Android. There are no additional steps to configure your project. Just make sure that in settings.js communication is set to Bluetooth. To change Phonegap related settings use config.xml instead of package.json. </p>
+				<h4>Phonegap Build</h4>
+				<p>The easiest way is to use <a href="https://build.phonegap.com">Phonegap Build</a>. With free account you can upload single private app as .zip file or multiple public Github forks. Add to zip archive the contents of involt folder (don't pack node-webkit files). If everything is correct you should see Involt icon and name. As you can see there aren't many things to do here. When you finish uploading your project you can download it via QR code scanner on your phone.</p>
 				<img src="../img/phonegap.jpg" alt="involt for mobile phonegap">
 				<h4>Additional info</h4>
 				<ul>

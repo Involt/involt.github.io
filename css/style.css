@@ -1,3 +1,4 @@
+
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -12,7 +13,7 @@ body {
   padding: 0;
   font-family: 'Source Sans Pro';
   color: #003645;
-  margin-bottom: 272px;
+  margin-bottom: 271px;
 }
 .container {
   padding: 40px;
@@ -65,7 +66,7 @@ h4 {
 }
 .code {
   font-family: 'Source Code Pro';
-  font-weight: 300;
+  font-weight: 400;
   font-size: 14px;
   padding: 20px;
   background: #f0f0f0;
@@ -172,6 +173,7 @@ header nav a:hover {
 }
 .howdoesit {
   text-align: center;
+  margin-bottom: 60px;
 }
 .howdoesit p {
   font-weight: 300;
@@ -216,7 +218,6 @@ header nav a:hover {
 }
 main {
   margin-left: 340px;
-  border-top: 1px solid #00c5ff;
   float: none;
   width: auto;
   overflow: hidden;
@@ -237,7 +238,7 @@ main p {
   line-height: 1.5;
   color: #323232;
 }
-main p span {
+main p span, main ul span {
   font-family: 'Source Code Pro';
   background: #f0f0f0;
   margin: 0 3px;

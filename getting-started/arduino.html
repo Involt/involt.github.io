@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Arduino sketch | Involt - Arduino to html prototyping framework for designers.</title>
+	<title>Pins & Arduino sketch | Involt - Arduino to html prototyping framework for designers.</title>
 	<meta content="How to use Arduino sketch." name="description"></meta>
 	<meta content="hardware prototyping, software to hardware, arduino, html, arduino to html, framework, jquery, chrome app, physical computing, communication" name="keywords"></meta>
 	<meta content="width=device-width, initial-scale=1" name="viewport"></meta>
@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<!--<script src="js/less.js"></script>-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:400' rel='stylesheet' type='text/css'>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -50,16 +50,16 @@
 					<a href="../getting-started.html">Quick start</a>
 				</div>
 				<div>
-					<a href="htmlsyntax.html">HTML UI & CSS syntax</a>
+					<a href="htmlsyntax.html">HTML/CSS interactions</a>
 				</div>
 				<div>
-					<a href="arduino.html">Arduino sketch</a>
+					<a href="arduino.html">Pins & Arduino sketch</a>
 				</div>
 				<div>
 					<a href="functions.html">Triggering functions</a>
 				</div>
 				<div>
-					<a href="jquery.html">JS & JQuery methods</a>
+					<a href="jquery.html">JS & JQuery</a>
 				</div>
 				<div>
 					<a href="bluetooth.html">Bluetooth</a>
@@ -67,33 +67,59 @@
 				<div>
 					<a href="mobile.html">Mobile</a>
 				</div>
+				<div>
+					<a href="faq.html">FAQ & known issues</a>
+				</div>
 			</div>
 			<main>
-				<h3>Arduino sketch</h3>
-				<p>You must use arduino sketch from arduino folder each time when working with Involt. It contains variables and functions used for communication.</p>
-				<p>Involt sketch automatically updates the values received from app into <span>involtPin</span> array where length is total pin number +1. Undeclared array length may cause some errors in some cases so it's better to have it defined. <span>involtString</span> contains strings. Sometimes it's a good practice to define beginning values in <span>void setup()</span> to make the hardware state consistent to app beginning values (or avoid some bugs).</p>
-				<p>Keep in mind, as written in previous chapter that you can send more values than your device pin number. You can use more variables to operate inside sketch functions or send values to expanders or shift registers. For example in Arduino UNO, using <span>involtPin</span> index 14-20 to use with shift register. Check <a href="../examples/strings.html">Send/receive more...</a> tutorial.</p>
-				<p>Involt sketch uses only serial library. Everything should work fine as long as you don't try to use software serial. Some devices may need to change <span>Serial</span>to <span>Serial1</span>.</p>
-				<p>Small delays between multiple send functions are required.</p>
-				<h4>Where did the data received from app go?</h4>
-				<p>The received values are updated to <span>involtPin[pinIndex]</span> array. To use them just write <span>digitalWrite</span> or <span>analogWrite</span> using the desired variable. Button with pin <span>P6</span> (stored in <span>involt.pin.P[6]</span>) will send value to <span>involtPin[6]</span>. You should keep the index consistent in your project for readability reasons.</p>
+
+				<h3>Pins & Arduino sketch</h3>
+				<p>It's very obvious that Arduino pins correlate with Involt pins in app. To understand how to use them we need to distingush the differences between numeric values and text strings. Pins are not only the direct representation of device pins. Treat the Involt pins as a container of values that by sending or receiving are accessible from both sides. In short, there may be more Involt pins than your Arduino pins.</p>
+				<p>Keeping the Pin-to-Pin relation is most intuitive and highly recommended to maintain readability of your code (<span>A0</span> analog pin as <span>A0</span> pin in app). Pin types are <span>P</span>, <span>S</span> and <span>A</span></p>
+
+				<h4>Values received from app</h4>
+				<p>Involt can send two types of data. For numeric values Involt uses pins started with <span>P</span>. It's same as in Arduino. They are stored in <span>involtPin</span> array. UI element with <span>P6</span> will be put into <span>involtPin[6]</span>.</p>
+				<p>When using <span>digitalWrite</span> remember about <span>pinMode</span>. Then you can send value 0 or 1.</p>
+
 				<div class="code arduino">
 					<div class="code-m">
-						...
-						<br><br>
-						void loop(){
-						<p>involtReceive(); </p>
-						<br>
-						<p style="color:blue;">analogWrite(6, involtPin[6]);</p>
-						}
-						<br><br>
-						...
+
+						analogWrite(6, involtPin[6]);
+
 					</div>	
 				</div>
-				<p>The <span>S</span> string pin from app will go to <span>involtString[pinIndex]</span> (<span>S0</span> will be in <span>involtString[0]</span> and <span>involt.pin.S[0]</span> in app).</p>
-				<p>For sending 0-1 values for <span>digitalWrite</span> you need to add the <span>pinMode</span>.</p>
-				<h4>Sending the value to app</h4>
-				<p>For sending values use <span>involtSend(pinIndex, value)</span> function. The <span>pinIndex</span> will be same inside app. <span>involtSend(0, analogRead(A0))</span> can be shown with <span>A0</span> pin in app (for example: <span>ard show A0</span>).</p>
+
+				<p>To send text strings use <span>S</span> pin in your app. The string will be stored in <span>involtString</span> array. <span>S0</span> will be <span>involtString[0]</span>.</p>
+
+				<div class="code arduino">
+					<div class="code-m">
+
+						if (involtString[0] == "involt"){ 
+						<p>analogWrite(6, 255);</p>
+						}
+
+					</div>	
+				</div>
+
+				<p>Check this by adding two HTML elements to app.html:</p>
+
+				<div class="code html">
+					&lt;button class="ard button P6 value-50"&gt;Number&lt;/button&gt;
+					<br>
+					&lt;button class="ard button S0 value-involt"&gt;String&lt;/button&gt;
+				</div>
+
+				<h4>Sending values to app</h4>
+				
+				<p>There are two functions to send your values - <span>involtSend(pin, value)</span> and <span>involtSendString(pin, string)</span>. Both numbers and strings are stored as <span>A</span> pin inside app. For example: pin <span>A0</span> can be number <span>123</span> or text <span>word</span>.</p>
+				<p>Add two <span>show</span> element and check two cases below:</p>
+
+				<div class="code html">
+					&lt;div class="ard show A0"&gt;&lt;/div&gt;
+					<br>
+					&lt;div class="ard show A1"&gt;&lt;/div&gt;
+				</div>
+
 				<div class="code arduino">
 					<div class="code-m">
 						...
@@ -103,30 +129,21 @@
 						<br>
 						<p style="color:blue;">involtSend(0, analogRead(A0));</p>
 						<p>delay(2);</p>
-						}
-						<br><br>
-						...
-					</div>			
-				</div>
-				<p>For sending strings use <span>involtSendString(pinIndex, string)</span> function.</p>
-				<div class="code arduino">
-					<div class="code-m">
-						...
-						<br><br>
-						void loop(){
-						<p>involtReceive(); </p>
-						<br>
-						<p style="color:blue;">involtSendString(10, "involt");</p>
+						<p style="color:blue;">involtSendString(1, "involt");</p>
 						<p>delay(8)</p>
 						}
 						<br><br>
 						...
 					</div>			
 				</div>
-				<h4>How to avoid buffer overload</h4>
+
 				<p>The larger the amount of data is transmitted, or when multiple send functions are in next few lines, the higher the delays between should be. However, you should consider changes in your project if you're trying to send string in real time like "I really want to update this string to app and show it in real time". It's important especially when sending multiple strings (sometimes 10,20 ms is required).</p>
-				<p>How to see the buffer overload? It's simple - it occurs when some numeric values are updated fast and some of them slow (or nothing happens). For strings, it's visible when you get some glitches or the data is updated slowly. It's more problematic on bluetooth and mobile devices.</p>
-				<p>Changing the bitrate may help. Remember to set it to same value in <span>settings.js</span></p>
+
+				<p>Probably, at some point you will notice that some things requires to send (or read) data not related to any hardware pin but from i2c/SPI sensor, some calculations or read additional data from multiplexer. In this case just include them as unused pin from pin array. For example: Arduino UNO has 6 analog read pins. If you use multiplexer (or just want to send other values) the additional values can be sent as pins A6-A(n). Or <span>involtPin</span>index 14-20 to use with shift register (Arduino UNO has only 13 pins).</p>
+				<p> Remember that undeclared array length may cause some errors in some cases so it's better to have it defined.</p>
+				
+				
+
 			</main>
 		</div>
 	</div>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FAQ | Involt - Arduino to html prototyping framework for designers.</title>
+	<meta content="Involt FAQ and known issues" name="description"></meta>
+	<meta content="hardware prototyping, software to hardware, arduino, html, arduino to html, framework, jquery, chrome app, physical computing, communication" name="keywords"></meta>
+	<meta content="width=device-width, initial-scale=1" name="viewport"></meta>
+	<link rel="shortcut icon" type="../image/png" href="../favicon.png"/>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<!--<script src="js/less.js"></script>-->
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:400' rel='stylesheet' type='text/css'>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-69535393-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+</head>
+<body>
+	<header>
+		<div class="container-head">
+			<a href="../index.html" class="logo"><img src="../img/logo.svg" alt=""></a>
+			<div class="ham-btn">
+				<div>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>	
+			<nav>
+				<a href="../index.html">Home</a>
+				<a href="../getting-started.html">Getting started</a>
+				<a href="../examples.html">Examples</a>
+				<a href="../reference.html">Reference</a>
+				<a href="../about.html">About</a>
+				<a href="https://github.com/Involt/Involt">Github</a>
+			</nav>
+		</div>
+	</header>
+	<div class="bg-gray">
+		<div class="container">
+			<div class="sidebar reference">
+				<h2>Chapters:</h2>
+				<div>
+					<a href="../getting-started.html">Quick start</a>
+				</div>
+				<div>
+					<a href="htmlsyntax.html">HTML/CSS interactions</a>
+				</div>
+				<div>
+					<a href="arduino.html">Pins & Arduino sketch</a>
+				</div>
+				<div>
+					<a href="functions.html">Triggering functions</a>
+				</div>
+				<div>
+					<a href="jquery.html">JS & JQuery</a>
+				</div>
+				<div>
+					<a href="bluetooth.html">Bluetooth</a>
+				</div>
+				<div>
+					<a href="mobile.html">Mobile</a>
+				</div>
+				<div>
+					<a href="faq.html">FAQ & known issues</a>
+				</div>
+			</div>
+			<main>
+				<h3>FAQ</h3>
+
+				<h4>How to change the project name and description?</h4>
+				<p>On desktop, edit <span>package.json</span>. On mobile - <span>config.xml</span></p>
+
+				<h4>How to remove the loader?</h4>
+				<ol>
+					<li>Open settings.js</li>
+					<li>Change the loaderOnLaunch to false</li>
+					<li>Set default connection settings below. After that Involt will connect to selected device on launch.</li>
+					<li>Enjoy not selecting the device each time when app is launched.</li>
+					<li>Remember that loader is recommended when sending the project to others.</li>
+				</ol>
+
+				<h4>How to change the desktop window dimensions?</h4>
+				<p>Open <span>package.json</span> and change <span>width</span> or <span>height</span>. To run app on fullscreen uncomment the <span>fullscreen</span> parameter.</p>
+
+				<h4>Debug mode</h4>
+				<p>Debug mode prints to console additional informations about what is happening in Involt and connection settings. To turn on debug mode open <span>settings.js</span> and change <span>debugMode</span> to <span>true</span>.</p> 
+
+				<h4>Adding Involt to existing layout. What should I do?</h4>
+				<ul>
+					<li>Injecting interactions will not change the existing layout and there is no need of rewriting your project. </li>
+					<li>Check app.html, it's boilerplate and homepage. Look what scripts and assets are required in head section for your subpages.</li>
+					<li>You can remove the Involt CSS stylesheet but remember that some UI elements like switch or bar requires their styling to work correctly.</li>
+					<li>With hardware, just adapt your project to Involt sketch and its functions. It's easy but requires some planning.</li>
+				</ul>
+
+				<h4>How should I adapt my project from desktop to mobile?</h4>
+				<ul>
+					<li>It's easier to work on desktop and then pack into mobile version. You can set the window dimensions to your target device and preview the layout. There is no point of uploading to Phonegap Build each time.</li>
+					<li>You can start working with responsive design layout or responsive framework.</li>
+					<li>Involt without additional plugins works fine with Phonegap. Be aware that there are some quirks in Phonegap.</li>
+					<li>Try builing layout without Involt interactions and real time preview in Phonegap Developer App without connection.</li>
+					<li>Don't pack node-webkit files to Phonegap Build, they are useless on mobile</li>
+					<li>Bluetooth communication is same as on desktop but remember that mobile device may have lower range and may work slower.</li>
+				</ul>
+
+				<h4>Should I start working on app or device?</h4>
+				<p>There is no golden rule as it really depends on project. Sometimes there are more tangible interactions than those on screen and vice versa. Start with sketches, mockups etc. and then at some point do the list of what must be sent and what events occurs between them.</p>
+
+				<h4>Involt limitations</h4>
+				<ul>
+					<li>All limitations related to node-webkit and cordova (on mobile).</li>
+					<li>Project is based on web technologies but keep in mind that Involt does not support online communication so you can't develop working IoT solution(maybe in future).</li>
+					<li>IOS and Bluetooth LE are not supported.</li>
+					<li>Only one device can be connected to app at once.</li>
+				</ul>
+
+				<h4>Are there any devices that won't work?</h4>
+				<p>I never heard of any issues with particular Arduino version. With Bluetooth I can be 100% sure that HC-05, HC-06 and XM-15B works fine. However, I never received feedback about issues with other Bluetooth modules. I know that specific Android devices have issues with Bluetooth but it's not related to Involt. I will really appreciate any feedback if it works (or not) on particular Android device and system versions. I'm working on Galaxy S5 with Android 6.0.1 (previously with 5.1.1).</p>
+
+				<h3>Known issues</h3>
+
+				<h4>When I launch my app nothing happens</h4>
+				<ul>
+					<li>Are the Involt files unpacked in main folder so package.json and nw.exe are in same folder?</li>
+					<li>Involt works only within Node-webkit and Phonegap. It will not work in your browser.</li>
+					<li>Check Javascript code, especially errors in console. Errors in your code will block framework communication.</li>
+				</ul>
+
+				<h4>My device doesn't respond when connected</h4>
+				<ul>
+					<li>Assuming that device is plugged correctly and bluetooth is connected and paired - mostly it was problem with changed serial baudrate in serial begin or it's inconsistent with baudrate in settings.js. The baudrate within device and app must be the same. You shouldn't make any changes in involt-basic.ino functions unless you know what you want to do.</li>
+					<li>Maybe there are some pin numbers not consistent between app and device or Involt arrays are too short causing issues within Arduino code.</li>
+					<li>Reopen the bluetooth adapter and open the app again. Involt sometimes (rarely) throws "Invalid UUID" error.</li>
+					<li>Remember that Arduino Leonardo/Micro requires change from <span>Serial</span> to <span>Serial1</span> while using bluetooth connected to hardware serial pins.</li>
+				</ul>
+
+				<h4>Device send strings with glitches</h4>
+				<p>Usually it's buffer overload. Try higher delays between sending long strings or while sending multiple strings at once (even small strings requires some delay). It's common issue while switching from serial to Bluetooth. Also check higher baudrate and your bluetooth range.</p>
+				
+				<h4>Device receives incomplete strings</h4>
+				<p>Increase <span>involt</span> array length in Arduino sketch. It's possible that you try to send too much data at once but uncontrolled buffer overload is issue while sending from device to app.</p>
+
+				<h4>Device/app latency is too slow</h4>
+				<ul>
+					<li>Obviously this could be caused by too many (too long?) delays in your sketch so it's blocking the communication.</li>
+					<li>Try increasing baudrate. (From both sides)</li>
+					<li>The update rate affects smoothness of updating HTML read elements. Default value is compromise between smoothness and cpu usage. Lower value will update objects almost in real time but will affect CPU usage (important especially on mobile). To change this open settings.js and change <span>updateRate</span>. This will not affect the connection bitrate.</li>
+					<li>Check Bluetooth range.</li>
+				</ul>
+
+				<h4>Can I use software serial for Bluetooth?</h4>
+				<p>No, it's too slow. I always connect my BT directly to hardware serial pins and never had any issues. I don't use additional resistors or logic-level converters but you should always check for your module if it's required.</p>
+				
+			</main>
+		</div>
+	</div>
+	<footer>
+		<div class="container">
+			<div class="column">
+				<img src="../img/ico1.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					Involt was made to quickly create interactive objects with software to hardware communication by using HTML and CSS. The goal is to help you to overcome the obstacles at prototyping stage.
+				</div>
+				<a href="../about.html">Read more</a>
+			</div>
+			<div class="column">
+				<img src="../img/ico2.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					You can help develop framework on Github. There are new features added with each version. To see the progress of development check the changelog. Involt is under MIT license.
+				</div>
+				<a href="https://github.com/Involt/Involt/wiki/Changelog">See the Changelog</a>
+			</div>
+			<div class="column">
+				<img src="../img/ico3.svg" class="ico-small" alt="">
+				<div class="footer-txt">
+					Used Involt and enjoyed it? Do you have any questions or suggestions? Help by sending feedback directly via mail.
+				</div>
+				<a href="mailto:ernestwarzocha@gmail.com">ernestwarzocha@gmail.com</a>
+			</div>
+		</div>
+	</footer>
+	<script src="../js/jq-ui.js"></script>
+</body>
+</html>

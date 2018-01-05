@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>HTML Syntax | Involt - Arduino to html prototyping framework for designers.</title>
+	<title>HTML UI | Involt - Arduino to html prototyping framework for designers.</title>
 	<meta content="Involt CSS syntax and HTML explained. This chapter also contains details about configuring the app" name="description"></meta>
 	<meta content="hardware prototyping, software to hardware, arduino, html, arduino to html, framework, jquery, chrome app, physical computing, communication" name="keywords"></meta>
 	<meta content="width=device-width, initial-scale=1" name="viewport"></meta>
@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<!--<script src="js/less.js"></script>-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:400' rel='stylesheet' type='text/css'>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -50,16 +50,16 @@
 					<a href="../getting-started.html">Quick start</a>
 				</div>
 				<div>
-					<a href="htmlsyntax.html">HTML UI & CSS syntax</a>
+					<a href="htmlsyntax.html">HTML/CSS interactions</a>
 				</div>
 				<div>
-					<a href="arduino.html">Arduino sketch</a>
+					<a href="arduino.html">Pins & Arduino sketch</a>
 				</div>
 				<div>
 					<a href="functions.html">Triggering functions</a>
 				</div>
 				<div>
-					<a href="jquery.html">JS & JQuery methods</a>
+					<a href="jquery.html">JS & JQuery</a>
 				</div>
 				<div>
 					<a href="bluetooth.html">Bluetooth</a>
@@ -67,35 +67,35 @@
 				<div>
 					<a href="mobile.html">Mobile</a>
 				</div>
+				<div>
+					<a href="faq.html">FAQ & known issues</a>
+				</div>
 			</div>
 			<main>
-				<h3>HTML UI & CSS syntax</h3> 
-				<p>This page is about everything related to the app and its HTML side and settings. Involt converts CSS classes into specified user interface element, function and its parameters. The <span>ard</span> class defines the Involt object.</p>
+
+
+				<h3>Adding hardware interactions to HTML layout</h3> 
+				<p>Whether you have an existing HTML prototype or not, plugging your layout interactions to device is almost unnoticeable. The only thing to do is describing with CSS classes what to send where on certain event associated with particular UI element.</p>
+
 				<h4>Element structure</h4>
-				<p>The most basic explanation of syntax looks like this:</p>
+				<p>Before detailed explanation let's look again at the basic syntax:</p>
 				<div class="code syntax"><p>ard [element] [pin] [parameters]</p></div>
-				<p>As a class within HTML element, it looks like this:</p>
 				<div class="code html">&lt;div class="ard [element] [pin] [parameters]"&gt;&lt;/div&gt;</div>
-				<p>Example of rangeslider:</p>
+				<p>The <span>ard</span> class defines Involt element. It's required along with element type and pin. The complete list of UI elements is on <a href="../reference.html">Reference page.</a> The previous chapter explains basic button without additional parameters, good example of more complex element is rangeslider:</p>
+
 				<div class="code html">&lt;div class="ard rangeslider P9 value-0 range-0-255 step-1"&gt;&lt;/div&gt;</div>
+
 				<p>The parameters can be defined as attributes. It's useful when using inputs.</p>
+
+				<p>Pin <span>P9</span> can be defined as class <span>pin-P9</span>, attribute <span>pin="P9"</span> or as class directly after [element] <span>P9</span>.</p>
+
 				<div class="code html">&lt;div class="ard rangeslider" pin="P9" value="0" min="0" max="255" step="1"&gt;&lt;/div&gt;</div>
 				<p>In previous cases all parameters are same as default so you don't have to define them.</p>
 				<div class="code html">&lt;div class="ard rangeslider P9"&gt;&lt;/div&gt;</div>
-				<p>The list of elements and what parameters they need check <a href="../reference.html">reference page.</a></p>
-				<h3>Involt pins</h3>
-				<p>Keeping the Pin-to-Pin relation is most intuitive and highly recommended to maintain readability of your code (<span>A0</span> analog pin as <span>A0</span> pin in app). However, pins are not only the direct representation of device pins. Treat the Involt pins as a container of values that by sending or receiving are accessible from both sides.</p> 
-				<p>Probably, at some point you will notice that some things requires to send (or read) data not related to any hardware pin but from i2c/SPI sensor, some calculations or read additional data from multiplexer. In this case just include them as unused pin from pin array. For example: Arduino UNO has 6 analog read pins. If you use multiplexer (or just want to send other values) the additional values can be sent as pins A6-A(n).</p>
-				<p>The pin consist of pin type and index. The types are:</p>
-				<p>P - Send numeric value</p>
-				<p>S - Send string, <span>S0</span> is not the same as <span>P0</span> and is send to different array in Arduino sketch.</p>
-				<p>A - Data received from device (string and numeric)</p>
-				<p>Pins are stored in <span>involt.pin.A</span>, <span>involt.pin.P</span>, <span>involt.pin.S</span> arrays.</p>
-				<p>Pin <span>P9</span> can be defined as class <span>pin-P9</span>, attribute <span>pin="P9"</span> or as class directly after [element] <span>P9</span>. You should always define pin after element name.</p>
+
 				<h3>Parameters</h3>
-				<p>The parameters determine how elements behave, you don't have to add them in specific order nor add them at all, if you use their default values. </p>
 				<h4>Value</h4>
-				<p>It defines the value that element is going to send on specific action. It also defines the beginning value of dynamic elements: like knob and rangeslider (default is 0). It can be numeric value or string (with S pin).</p>
+				<p>Value to send or beginning value of dynamic elements like knob and rangeslider (beginning value is 0 by default). It can be numeric or string (with S pin).</p>
 				<div class="code html">value-[value]</div>
 				<p>Some elements requires two values:</p>
 				<div class="code html">value-[value1]-[value2]</div>
@@ -111,23 +111,8 @@
 				<h4>Function</h4>
 				<p>Send additional function name to device when element event occurs so the device can react to certain events in app. The function can be triggered immediately in Arduino sketch. Check the <a href="functions.html">functions page</a>.</p>
 				<div class="code html">fn-[name]</div>
-				<h3>App settings</h3>
-				<h4>How to change the project name and description?</h4>
-				<p>On desktop, open <span>package.json</span>. On mobile, edit the <span>config.xml</span></p>
-				<h4>How to remove the loader?</h4>
-				<ol>
-					<li>Open settings.js</li>
-					<li>Change the loaderOnLaunch to false</li>
-					<li>Set default connection settings below. After that Involt will connect to selected device on launch.</li>
-					<li>Enjoy not selecting the device each time when app is launched.</li>
-					<li>Remember that loader is recommended when sending the project to others.</li>
-				</ol>
-				<h4>How to change the desktop window dimensions?</h4>
-				<p>Open <span>package.json</span> and change <span>width</span> or <span>height</span>. To run app on fullscreen uncomment the <span>fullscreen</span> parameter.</p>
-				<h4>Read-only elements update rate.</h4>
-				<p>The update rate affects smoothness of updating HTML read elements. Default value is compromise between smoothness and cpu usage. Lower value will update objects almost in real time but will affect CPU usage (important especially on mobile). To change this open settings.js and change <span>updateRate</span>. This will not affect the connection bitrate.</p>
-				<h4>Debug mode</h4>
-				<p>Debug mode prints to console additional informations about what is happening in Involt and connection settings. To turn on debug mode open <span>settings.js</span> and change <span>debugMode</span> to <span>true</span>.</p> 
+
+
 			</main>
 		</div>
 	</div>

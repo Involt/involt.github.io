@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<!--<script src="js/less.js"></script>-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:400' rel='stylesheet' type='text/css'>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -50,16 +50,16 @@
 					<a href="../getting-started.html">Quick start</a>
 				</div>
 				<div>
-					<a href="htmlsyntax.html">HTML UI & CSS syntax</a>
+					<a href="htmlsyntax.html">HTML/CSS interactions</a>
 				</div>
 				<div>
-					<a href="arduino.html">Arduino sketch</a>
+					<a href="arduino.html">Pins & Arduino sketch</a>
 				</div>
 				<div>
 					<a href="functions.html">Triggering functions</a>
 				</div>
 				<div>
-					<a href="jquery.html">JS & JQuery methods</a>
+					<a href="jquery.html">JS & JQuery</a>
 				</div>
 				<div>
 					<a href="bluetooth.html">Bluetooth</a>
@@ -67,21 +67,29 @@
 				<div>
 					<a href="mobile.html">Mobile</a>
 				</div>
+				<div>
+					<a href="faq.html">FAQ & known issues</a>
+				</div>
 			</div>
 			<main>
 				<h3>Bluetooth</h3>
-				<p>Wireless prototyping is crucial for mobile projects. Currently Involt supports classic Bluetooth communication with same Arduino sketch.</p>
-				<p>The bluetooth support was tested with hc-05, hc-06 and XM-15B. They are cheap and easy to setup.</p>
-				<p>This chapter will not describe how to connect hc-05 or how to launch AT mode. There are many tutorials on the internet.</p>
-				<p>Remember to not use software serial - just connect to RX/TX pins (RX -> TX, TX -> RX).</p>
-				<h4>Configuring the device</h4>
+				<p>Wireless prototyping is crucial for mobile projects. Currently Involt supports Bluetooth 2.0 communication with same Arduino sketch. The Bluetooth support was tested with HC-05, HC-06 and XM-15B. They are cheap and easy to setup. This chapter will not describe how to connect HC-05 or how to launch AT mode. There are many tutorials on the internet.</p>
+
+				<p>Remember to not use software serial - just connect to RX/TX pins (RX -> TX, TX -> RX). Arduino Leonardo/Micro requires change from <span>Serial</span> to <span>Serial1</span> while using hardware serial pins.</p>
+
+				<h4>Configuring the device (HC-05)</h4>
+				
 				<p>Enter the AT mode and write:</p>
 				<p><span>AT+UART=57600,0,0</span> to change speed.</p>
 				<p><span>AT+ROLE=0</span> to set as slave device.</p>
 				<p>There are many settings but I don't recommend to change them. Maybe change name to INVOLT with <span>AT+NAME=INVOLT</span></p>
 				<p>To get the device address you can use <span>AT+ADDR</span> or check this in Involt app console (after changing to BT mode).</p>
+				
+				<h4>Configuring Involt</h4>
+
 				<p>In your system turn On bluetooth adapter and pair the device with default 1234 password (for hc-05). The device must be paired before launching the app.</p>
 				<p>Change the <span>isBluetooth</span> variable to <span>true</span> and <span>isSerial</span> to <span>false</span> in settings.js.</p>
+
 			</main>
 		</div>
 	</div>

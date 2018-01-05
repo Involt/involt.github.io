@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<!--<script src="js/less.js"></script>-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Source+Code+Pro:400' rel='stylesheet' type='text/css'>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -79,9 +79,7 @@
 			</div>
 			<main>
 				<h3>Reference</h3>
-				<p>Here you can find list of all HTML UI elements. Remember about writing <span>involtSend()</span> function for read-only elements and <span>digitalWrite</span> or <span>analogWrite</span> for data sending elements in Arduino sketch with corresponding pin. </p>
-				<p>The syntax parameters can be defined as CSS classes or HTML attributes. ( <span>&lt;button class="ard button P6 value-255"&gt;&lt;/button&gt;</span> is same as <span>&lt;button class="ard button" pin="P6" value="255"&gt;&lt;/button&gt;</span>)</p>
-				<p>For JQuery methods reference check the <a href="getting-started/jquery.html">JQuery</a> page</p>
+				<p>Before using the reference start from <a href="getting-started.html">Getting started tutorial</a>. For JQuery methods and Javascript reference check the <a href="getting-started/jquery.html">JQuery</a> page</p>
 				<h3 id="read-data">Read data</h3>
 								<!-- -->
 				<h4 id="show">Show</h4>
@@ -90,12 +88,12 @@
 				<div class="code html">&lt;div class="ard show A0"&gt;&lt;/div&gt;</div>
 								<!-- -->
 				<h4 id="bar">Bar</h4>
-				<p>Generates horizontal bar for value of analog pin. Width of bar value is automatically scaled to CSS width of element. For scaling the value use arduino map function. Add the <span>label-constant</span> class to show the value in constant position.</p>
+				<p>Horizontal bar for value of analog pin. Width of bar value is automatically scaled to CSS width of element. For scaling the value use Arduino map function. Add the <span>label-constant</span> class to show the value in constant position.</p>
 				<div class="code syntax"><p>ard bar [pin] [range]</p></div>
 				<div class="code html">&lt;div class="ard bar A0 range-0-1024"&gt;&lt;/div&gt;</div>
 								<!-- -->
 				<h4 id="knob">Knob</h4>
-				<p>Generates knob that shows analog value. Based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> by Anthony Terrien. You can add the data- attributes as described in plugin to change parameters of this element.
+				<p>Knob that shows analog value. Based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> by Anthony Terrien. You can add the <span>data-</span> attributes as described in plugin to change parameters of this element.
 				<div class="code syntax"><p>ard knob [pin] [range]</p></div>
 				<div class="code html">&lt;div class="ard knob A0 range-0-1024"&gt;&lt;/div&gt;</div>
 								<!-- -->
@@ -131,18 +129,18 @@
 				<div class="code html">&lt;button class="ard decrease P5 value-100 range-0-255 step-10"&gt;&lt;/button&gt;</div>
 								<!-- -->
 				<h4 id="rangeslider">Rangeslider</h4>
-				<p>Generates JQuery based slider with <a href="http://refreshless.com/nouislider/">noUiSlider</a> plugin. The value is displayed inside a tooltip over object.  Add the <span>label-constant</span> class to show the value in constant position. To access the JQuery object use .rangeslider>.slider selector, for more info read the plugin documentation. To send the values in real time, not only on release add the <span>fluid</span> class (may cause buffer overloads so step 1 is not recommended).</p>
-				<p>For plain HTML rangeslider use involt-input element</p>
+				<p>JQuery based slider with <a href="http://refreshless.com/nouislider/">noUiSlider</a> plugin. The value is displayed inside a tooltip over object.  Add the <span>label-constant</span> class to show the value in constant position. To access the JQuery object use <span>.rangeslider>.slider</span> selector, for more info read the plugin documentation. To send the values in real time, not only on release add the <span>fluid</span> class (may cause buffer overloads so step 1 is not recommended).</p>
+				<p>For plain HTML rangeslider use involt-input element.</p>
 				<div class="code syntax"><p>ard rangeslider [pin] [startvalue] [range] [step]</p></div>
 				<div class="code html">&lt;div class="ard rangeslider P5 value-0 range-0-255 step-5"&gt;&lt;/div&gt;;</div>
 								<!-- -->
 				<h4 id="hover">Hover</h4>
-				<p>Create element that sends value on hover and mouse leave. To combine hover with other Involt element you can simply use this as parent of target in html.</p>
+				<p>Hover the element to send value. To combine hover with other Involt element you can simply use this as parent of target in html.</p>
 				<div class="code syntax"><p>ard hover [pin] [onLeave-onHover]</p></div>
 				<div class="code html">&lt;div class="ard hover P5 value-0-255"&gt;&lt;/div&gt;</div>
 								<!-- -->
 				<h4 id="knob-send">Knob-send</h4>
-				<p>Simple knob that sends value. This knob is also based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> - you can add plugin data- attributes to this element and they will be transfred to generated object. To send the values in real time, not only on release add the <span>fluid</span> class (may cause buffer overloads so step 1 is not recommended).</p>
+				<p>Simple knob that sends value. This knob is also based on <a href="https://github.com/aterrien/jQuery-Knob">JQuery Knob plugin</a> - you can add plugin <span>data-</span> attributes to this element and they will be transfred to generated object. To send the values in real time, not only on release add the <span>fluid</span> class (may cause buffer overloads so step 1 is not recommended).</p>
 				<div class="code syntax"><p>ard knob-send [pin] [startvalue] [range] [step]</p></div>
 				<div class="code html">&lt;div class="ard knob-send P5 value-100 range-0-255 step-1"&gt;&lt;/div&gt;</div>
 								<!-- -->
@@ -153,7 +151,7 @@
 				<h3 id="html-inputs">HTML inputs & forms</h3>
 								<!-- -->
 				<h4 id="involt-input">Involt-input</h4>
-				<p>Handle the hardware interactions for HTML inputs. The data is sent on input change. Remember that <span>parameters</span> can be defined as classes and HTML attributes.</p>
+				<p>Handle the HTML inputs. The data is sent on input change. Remember that <span>parameters</span> can be defined as classes and HTML attributes.</p>
 				<p>Supported inputs: <span>text, range, number, checkbox, radio, select</span></p>
 				<div class="code syntax"><p>ard involt-input [parameters]</p></div>
 				<div class="code html">
@@ -171,8 +169,8 @@
 				</div>
 								<!-- -->
 				<h4 id="involt-submit">Involt-submit</h4>
-				<p>Use involt-submit inside HTML form to send form inputs value only on submitting by this button. The <span>functionName</span> is not required, the function itself is triggered after all values are passed to device. The <span>type=""button"</span> is required.</p>
-				<p>Ui elements affected: <span>involt-input, knob-send, rangeslider.</span></p>
+				<p>Use involt-submit inside HTML form to send form inputs values only on submitting by this button. The <span>functionName</span> is not required, the function itself is triggered after all values are passed to device. The <span>type=""button"</span> is required.</p>
+				<p>UI elements affected: <span>involt-input, knob-send, rangeslider.</span></p>
 				<div class="code syntax"><p>ard involt-submit [functionName]</p></div>
 				<div class="code html">&lt;button type="button" class="ard involt-submit fn-functionName"&gt;&lt;/button&gt;</div>
 				<p>Quick example:</p>
