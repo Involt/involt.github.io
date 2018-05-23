@@ -23,10 +23,10 @@ $(".code").each(function() {
 	}
 });
 
-$(".cta").click(function() {
+/*$(".cta").click(function() {
 	ga('send', 'event', 'Clicks', 'click', 'Download');
 });
 
 $("#gth-dl").click(function() {
 	ga('send', 'event', 'Clicks', 'click', 'Download');
-});
+}); */
