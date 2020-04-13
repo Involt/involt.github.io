@@ -46,6 +46,7 @@
 		<div class="container">
 			<div class="sidebar reference">
 				<h2>Chapters:</h2>
+				<p>Introduction</p>
 				<div>
 					<a href="../getting-started.html">Quick start</a>
 				</div>
@@ -55,18 +56,21 @@
 				<div>
 					<a href="arduino.html">Pins & Arduino sketch</a>
 				</div>
+				<p>Javascript</p>
 				<div>
 					<a href="functions.html">Triggering functions</a>
 				</div>
 				<div>
 					<a href="jquery.html">JS & JQuery</a>
 				</div>
+				<p>Additional features</p>
 				<div>
 					<a href="bluetooth.html">Bluetooth</a>
 				</div>
 				<div>
 					<a href="mobile.html">Mobile</a>
 				</div>
+				<p>FAQ</p>
 				<div>
 					<a href="faq.html">FAQ & known issues</a>
 				</div>
@@ -74,7 +78,7 @@
 			<main>
 
 				<h3>Pins & Arduino sketch</h3>
-				<p>It's very obvious that Arduino pins correlate with Involt pins in app. To understand how to use them we need to distingush the differences between numeric values and text strings. Pins are not only the direct representation of device pins. Treat the Involt pins as a container of values that by sending or receiving are accessible from both sides. In short, there may be more Involt pins than your Arduino hardware pins. They are just variables.</p>
+				<p>It's very obvious that Arduino pins correlate with Involt pins in app. To understand how to use them we need to distingush the differences between numeric values and text strings. Pins are not only the direct representation of device pins. <b>Treat the Involt pins as a container of values that by sending or receiving are accessible from both sides.</b> In short, there may be more Involt pins than your Arduino hardware pins. They are just variables.</p>
 				<p>Keeping the Pin-to-Pin relation is most intuitive and highly recommended to maintain readability of your code (<span>A0</span> analog pin as <span>A0</span> pin in app). Pin types are <span>P</span>, <span>S</span> and <span>A</span></p>
 
 				<h4>Values received from app</h4>
@@ -137,13 +141,11 @@
 					</div>			
 				</div>
 
-				<p>The larger the amount of data is transmitted, or when multiple send functions are in next few lines, the higher the delays between should be. However, you should consider changes in your project if you're trying to send string in real time like "I really want to update this string to app and show it in real time". It's important especially when sending multiple strings (sometimes 10,20 ms is required).</p>
+				<p>The larger the amount of data is transmitted, or when multiple send functions are in next few lines, the higher the delays between should be. However, consider changes in your project if you're trying to send string in real time like "I really want to update this string to app and show it in real time". It's important especially when sending multiple strings (sometimes 10,20 ms is required).</p>
 
 				<p>Probably, at some point you will notice that some things requires to send (or read) data not related to any hardware pin but from i2c/SPI sensor, some calculations or read additional data from multiplexer. In this case just include them as unused pin from pin array. For example: Arduino UNO has 6 analog read pins. If you use multiplexer (or just want to send other values) the additional values can be sent as pins A6-A(n). Or <span>involtPin</span>index 14-20 to use with shift register (Arduino UNO has only 13 pins).</p>
 				<p> Remember that undeclared array length may cause some errors in some cases so it's better to have it defined.</p>
 				
-				
-
 			</main>
 		</div>
 	</div>

@@ -46,6 +46,7 @@
 		<div class="container">
 			<div class="sidebar reference">
 				<h2>Chapters:</h2>
+				<p>Introduction</p>
 				<div>
 					<a href="../getting-started.html">Quick start</a>
 				</div>
@@ -55,18 +56,21 @@
 				<div>
 					<a href="arduino.html">Pins & Arduino sketch</a>
 				</div>
+				<p>Javascript</p>
 				<div>
 					<a href="functions.html">Triggering functions</a>
 				</div>
 				<div>
 					<a href="jquery.html">JS & JQuery</a>
 				</div>
+				<p>Additional features</p>
 				<div>
 					<a href="bluetooth.html">Bluetooth</a>
 				</div>
 				<div>
 					<a href="mobile.html">Mobile</a>
 				</div>
+				<p>FAQ</p>
 				<div>
 					<a href="faq.html">FAQ & known issues</a>
 				</div>
@@ -80,7 +84,7 @@
 				<h4>How to remove the loader?</h4>
 				<ol>
 					<li>Open settings.js</li>
-					<li>Change the loaderOnLaunch to false</li>
+					<li>Change the <span>loaderOnLaunch</span> to <span>false</span></li>
 					<li>Set default connection settings below. After that Involt will connect to selected device on launch.</li>
 					<li>Enjoy not selecting the device each time when app is launched.</li>
 					<li>Remember that loader is recommended when sending the project to others.</li>
@@ -94,30 +98,30 @@
 
 				<h4>Adding Involt to existing layout. What should I do?</h4>
 				<ul>
-					<li>Injecting interactions will not change the existing layout and there is no need of rewriting your project. </li>
-					<li>Check app.html, it's boilerplate and homepage. Look what scripts and assets are required in head section for your subpages.</li>
-					<li>You can remove the Involt CSS stylesheet but remember that some UI elements like switch or bar requires their styling to work correctly.</li>
+					<li><b>Injecting interactions will not change the existing layout</b> and there is no need of rewriting your project. </li>
+					<li><b>Rename your index.html file to app.html as project homepage.</b> Look what scripts and assets are required in head section for your subpages.</li>
+					<li><b>You can remove the Involt CSS stylesheet but remember that some UI elements like switch or bar requires their styling to work correctly.</b></li>
 					<li>With hardware, just adapt your project to Involt sketch and its functions. It's easy but requires some planning.</li>
 				</ul>
 
 				<h4>How should I adapt my project from desktop to mobile?</h4>
 				<ul>
-					<li>It's easier to work on desktop and then pack into mobile version. You can set the window dimensions to your target device and preview the layout. There is no point of uploading to Phonegap Build each time.</li>
-					<li>You can start working with responsive design layout or responsive framework.</li>
-					<li>Involt without additional plugins works fine with Phonegap. Be aware that there are some quirks in Phonegap.</li>
-					<li>Try builing layout without Involt interactions and use real time preview in Phonegap Developer App without connection.</li>
-					<li>Don't pack node-webkit files to Phonegap Build, they are useless on mobile</li>
-					<li>Bluetooth communication is same as on desktop but remember that mobile device may have lower range and may work slower.</li>
+					<li><b>It's easier to work on desktop and then pack into mobile version.</b> You can set the window dimensions to your target device and preview the layout. There is no point of uploading to Phonegap Build each time.</li>
+					<li>You should work with responsive design from beginning. By doing it correctly there is no need to make changes in layout.</li>
+					<li>Involt without additional plugins works fine with Phonegap. Be aware of some quirks in Phonegap.</li>
+					<li>Try building layout without Involt interactions and use real time preview in Phonegap Developer App without connection.</li>
+					<li><b>Don't pack node-webkit files</b> to Phonegap Build, they are useless on mobile</li>
+					<li><b>Bluetooth communication is same as on desktop but remember that mobile device may have lower range and may work slower.</b></li>
 				</ul>
 
 				<h4>Should I start working on app or device?</h4>
-				<p>There is no golden rule as it really depends on project. Sometimes there are more tangible interactions than those on screen and vice versa. Start with sketches, mockups etc. and then at some point do the list of what must be sent and what events occurs between them.</p>
+				<p>There is no golden rule as it really depends on project. Sometimes there are more tangible interactions than those on screen and vice versa. Think about the amount of potential changes during development on both sides.</p>
 
 				<h4>Involt limitations</h4>
 				<ul>
 					<li>All limitations related to node-webkit and cordova (on mobile).</li>
 					<li>Project is based on web technologies but keep in mind that Involt does not support online communication so you can't develop working IoT solution(maybe in future).</li>
-					<li>IOS and Bluetooth LE are not supported.</li>
+					<li><b>IOS and Bluetooth LE are not supported.</b></li>
 					<li>Only one device can be connected to app at once.</li>
 				</ul>
 
@@ -129,13 +133,13 @@
 				<h4>When I launch my app nothing happens</h4>
 				<ul>
 					<li>Are the Involt files unpacked in main folder so package.json and nw.exe are in same folder?</li>
-					<li>Involt works only within Node-webkit and Phonegap. It will not work in your browser.</li>
+					<li><b>Involt works only within Node-webkit and Phonegap. It will not work in your browser.</b></li>
 					<li>Check Javascript code, especially errors in console. Errors in your code will block framework communication.</li>
 				</ul>
 
 				<h4>My device doesn't respond when connected</h4>
 				<ul>
-					<li>Assuming that device is plugged correctly and bluetooth is connected and paired - mostly it was problem with changed serial baudrate in serial begin or it's inconsistent with baudrate in settings.js. The baudrate within device and app must be the same. You shouldn't make any changes in involt-basic.ino functions unless you know what you want to do.</li>
+					<li>Assuming that device is plugged correctly and bluetooth is connected and paired - <b>mostly it's a problem while changing serial baudrate in serial begin and inconsistenty with baudrate in settings.js.</b> You shouldn't make any changes in involt-basic.ino functions unless you know what you want to do.</li>
 					<li>Maybe there are some pin numbers not consistent between app and device or Involt arrays are too short causing issues within Arduino code.</li>
 					<li>Reopen the bluetooth adapter and open the app again. Involt sometimes (rarely) throws "Invalid UUID" error.</li>
 					<li>Remember that Arduino Leonardo/Micro requires change from <span>Serial</span> to <span>Serial1</span> while using bluetooth connected to hardware serial pins.</li>
@@ -149,8 +153,8 @@
 
 				<h4>Device/app latency is too slow</h4>
 				<ul>
-					<li>Obviously this could be caused by too many (too long?) delays in your sketch so it's blocking the communication.</li>
-					<li>Try increasing baudrate. (From both sides)</li>
+					<li>Obviously this could be caused by too many (too long?) delays in your sketch so it's blocking the communication. Consider using millis instead of delay.</li>
+					<li>Try increasing baudrate.</li>
 					<li>The update rate affects smoothness of updating HTML read elements. Default value is compromise between smoothness and cpu usage. Lower value will update objects almost in real time but will affect CPU usage (important especially on mobile). To change this open settings.js and change <span>updateRate</span>. This will not affect the connection bitrate.</li>
 					<li>Check Bluetooth range.</li>
 				</ul>

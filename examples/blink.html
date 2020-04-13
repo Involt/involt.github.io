@@ -62,7 +62,7 @@
 			<main>
 				<h3>Blink tutorial</h3>
 				<h4>Circuit</h4>
-				<p>This example explains how to connect single LED and how control it with buttons inside app. First of all connect LED with 220 ohm resistor to pin 5.</p>
+				<p>First of all connect LED with 220 ohm resistor to pin 5.</p>
 				<img src="../img/fritzing2.png" alt="">
 				<h4>Basic example</h4>
 				<p>Make sure that Involt is installed. If you don't know how to do this go to <a href="../getting-started.html">getting started</a> page.</p>
@@ -88,7 +88,7 @@
 					</div>			
 				</div>
 				<h4>PWM</h4>
-				<p>There are other similar ways to do this, in this case use PWM values. Instead of <span>digitalWrite</span> use <span>analogWrite</span> in your sketch:</p>
+				<p>Instead of <span>digitalWrite</span> use <span>analogWrite</span> in your sketch:</p>
 				<div class="code html">&lt;div class="ard toggle P5 value-0-255"&gt; Click Me &lt;/div&gt;</div>
 				<div class="code html">&lt;div class="ard switch P5 value-0-50"&gt;&lt;/div&gt;</div>
 				<div class="code html">&lt;input type="checkbox" class="ard involt-input P5 value-0-255"&gt;</div>
@@ -97,7 +97,7 @@
 				<p>There are more sophisticated elements. One of them is rangeslider. It will change the brightness of connected LED.</p>
 				<div class="code html">&lt;div class="ard rangeslider P5 value-0 range-0-255 step-1"&gt;&lt;/div&gt;</div>
 				<img src="../img/rangeslider.jpg">
-				<p>Each dynamic UI element has its default settings (based on PWM and analog read resolution) so in this case, the same element can be defined without parameteres:</p>
+				<p>Each UI element has its default settings (based on PWM and analog read resolution) so in this case, the same element can be defined without parameteres:</p>
 				<div class="code html">&lt;div class="ard rangeslider P5"&gt;&lt;/div&gt;</div>
 			</main>
 		</div>

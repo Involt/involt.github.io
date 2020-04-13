@@ -46,6 +46,7 @@
 		<div class="container">
 			<div class="sidebar reference">
 				<h2>Chapters:</h2>
+				<p>Introduction</p>
 				<div>
 					<a href="../getting-started.html">Quick start</a>
 				</div>
@@ -55,18 +56,21 @@
 				<div>
 					<a href="arduino.html">Pins & Arduino sketch</a>
 				</div>
+				<p>Javascript</p>
 				<div>
 					<a href="functions.html">Triggering functions</a>
 				</div>
 				<div>
 					<a href="jquery.html">JS & JQuery</a>
 				</div>
+				<p>Additional features</p>
 				<div>
 					<a href="bluetooth.html">Bluetooth</a>
 				</div>
 				<div>
 					<a href="mobile.html">Mobile</a>
 				</div>
+				<p>FAQ</p>
 				<div>
 					<a href="faq.html">FAQ & known issues</a>
 				</div>
@@ -74,13 +78,13 @@
 			<main>
 				<h3>Involt for mobile</h3>
 				<h4>Configuration</h4>
-				<p>The current mobile version is made for Bluetooth 2.0 and Android. There are no additional steps to configure your project. Just make sure that in settings.js communication is set to Bluetooth. To change Phonegap related settings use config.xml instead of package.json. </p>
+				<p><b>The current mobile version is made for Bluetooth 2.0 and Android.</b> There are no additional steps to configure your project. Just make sure that in settings.js communication is set to Bluetooth. To change Phonegap related settings use config.xml instead of package.json. </p>
 				<h4>Phonegap Build</h4>
-				<p>The easiest way is to use <a href="https://build.phonegap.com">Phonegap Build</a>. With free account you can upload single private app as .zip file or multiple public Github forks. Add to zip archive the contents of involt folder (don't pack node-webkit files). If everything is correct you should see Involt icon and name. As you can see there aren't many things to do here. When you finish uploading your project you can download it via QR code scanner on your phone.</p>
+				<p>The easiest way is to use <a href="https://build.phonegap.com">Phonegap Build</a>. With free account you can upload single private app as .zip file or multiple public Github forks. <b>Add to .zip archive the contents of involt folder but don't pack node-webkit files.</b> If everything is correct you should see Involt icon and name. As you can see there aren't many things to do here. When you finish uploading your project you can download it via QR code scanner on your phone.</p>
 				<img src="../img/phonegap.jpg" alt="involt for mobile phonegap">
 				<h4>Additional info</h4>
 				<ul>
-					<li>Mobile communication may work different than on desktop. Sometimes you should consider using higher delays in sketch when there is a lot of data to send.</li>
+					<li><b>Mobile communication behavior may differ from desktop.</b> Sometimes you should consider using higher delays in sketch when there is a lot of data to send.</li>
 					<li>In some cases your app will require changes in CSS (due to some Cordova quirks not the Involt itself). Heavy DOM manipulations from javascript are not recommended.</li>
 					<li>Enabling hydration will check for updates automatically so you don't have to manually redownload the app.</li>
 					<li>Chrome dev tool has ability to inspect (and preview) the app from remote device and use console to debug.</li>

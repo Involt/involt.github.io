@@ -46,6 +46,7 @@
 		<div class="container">
 			<div class="sidebar reference">
 				<h2>Chapters:</h2>
+				<p>Introduction</p>
 				<div>
 					<a href="getting-started.html">Quick start</a>
 				</div>
@@ -55,18 +56,21 @@
 				<div>
 					<a href="getting-started/arduino.html">Pins & Arduino sketch</a>
 				</div>
+				<p>Javascript</p>
 				<div>
 					<a href="getting-started/functions.html">Triggering functions</a>
 				</div>
 				<div>
 					<a href="getting-started/jquery.html">JS & JQuery</a>
 				</div>
+				<p>Additional features</p>
 				<div>
 					<a href="getting-started/bluetooth.html">Bluetooth</a>
 				</div>
 				<div>
 					<a href="getting-started/mobile.html">Mobile</a>
 				</div>
+				<p>FAQ</p>
 				<div>
 					<a href="getting-started/faq.html">FAQ & known issues</a>
 				</div>
@@ -78,26 +82,30 @@
 				<h4>How to install</h4>
 				<p>The project works on Windows, OS X (On Linux serial should work). For mobile installation on Android go to <a href="getting-started/mobile.html">Mobile page.</a></p>
 				<ol>
-					<li>Download <a href="https://github.com/Involt/Involt">Involt</a></li>
-					<li>Download <a href="http://nwjs.io/">Node-webkit</a>*</li>
-					<li>Unpack Involt to Node-webkit main folder</li>
-					<li>After opening the app you should see loader with available devices.</li>
-					<li>Use app.html for layout (homepage) and involt-basic.ino for arduino code.</li>
+					<b>
+						<li>Download <a href="https://github.com/Involt/Involt">Involt</a></li>
+						<li>Download <a href="http://nwjs.io/">Node-webkit</a>*</li>
+						<li>Unpack Involt to Node-webkit main folder</li>
+						<li>After opening the app you should see loader with available devices.</li>
+						<li>Use app.html as your homepage (you can add subpages) and involt-basic.ino for arduino code.</li>
+					</b>
 				</ol>
 				<p>*The SDK version of NW is recommended as it contains Chrome Dev Tools and HTML inspector. (Mac version is in NW download section)</p>
 
 				<h4>What communication methods are supported?</h4>
 				<ul>
-					<li>Serial - desktop</li>
-					<li>Bluetooth (2.0/classic) - desktop and mobile</li>
+					<b>
+						<li>Serial - desktop</li>
+						<li>Bluetooth 2.0 - desktop and mobile (Android)</li>
+					</b>
 				</ul>
 				<p>Even if it's HTML based, currently Involt has no IoT online support.</p>
 
 				<h3>Basic usage</h3>
-				<p>It's as simple as adding HTML element where desired interactions and their parameters are set by CSS classes. Involt will take care of communication with your device but you need to write single line of code inside Arduino sketch for each element.
+				<p><b>It's as simple as adding HTML element where desired interactions and their parameters are set by CSS classes.</b> Involt will take care of communication with your device but you need to write single line of code inside Arduino sketch for each element.
 				<div class="code syntax"><p>ard [element] [pin] [parameters] </p></div>
 				<div class="code html">&lt;div class="ard [element] [pin] [parameters]"&gt;&lt;/div&gt;</div>
-				<h4>Read data from Arduino</h4> 
+				<h4>Read value from Arduino</h4> 
 				<p>Send any numeric value to your app with <span>involtSend(pinIndex, value)</span> in your sketch loop.</p>
 				<p>Always use involt-basic.ino sketch as starting point.</p>
 				<div class="code arduino">
@@ -114,13 +122,13 @@
 						...
 					</div>			
 				</div>
-				<p>Now add this element to app.html file. After connecting something to pin A0 (knob or anything else) you should see changes in its value. The <span>show</span> element has no other parameters.</p>
+				<p>Now add this HTML element to app.html file. After connecting something to pin A0 (knob or anything else) you should see changes in its value. The <span>show</span> element has no other parameters.</p>
 				<div class="code html">
 					&lt;div class="ard show A0"&gt;&lt;/div&gt;
 				</div>
 				<img src="img/show.jpg" alt="show value from knob">
 				<h4>Send data to Arduino</h4>
-				<p>With LED connected to pin 5 we use <span>digitalWrite</span> or <span>analogWrite</span> to change its brightness. The numeric values received from App are stored in <span>involtPin[pinIndex]</span>.</p>
+				<p>To blink LED we use <span>digitalWrite</span> or <span>analogWrite</span> to change brightness. Numeric values received from App are stored in <span>involtPin[pinIndex]</span>.</p>
 				<p>Sending and receiving can be related to any variable you want - not only pin states. You can use this array to store values for sketch functions.</p>
 				<div class="code arduino">
 					<div class="code-m">
@@ -157,9 +165,9 @@
 
 				<p>There is more you can do with Involt and it's widely explained in next chapters. Playing with <a href="examples.html">examples</a> is good idea to practice. More things Involt has to offer:</p>
 				<ul>
-					<li>Triggering functions in app or device.</li>
+					<li>Trigger functions in app or device.</li>
 					<li>Sending strings (with pin S instead of P)</li>
-					<li>Use inputs to create form which passes the values to device.</li>
+					<li>Use inputs to create HTML form which passes the values to device.</li>
 					<li>Add Bluetooth communication for wireless project.</li>
 					<li>Pack everything into Phonegap and use same project on Android (with Bluetooth).</li>
 				</ul>
