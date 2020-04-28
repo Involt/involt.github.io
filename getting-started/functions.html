@@ -78,7 +78,7 @@
 			<main>
 				<h3>Triggering functions</h3>
 				<p>Sometimes, exchanging the data is not enough. In more complex projects there are events that occurs from both sides, especially triggering some event in arduino from html button. It's great to know that Involt cares about simplicity of such events.</p>
-				<h4>Trigger from app to device</h4>
+				<h4>Triggering from app to device</h4>
 				<p>For example, use HTML element to send its value and trigger some event in Arduino sketch:</p>
 				<div class="code html">&lt;button class="ard button P6 value-255 <span style="color:blue;">fn-involt</span>"&gt;Click me&lt;/button&gt;</div>
 				<div class="code arduino">
@@ -117,7 +117,7 @@
 					</div>
 				</div>
 				<h4>Listen for received pin value (in app)</h4>
-				<p>Use it to trigger function each time when app receives value from certain pin. The <span>index, value</span> are related to received pin data.</p>
+				<p>Use it to call function each time when app receives value from certain pin. The <span>index, value</span> are related to received pin data.</p>
 				<div class="code javascript">
 					<div class="code-m" style="color:blue;">
 						involtListenForPin[0] = function(index, value){
